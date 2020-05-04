@@ -1,0 +1,24 @@
+.fakeLink {
+    background: none!important;
+    border: none;
+    font-family: arial, sans-serif;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .href {
+    color: #479cf7d3;
+    text-decoration: underline;
+  }
+  
+  .href:hover {
+    color: #007bff;
+  }
+  
+  .fakeLink:focus {
+    outline: 0;
+  }
+  
+  .icon--delete {
+    padding-left: 0.5rem;
+  }
