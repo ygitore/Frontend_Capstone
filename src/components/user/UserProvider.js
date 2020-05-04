@@ -10,6 +10,8 @@ export const UserContext = React.createContext()
  This component establishes what data can be used.
  */
 export const UserProvider = (props) => {
+    // Users = data
+    // setUsers = function that React created, so we can use it to set state of Users
     const [users, setUsers] = useState([])
 
     const getUsers = () => {
@@ -29,22 +31,41 @@ export const UserProvider = (props) => {
             .then(getUsers)
     }
 
+    const deleteUser = userId => {
+        return fetch(`http://localhost:8088/users/${userId}`, {
+            method: "DELETE"
+        })
+            .then(getUsers)
+    }
+
+    const updateUser = user => {
+        return fetch(`http://localhost:8088/users/${user.id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(user)
+        })
+            .then(getUsers)
+    }
+
     /*
-        Load all users when the component is mounted. Ensure that
+        Load all Users when the component is initialized. Ensure that
         an empty array is the second argument to avoid infinite loop.
     */
     useEffect(() => {
         getUsers()
     }, [])
 
-    useEffect(() => {
-        console.log("****  User APPLICATION STATE CHANGED  ****")
-    }, [users])
-
     return (
-        <UserContext.Provider value={{
-            users, addUser
-        }}>
+        <UserContext.Provider value={
+            {
+                users,
+                addUser,
+                deleteUser,
+                updateUser
+            }
+        }>
             {props.children}
         </UserContext.Provider>
     )
