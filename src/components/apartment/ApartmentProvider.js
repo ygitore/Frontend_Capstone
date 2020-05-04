@@ -36,6 +36,18 @@ export const ApartmentProvider = (props) => {
             .then(getApartments)
     }
 
+    const updateApartment = apartment => {
+        return fetch(`http://localhost:8088/animals/${apartment.id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(apartment)
+        })
+            .then(getApartments)
+    }
+
+
     /*
         Load all apartments when the component is mounted. Ensure that
         an empty array is the second argument to avoid infinite loop.
@@ -50,7 +62,10 @@ export const ApartmentProvider = (props) => {
 
     return (
         <ApartmentContext.Provider value={{
-            apartments, addApartment, deleteApartment
+            apartments, 
+            addApartment, 
+            deleteApartment,
+            updateApartment
         }}>
             {props.children}
         </ApartmentContext.Provider>

@@ -15,13 +15,12 @@ export default props => {
     const addNewApartment = () => {
         if (userId) {
             addApartment({
+                userId:parseInt(userId),
                 uploadImage: uploadImage.current.value,
                 apartmentName: apartmentName.current.value,
                 city: city.current.value,
                 state: state.current.value,
                 description: description.current.value,
-                city: city.current.value,
-                userId:parseInt(userId)
             })
             .then(props.toggler)
         }

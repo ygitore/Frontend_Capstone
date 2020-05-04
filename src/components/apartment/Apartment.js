@@ -2,23 +2,22 @@ import React, { useState, useContext } from "react"
 import { Button, Modal, ModalHeader, ModalBody } from "reactstrap"
 import DeleteApartment from "./DeleteApartment"
 import {UserContext} from '../user/UserProvider'
-import { ApartmentContext } from "./ApartmentProvider"
-export default ({apartment}) => {
-    const {users} = useContext(UserContext)
-    const {apartments} = useContext(ApartmentContext)
 
+export default ({apartment}) => {
+    const {users} = useContext(UserContext)  
     const [modal, setModal] = useState(false)
     const toggle = () => setModal(!modal)
+    
     const logedInUser = localStorage.getItem("reviewApartment_user") 
-    console.log('loged ',logedInUser)
-    const user = users.find(u => parseInt(u.id) === logedInUser)
-    console.log("object", user)
-    if(parseInt(user) === parseInt(apartment.userId) && user !== null){
+    console.log('logedIn user -> ',logedInUser)
+    const user = users.find(u => parseInt(u.id) === parseInt(logedInUser))
+    console.log("users -> ", users)
+   if(user.id === parseInt(apartment.userId) && user !== null){
         return (
             <>
                 <section className="apartment">
-                <h3 className="apartment__name">{apartment.apartmentName}</h3>
                 <p>Image goes here</p>
+                <h3 className="apartment__name">{apartment.apartmentName}</h3>
                 <p className="apartment__address">{apartment.description}</p>
                 <Button color="info" size="sm">Like</Button>
                 <Button color="info" size="sm" >Comment</Button>

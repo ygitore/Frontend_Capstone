@@ -12,6 +12,9 @@ export default () => {
     return (
         <>
             <Button color= "info" onClick = {toggle}>Create apartment</Button>
+            <Button color= "info" onClick = {toggle}>Add to favorites</Button>
+            <Button color= "info" onClick = {toggle}>Search</Button>
+            
             <div className="apartments">
                 {
                     apartments.map(apt => <Apartment key={apt.id} apartment={apt} />)
