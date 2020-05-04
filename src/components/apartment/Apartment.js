@@ -11,9 +11,9 @@ export default ({apartment}) => {
     const toggle = () => setModal(!modal)
     const logedInUser = localStorage.getItem("reviewApartment_user") 
     console.log('loged ',logedInUser)
-    const user = users.find(u => parseInt(u.id) === logedInUser)
-    console.log("object", user)
-    if(parseInt(user) === parseInt(apartment.userId) && user !== null){
+    const user = users.find(u => parseInt(u.id) === parseInt(logedInUser))
+    console.log("object", users)
+    if(user.id === parseInt(apartment.userId) && user !== null){
         return (
             <>
                 <section className="apartment">
