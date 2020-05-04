@@ -12,12 +12,12 @@ export default ({apartment}) => {
     console.log('logedIn user -> ',logedInUser)
     const user = users.find(u => parseInt(u.id) === parseInt(logedInUser))
     console.log("users -> ", users)
-   // if(user.id === parseInt(apartment.userId) && user !== null){
+   if(user.id === parseInt(apartment.userId) && user !== null){
         return (
             <>
                 <section className="apartment">
-                <h3 className="apartment__name">{apartment.apartmentName}</h3>
                 <p>Image goes here</p>
+                <h3 className="apartment__name">{apartment.apartmentName}</h3>
                 <p className="apartment__address">{apartment.description}</p>
                 <Button color="info" size="sm">Like</Button>
                 <Button color="info" size="sm" >Comment</Button>
@@ -38,20 +38,20 @@ export default ({apartment}) => {
             </section>
         </>
         )    
-    // }else{
-    //     return (
-    //         <>
-    //             <section className="apartment">
-    //             <h3 className="apartment__name">{apartment.apartmentName}</h3>
-    //             <p>Image goes here</p>
-    //             <p className="apartment__address">{apartment.description}</p>
-    //             <Button color="info" size="sm">Like</Button>
-    //             <Button color="info" size="sm" >Comment</Button>
-    //             <Button color="info" size="sm" >Add to favorites</Button>
+    }else{
+        return (
+            <>
+                <section className="apartment">
+                <h3 className="apartment__name">{apartment.apartmentName}</h3>
+                <p>Image goes here</p>
+                <p className="apartment__address">{apartment.description}</p>
+                <Button color="info" size="sm">Like</Button>
+                <Button color="info" size="sm" >Comment</Button>
+                <Button color="info" size="sm" >Add to favorites</Button>
                        
-    //         </section>
-    //     </>
-    //     )        
-    // }
+            </section>
+        </>
+        )        
+    }
     
 }
