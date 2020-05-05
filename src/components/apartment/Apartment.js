@@ -3,8 +3,10 @@ import { Button, Modal, ModalHeader, ModalBody } from "reactstrap"
 import DeleteApartment from "./DeleteApartment"
 import {UserContext} from '../user/UserProvider'
 import AddCommentForm from '../comment/AddCommentForm'
+import { CommentContext } from "../comment/CommentProvider"
 export default ({apartment}) => {
     const {users} = useContext(UserContext)
+    const {comments} = useContext(CommentContext)
 
     const [modal, setModal] = useState(false)
     const toggle = () => setModal(!modal)
@@ -16,6 +18,8 @@ export default ({apartment}) => {
     const logedInUser = localStorage.getItem("reviewApartment_user") 
     console.log('loged ',logedInUser)
     const user = users.find(u => parseInt(u.id) === parseInt(logedInUser))
+    const userComment = comments.filter(comt => comt.apartmentId === apartment.id)
+    let userComments = userComment.length
     if(user.id === parseInt(apartment.userId) && user !== null){
         return (
             <>
@@ -24,6 +28,7 @@ export default ({apartment}) => {
                 <h3 className="apartment__name">{apartment.apartmentName}</h3>
                 <p className="apartment__address">{apartment.description}</p>
                 <Button color="info" size="sm" >Like</Button>
+                <Button color="info" size = "sm">{userComments} comments</Button>
                 <Button color="info" size="sm" onClick = {toggleComment}>Comment</Button>
                 <Button color="info" size="sm" >Add to favorites</Button>
                 <Button 
@@ -56,6 +61,7 @@ export default ({apartment}) => {
                 <p>Image goes here</p>
                 <p className="apartment__address">{apartment.description}</p>
                 <Button color="info" size="sm">Like</Button>
+                <Button color="info" size = "sm">{userComments} comments</Button>
                 <Button color="info" size="sm" >Comment</Button>
                 <Button color="info" size="sm" >Add to favorites</Button>
                        
