@@ -4,6 +4,8 @@ import "./Layout.css"
 import { ApartmentProvider } from './apartment/ApartmentProvider'
 import ApartmentList from './apartment/ApartmentList'
 import { UserProvider } from './user/UserProvider'
+import { CommentProvider } from './comment/CommentProvider'
+import AddCommentForm from './comment/AddCommentForm'
 
 export const Dashboard = () => {
     
@@ -11,7 +13,10 @@ export const Dashboard = () => {
         <div className="mainContainer">
             <UserProvider>
                 <ApartmentProvider>
-                    <ApartmentList />
+                    <CommentProvider>
+                        <AddCommentForm />
+                    </CommentProvider>
+                        <ApartmentList />
                 </ApartmentProvider>
             </UserProvider>
            
