@@ -22,7 +22,7 @@ export default props => {
                 state: state.current.value,
                 description: description.current.value,
             })
-            .then(props.toggler)
+            .then(props.showAllApartments)
         }
     }
 
