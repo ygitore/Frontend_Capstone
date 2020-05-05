@@ -36,18 +36,6 @@ export const CommentProvider = (props) => {
             .then(getComments)
     }
 
-    const updateComment = comment => {
-        return fetch(`http://localhost:8088/animals/${comment.id}`, {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(comment)
-        })
-            .then(getComments)
-    }
-
-
     /*
         Load all Comments when the component is mounted. Ensure that
         an empty array is the second argument to avoid infinite loop.
@@ -62,10 +50,7 @@ export const CommentProvider = (props) => {
 
     return (
         <CommentContext.Provider value={{
-            Comments, 
-            addComment, 
-            deleteComment,
-            updateComment
+            comments, addComment, deleteComment
         }}>
             {props.children}
         </CommentContext.Provider>

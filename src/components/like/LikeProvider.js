@@ -36,18 +36,6 @@ export const LikeProvider = (props) => {
             .then(getLikes)
     }
 
-    const updateLike = like => {
-        return fetch(`http://localhost:8088/likes/${like.id}`, {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(like)
-        })
-            .then(getLikes)
-    }
-
-
     /*
         Load all Likes when the component is mounted. Ensure that
         an empty array is the second argument to avoid infinite loop.
@@ -62,10 +50,7 @@ export const LikeProvider = (props) => {
 
     return (
         <LikeContext.Provider value={{
-            Likes, 
-            addLike, 
-            deleteLike,
-            updateLike
+            likes, addLike, deleteLike
         }}>
             {props.children}
         </LikeContext.Provider>
