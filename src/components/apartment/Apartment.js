@@ -4,13 +4,14 @@ import DeleteApartment from "./DeleteApartment"
 import {UserContext} from '../user/UserProvider'
 import AddCommentForm from '../comment/AddCommentForm'
 import { CommentContext } from "../comment/CommentProvider"
-export default ({apartment}) => {
-    const {users} = useContext(UserContext)
-    const {comments} = useContext(CommentContext)
 
+
+export default ({apartment}) => {
+    const {users} = useContext(UserContext)  
     const [modal, setModal] = useState(false)
     const toggle = () => setModal(!modal)
-    
+    const {comments} = useContext(CommentContext)
+
 
     const [commentModal, setCommentModal] = useState(false)
     const toggleComment = () => setCommentModal(!commentModal)
