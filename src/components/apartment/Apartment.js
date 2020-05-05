@@ -4,14 +4,16 @@ import DeleteApartment from "./DeleteApartment"
 import {UserContext} from '../user/UserProvider'
 import AddCommentForm from '../comment/AddCommentForm'
 import { CommentContext } from "../comment/CommentProvider"
+import { LikeContext } from "../like/LikeProvider"
 
 
 export default ({apartment}) => {
     const {users} = useContext(UserContext)  
+    const {comments} = useContext(CommentContext)
+    const {likes} = useContext(LikeContext)
+    
     const [modal, setModal] = useState(false)
     const toggle = () => setModal(!modal)
-    const {comments} = useContext(CommentContext)
-
 
     const [commentModal, setCommentModal] = useState(false)
     const toggleComment = () => setCommentModal(!commentModal)
@@ -21,6 +23,7 @@ export default ({apartment}) => {
     const user = users.find(u => parseInt(u.id) === parseInt(logedInUser))
     const userComment = comments.filter(comt => comt.apartmentId === apartment.id)
     let userComments = userComment.length
+    const likedApartment = likes.filter(like => like.apartmentId === apartment.id)
     if(user.id === parseInt(apartment.userId) && user !== null){
         return (
             <>
@@ -28,6 +31,7 @@ export default ({apartment}) => {
                 <img src = {apartment.uploadImage} alt = {apartment.uploadImage} />
                 <h3 className="apartment__name">{apartment.apartmentName}</h3>
                 <p className="apartment__address">{apartment.description}</p>
+                <div>{likedApartment.length} likes</div>
                 <Button color="info" size="sm" >Like</Button>
                 <Button color="info" size = "sm">{userComments} comments</Button>
                 <Button color="info" size="sm" onClick = {toggleComment}>Comment</Button>
@@ -61,6 +65,7 @@ export default ({apartment}) => {
                 <h3 className="apartment__name">{apartment.apartmentName}</h3>
                 <p>Image goes here</p>
                 <p className="apartment__address">{apartment.description}</p>
+                <div>{likedApartment.length} likes</div>
                 <Button color="info" size="sm">Like</Button>
                 <Button color="info" size = "sm">{userComments} comments</Button>
                 <Button color="info" size="sm" >Comment</Button>

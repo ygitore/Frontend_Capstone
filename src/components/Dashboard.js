@@ -6,17 +6,18 @@ import ApartmentList from './apartment/ApartmentList'
 import { UserProvider } from './user/UserProvider'
 import { CommentProvider } from './comment/CommentProvider'
 import AddCommentForm from './comment/AddCommentForm'
+import { LikeProvider } from './like/LikeProvider'
 
 export const Dashboard = () => {
-    const [userComment, setUserComment] = useState(false)
-    const toggleUsersComment = () => setUserComment(!userComment)
     return (
         <div className="mainContainer">
             <UserProvider>
                 <ApartmentProvider>
                     <CommentProvider>
-                        <AddCommentForm />
-                        <ApartmentList />
+                        <LikeProvider>
+                            <AddCommentForm />
+                            <ApartmentList />
+                        </LikeProvider>
 
                     </CommentProvider>
                 </ApartmentProvider>
