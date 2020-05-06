@@ -11,11 +11,14 @@ import CommentList from "../comment/CommentList";
 export default ({apartment}) => {
     const {users} = useContext(UserContext)  
     const {comments} = useContext(CommentContext)
-    const {likes} = useContext(LikeContext)
+    const {likes, addLike} = useContext(LikeContext)
     const {favorites, addFavorite} = useContext(FavoriteContext)
 
     const [commentModal, setCommentModal] = useState(false)
     const toggleComment = () => setCommentModal(!commentModal)
+
+    const [likeModal, setLikeModal] = useState(false)
+    const toggleLike = () => setLikeModal(!likeModal)
 
     const [userCommentModal, setUserCommentModal] = useState(false)
     const toggleUserComment = () => setUserCommentModal(!userCommentModal)
@@ -43,7 +46,14 @@ export default ({apartment}) => {
     let userComments = userComment.length
     const likedApartment = likes.filter(like => like.apartmentId === apartment.id)
 
-
+    const addLikeToApi = () => {
+        const userLikedApartment = {
+            userId: parseInt(loggedInUser),
+            apartmentId:apartment.id
+        }
+        addLike(userLikedApartment)
+        
+    }
     return (
         <>
             <section className="apartment">
@@ -52,8 +62,11 @@ export default ({apartment}) => {
                 <h6 className="apartment__name">{apartment.city},{ apartment.state}</h6>
                 <p className="apartment__address">{apartment.description}</p>
                 <div>{likedApartment.length} likes</div>
-                <Button color="info" size = "sm">{userComments} comments</Button>
-                <Button color="info" size="sm">Like</Button>
+                <div color="info" size = "sm">{userComments} comments</div>
+                <Button color="info" size="sm" onClick = {() => {
+                    toggleLike()
+                    addLikeToApi()
+                }}>Like</Button>
                 <Button color="info" size="sm" onClick = {toggleComment}>Comment</Button>
                 <Button color="info" size="sm" onClick = {(evt)=> {
                     evt.preventDefault()

@@ -27,7 +27,6 @@ export const EditApartmentForm = ({ apartment, toggleEdit }) => {
     
     const userId = parseInt(localStorage.getItem("reviewApartment_user"))
     const user = users.find(u=>u.id === userId)
-    console.log('this user ===>', user.userName)
     const editApartment = () => {
         
         updateApartment({
