@@ -3,7 +3,7 @@ import { FavoriteContext } from './FavoriteProvider'
 import { Button } from 'reactstrap'
 import { ApartmentContext } from '../apartment/ApartmentProvider'
 import { UserContext } from '../user/UserProvider'
-
+import "./Favorite.css";
 export default ({favorite}) => {
     const {deleteFavorite} = useContext(FavoriteContext)
     const {apartments} = useContext(ApartmentContext)
@@ -21,7 +21,7 @@ export default ({favorite}) => {
     {
         return(
             <>
-                <div className = "favorites">
+                <div className = "favorite">
                     <div>
                         {
                             apartmentInFavorite.map(apt => {
