@@ -14,6 +14,7 @@ import { SearchBar } from "./search/SearchBar";
 import { SearchResults } from "./search/SearchResults";
 import "./AppController.css"
 import "./Layout.css"   
+import MyApartmentList from './my_apartment/MyApartmentList'
 
 export const Dashboard = () => {
     const [searchTerms, setTerms] = useState(null)
@@ -22,7 +23,6 @@ export const Dashboard = () => {
     
     const [modal, setModal] = useState(false)
     const toggle = () => setModal(!modal)
-
     
     // Components needed to display all apartments
     const showAllApartments = () => (
@@ -44,6 +44,13 @@ export const Dashboard = () => {
         <UserProvider>
             <ApartmentProvider>
                 <AddApartmentForm showAllApartments={()=>setActiveList("allApartments")} />
+            </ApartmentProvider>
+        </UserProvider>
+    )
+    const showMyApartments = () => (
+        <UserProvider>
+            <ApartmentProvider>
+                <MyApartmentList />
             </ApartmentProvider>
         </UserProvider>
     )
@@ -69,6 +76,9 @@ export const Dashboard = () => {
         else if (activeList === "showHomePage") {
             setComponents(showAllApartments)
         }
+        else if (activeList === "showMyApartments") {
+            setComponents(showMyApartments)
+        }
         
     }, [activeList])
     return (
@@ -87,6 +97,7 @@ export const Dashboard = () => {
                     <div className="links">
                         <div className="fakeLink href" onClick={() => setActiveList("showHomePage")}>Home</div>
                         <div className="fakeLink href" onClick={() => setActiveList("createApartmentForm")}>Create Apartment</div>
+                        <div className="fakeLink href" onClick={() => setActiveList("showMyApartments")}>My Apartments</div>
                         <div className="fakeLink href" onClick={() => setActiveList("favorites")}>Favorites</div>
                     </div>
                     <div className="listDisplay">
