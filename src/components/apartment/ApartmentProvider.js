@@ -37,7 +37,7 @@ export const ApartmentProvider = (props) => {
     }
 
     const updateApartment = apartment => {
-        return fetch(`http://localhost:8088/animals/${apartment.id}`, {
+        return fetch(`http://localhost:8088/apartments/${apartment.id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"

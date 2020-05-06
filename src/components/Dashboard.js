@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import "./AppController.css"
-import "./Layout.css"   
 import { ApartmentProvider } from './apartment/ApartmentProvider'
 import ApartmentList from './apartment/ApartmentList'
 import { UserProvider } from './user/UserProvider'
@@ -12,8 +10,13 @@ import AddApartmentForm from './apartment/AddApartmentForm'
 import FavoriteList from './favorite/FavoriteList'
 import { Modal, ModalHeader, ModalBody } from 'reactstrap'
 import CommentList from './comment/CommentList'
+import { SearchBar } from "./search/SearchBar";
+import { SearchResults } from "./search/SearchResults";
+import "./AppController.css"
+import "./Layout.css"   
 
 export const Dashboard = () => {
+    const [searchTerms, setTerms] = useState(null)
     const [activeList, setActiveList] = useState("allApartments")
     const [components, setComponents] = useState()
     
@@ -72,6 +75,14 @@ export const Dashboard = () => {
         <>
          <div className="dataContainer">
                 <h1>Review Apartments</h1>
+                <div>
+                    <UserProvider>
+                        <ApartmentProvider>
+                            <SearchBar setTerms={setTerms} />
+                            <SearchResults searchTerms={searchTerms} />
+                        </ApartmentProvider>
+                    </UserProvider>        
+                </div>
                 <div className="listContainer">
                     <div className="links">
                         <div className="fakeLink href" onClick={() => setActiveList("showHomePage")}>Home</div>
