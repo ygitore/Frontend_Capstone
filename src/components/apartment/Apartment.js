@@ -44,74 +44,38 @@ export default ({apartment}) => {
     const likedApartment = likes.filter(like => like.apartmentId === apartment.id)
 
 
-    if(user.id === parseInt(apartment.userId) && user !== null){
-        return (
-            <>
-                <section className="apartment">
-                    <img className = "apartmentImage" src = {apartment.uploadImage} alt = {apartment.uploadImage} />
-                    <h3 className="apartment__name">{apartment.apartmentName}</h3>
-                    <h6 className="apartment__name">{apartment.city},{ apartment.state}</h6>
-                    <p className="apartment__address">{apartment.description}</p>
-                    <div>{likedApartment.length} likes</div>
-                    <div color="info" size = "sm" onClick = {toggleUserComment} >{userComments} comments</div>
-                    <Button color="info" size="sm" >Like</Button>
-                    <Button color="info" size="sm" onClick = {toggleComment}>Comment</Button>
-                    
-
-                    <Modal isOpen = {userCommentModal} toggle = {toggleUserComment}>
-                        <ModalHeader toggle = {toggleUserComment}>Comments</ModalHeader>
-                        <ModalBody>
-                            <CommentList 
-                                commentedApartment = {apartment.id} 
-                                toggleComments = {toggleUserComment} 
-                            />
-                        </ModalBody>
-                    </Modal>      
-
-                    <Modal isOpen = {commentModal} toggle = {toggleComment}>
-                        <ModalHeader toggle = {toggleComment}>Comment Apartment</ModalHeader>
-                        <ModalBody>
-                            <AddCommentForm toggler = {toggleComment} apartmentCommentId = {apartment.id}/>
-                        </ModalBody>
-                    </Modal>     
-                    
-                </section>
-        </>
-        )    
-    }else{
-        return (
-            <>
-                <section className="apartment">
-                    <img className = "apartmentImage" src = {apartment.uploadImage} alt = {apartment.uploadImage} />
-                    <h3 className="apartment__name">{apartment.apartmentName}</h3>
-                    <h6 className="apartment__name">{apartment.city},{ apartment.state}</h6>
-                    <p className="apartment__address">{apartment.description}</p>
-                    <div>{likedApartment.length} likes</div>
-                    <Button color="info" size = "sm">{userComments} comments</Button>
-                    <Button color="info" size="sm">Like</Button>
-                    <Button color="info" size="sm" onClick = {toggleComment}>Comment</Button>
-                    <Button color="info" size="sm" onClick = {(evt)=> {
-                        evt.preventDefault()
-                        addNewApartmentToFavorites()
-                    }}>Add to favorites</Button>
-                </section>
-                <Modal isOpen = {commentModal} toggle = {toggleComment}>
-                    <ModalHeader toggle = {toggleComment}>Comment Apartment</ModalHeader>
-                    <ModalBody>
-                        <AddCommentForm toggler = {toggleComment} apartmentCommentId = {apartment.id}/>
-                    </ModalBody>
-                </Modal>     
-                     
-                  
-                <Modal isOpen = {commentModal} toggle = {toggleComment}>
-                    <ModalHeader toggle = {toggleComment}>Comment Apartment</ModalHeader>
-                    <ModalBody>
-                        <AddCommentForm toggler = {toggleComment} apartmentCommentId = {apartment.id}/>
-                    </ModalBody>
-                </Modal>     
-                    
-        </>
-        )        
-    }
+    return (
+        <>
+            <section className="apartment">
+                <img className = "apartmentImage" src = {apartment.uploadImage} alt = {apartment.uploadImage} />
+                <h3 className="apartment__name">{apartment.apartmentName}</h3>
+                <h6 className="apartment__name">{apartment.city},{ apartment.state}</h6>
+                <p className="apartment__address">{apartment.description}</p>
+                <div>{likedApartment.length} likes</div>
+                <Button color="info" size = "sm">{userComments} comments</Button>
+                <Button color="info" size="sm">Like</Button>
+                <Button color="info" size="sm" onClick = {toggleComment}>Comment</Button>
+                <Button color="info" size="sm" onClick = {(evt)=> {
+                    evt.preventDefault()
+                    addNewApartmentToFavorites()
+                }}>Add to favorites</Button>
+            </section>
+            <Modal isOpen = {commentModal} toggle = {toggleComment}>
+                <ModalHeader toggle = {toggleComment}>Comment Apartment</ModalHeader>
+                <ModalBody>
+                    <AddCommentForm toggler = {toggleComment} apartmentCommentId = {apartment.id}/>
+                </ModalBody>
+            </Modal>     
+                 
+              
+            <Modal isOpen = {commentModal} toggle = {toggleComment}>
+                <ModalHeader toggle = {toggleComment}>Comment Apartment</ModalHeader>
+                <ModalBody>
+                    <AddCommentForm toggler = {toggleComment} apartmentCommentId = {apartment.id}/>
+                </ModalBody>
+            </Modal>     
+                
+    </>
+    )        
     
 }
