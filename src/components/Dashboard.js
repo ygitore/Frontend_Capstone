@@ -31,7 +31,9 @@ export const Dashboard = () => {
             <ApartmentProvider>
                 <CommentProvider>
                     <LikeProvider>
-                        <ApartmentList />
+                        <FavoriteProvider>
+                            <ApartmentList />
+                        </FavoriteProvider>
                     </LikeProvider>
                 </CommentProvider>
             </ApartmentProvider>
@@ -92,38 +94,4 @@ export const Dashboard = () => {
         </Modal>
         </>
     )
-
-
-    /*
-    
-        return (
-        <>
-        <div className="mainContainer">
-            <UserProvider>
-                <ApartmentProvider>
-                    <CommentProvider>
-                        <LikeProvider>
-                            <FavoriteProvider>
-                                <AddCommentForm />
-                                <ApartmentList />
-                            </FavoriteProvider>
-                        </LikeProvider>
-
-                    </CommentProvider>
-                </ApartmentProvider>
-            </UserProvider>
-           
-        </div>
-        <Modal isOpen = {modal} toggle = {toggle}>
-            <ModalHeader toggle = {toggle}>
-                New Apartment
-            </ModalHeader>
-            <ModalBody>
-                <AddApartmentForm toggler = {toggle}/>
-            </ModalBody>
-        </Modal>
-        </>
-    )
-    
-    */
 }
