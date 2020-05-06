@@ -11,6 +11,7 @@ import { FavoriteProvider } from './favorite/FavoriteProvider'
 import AddApartmentForm from './apartment/AddApartmentForm'
 import FavoriteList from './favorite/FavoriteList'
 import { Modal, ModalHeader, ModalBody } from 'reactstrap'
+import CommentList from './comment/CommentList'
 
 export const Dashboard = () => {
     const [activeList, setActiveList] = useState("allApartments")
@@ -27,6 +28,7 @@ export const Dashboard = () => {
                 <CommentProvider>
                     <LikeProvider>
                         <FavoriteProvider>
+                            <CommentList />
                             <ApartmentList />
                         </FavoriteProvider>
                     </LikeProvider>

@@ -6,7 +6,7 @@ import AddCommentForm from '../comment/AddCommentForm'
 import { CommentContext } from "../comment/CommentProvider"
 import { LikeContext } from "../like/LikeProvider"
 import { FavoriteContext } from "../favorite/FavoriteProvider"
-
+import CommentList from "../comment/CommentList";
 
 export default ({apartment}) => {
     const {users} = useContext(UserContext)  
@@ -19,6 +19,8 @@ export default ({apartment}) => {
     const [commentModal, setCommentModal] = useState(false)
     const toggleComment = () => setCommentModal(!commentModal)
 
+    const [userCommentModal, setUserCommentModal] = useState(false)
+    const toggleUserComment = () => setUserCommentModal(!userCommentModal)
     
     const addNewApartmentToFavorites = () => {
 
@@ -36,9 +38,9 @@ export default ({apartment}) => {
             addFavorite(favoriteObject)
         }
     }
-    const logedInUser = localStorage.getItem("reviewApartment_user") 
-    console.log('loged ',logedInUser)
-    const user = users.find(u => parseInt(u.id) === parseInt(logedInUser))||{}
+    //get currently logedin user 
+    const loggedInUser = localStorage.getItem("reviewApartment_user") 
+    const user = users.find(u => parseInt(u.id) === parseInt(loggedInUser))||{}
     const userComment = comments.filter(comt => comt.apartmentId === apartment.id)
     let userComments = userComment.length
     const likedApartment = likes.filter(like => like.apartmentId === apartment.id)
@@ -53,7 +55,7 @@ export default ({apartment}) => {
                     <h6 className="apartment__name">{apartment.city},{ apartment.state}</h6>
                     <p className="apartment__address">{apartment.description}</p>
                     <div>{likedApartment.length} likes</div>
-                    <Button color="info" size = "sm">{userComments} comments</Button>
+                    <div color="info" size = "sm" onClick = {toggleUserComment} >{userComments} comments</div>
                     <Button color="info" size="sm" >Like</Button>
                     <Button color="info" size="sm" onClick = {toggleComment}>Comment</Button>
                     <Button 
@@ -62,7 +64,16 @@ export default ({apartment}) => {
                         id = {apartment.id} 
                         onClick = {toggle}
                         >delete</Button>                   
-                        
+                    <Modal isOpen = {userCommentModal} toggle = {toggleUserComment}>
+                        <ModalHeader toggle = {toggleUserComment}>Comments</ModalHeader>
+                        <ModalBody>
+                            <CommentList 
+                                commentedApartment = {apartment.id} 
+                                toggleComments = {toggleUserComment} 
+                            />
+                        </ModalBody>
+                    </Modal>      
+
                     <Modal isOpen = {commentModal} toggle = {toggleComment}>
                         <ModalHeader toggle = {toggleComment}>Comment Apartment</ModalHeader>
                         <ModalBody>
