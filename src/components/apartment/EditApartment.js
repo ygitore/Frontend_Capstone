@@ -19,7 +19,7 @@ export const EditApartmentForm = ({ apartment, toggleEdit }) => {
         const newApartment = Object.assign({}, updatedApartment)
 
         // Change the property value on the copy
-        newApartment[event.target.name] = event.target.value
+        newApartment[event.target.apartmentName] = event.target.value
 
         // Set the copy as the new state
         setApartment(newApartment)
