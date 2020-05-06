@@ -19,12 +19,7 @@ export const Dashboard = () => {
     const [modal, setModal] = useState(false)
     const toggle = () => setModal(!modal)
 
-    const [modalCreateApartment, setmodalCreateApartment] = useState(false)
-    const toggleCreateApartment = () => setmodalCreateApartment(!modalCreateApartment)
-
-    const [modalFavorite, setModalFavortie] = useState(false)
-    const favoriteToggler = () => setModalFavortie(!modalFavorite)
-
+    
     // Components needed to display all apartments
     const showAllApartments = () => (
         <UserProvider>
@@ -66,6 +61,9 @@ export const Dashboard = () => {
         else if (activeList === "favorites") {
             setComponents(showFavorites)
         }
+        else if (activeList === "showHomePage") {
+            setComponents(showAllApartments)
+        }
         
     }, [activeList])
     return (
@@ -74,6 +72,7 @@ export const Dashboard = () => {
                 <h1>Review Apartments</h1>
                 <div className="listContainer">
                     <div className="links">
+                        <div className="fakeLink href" onClick={() => setActiveList("showHomePage")}>Home</div>
                         <div className="fakeLink href" onClick={() => setActiveList("createApartmentForm")}>Create Apartment</div>
                         <div className="fakeLink href" onClick={() => setActiveList("favorites")}>Favorites</div>
                     </div>
