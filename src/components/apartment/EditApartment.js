@@ -15,11 +15,11 @@ export const EditApartmentForm = ({ apartment, toggleEdit }) => {
         and change state instead of modifying current one
     */
     const handleControlledInputChange = (event) => {
-        // Create a new copy of the animal being edited
+        // Create a new copy of the apartment being edited
         const newApartment = Object.assign({}, updatedApartment)
 
         // Change the property value on the copy
-        newApartment[event.target.apartmentName] = event.target.value
+        newApartment[event.target.name] = event.target.value
 
         // Set the copy as the new state
         setApartment(newApartment)
@@ -27,30 +27,31 @@ export const EditApartmentForm = ({ apartment, toggleEdit }) => {
     
     const userId = parseInt(localStorage.getItem("reviewApartment_user"))
     const user = users.find(u=>u.id === userId)
+    console.log('this user ===>', user.userName)
     const editApartment = () => {
         
-            updateApartment({
-                id: updatedApartment.id,
-                userId: userId,
-                uploadImage: updatedApartment.uploadImage,
-                apartmentName: updatedApartment.apartmentName,
-                city: updatedApartment.city,
-                state: updatedApartment.state,
-                description: updatedApartment.description
-
-            })
-                .then(toggleEdit)
+        updateApartment({
+            id: updatedApartment.id,
+            userId: userId,
+            uploadImage: updatedApartment.uploadImage,
+            apartmentName: updatedApartment.apartmentName,
+            city: updatedApartment.city,
+            state: updatedApartment.state,
+            description: updatedApartment.description
+        })
+        .then(toggleEdit)
         
     }
 
     return (
-        <form className="animalForm">
+        <form className="apartmentForm">
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="name">user name: </label>
                     <input type="text" name="name" required autoFocus className="form-control"
                         placeholder="apartment name"
-                        defaultValue={user}
+                        disabled
+                        defaultValue={user.userName}
                         onChange={handleControlledInputChange}
                     />
                 </div>
@@ -68,17 +69,15 @@ export const EditApartmentForm = ({ apartment, toggleEdit }) => {
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="apartment">apartment name </label>
-                    <select  className="form-control"
+                    <input type="text" name="apartment" className="form-control"
                         defaultValue={apartment.apartmentName}
-                        onChange={handleControlledInputChange}>
-                        <div>{userId}</div>
-                    </select>
+                    />
                 </div>
             </fieldset>
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="city">City:</label>
-                    <input type="text" name="city" disabled className="form-control"
+                    <input type="text" name="city" className="form-control"
                         defaultValue={apartment.city}
                     />
                 </div>
@@ -86,7 +85,7 @@ export const EditApartmentForm = ({ apartment, toggleEdit }) => {
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="state">State:</label>
-                    <input type="text" name="state" disabled className="form-control"
+                    <input type="text" name="state" className="form-control"
                         defaultValue={apartment.state}
                     />
                 </div>
@@ -96,7 +95,7 @@ export const EditApartmentForm = ({ apartment, toggleEdit }) => {
                     evt.preventDefault()
                     editApartment()
                 }}>
-                Save Updates
+                Save Changes
             </button>
         </form>
     )
