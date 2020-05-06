@@ -63,7 +63,18 @@ export default ({apartment}) => {
                         size="sm" 
                         id = {apartment.id} 
                         onClick = {toggle}
-                        >delete</Button>                   
+                        >delete</Button>   
+
+                    <Modal isOpen = {modal} toggle = {toggle}>
+                    <ModalHeader toggle = {toggle}>Delete {apartment.apartmentName}</ModalHeader>
+                        <ModalBody>
+                            <DeleteApartment 
+                                apartmentId = {apartment.id} 
+                                toggleDeleteApartment = {toggle} 
+                            />
+                        </ModalBody>
+                    </Modal>   
+
                     <Modal isOpen = {userCommentModal} toggle = {toggleUserComment}>
                         <ModalHeader toggle = {toggleUserComment}>Comments</ModalHeader>
                         <ModalBody>

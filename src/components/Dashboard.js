@@ -83,6 +83,9 @@ export const Dashboard = () => {
     }, [activeList])
     return (
         <>
+        <ApartmentProvider>
+
+        
          <div className="dataContainer">
                 <h1>Review Apartments</h1>
                 <div>
@@ -115,6 +118,7 @@ export const Dashboard = () => {
                 <AddApartmentForm toggler = {toggle}/>
             </ModalBody>
         </Modal>
+        </ApartmentProvider>
         </>
     )
 }
