@@ -12,9 +12,9 @@ import { Modal, ModalHeader, ModalBody } from 'reactstrap'
 import CommentList from './comment/CommentList'
 import { SearchBar } from "./search/SearchBar";
 import { SearchResults } from "./search/SearchResults";
+import MyApartmentList from './apartment/MyApartmentList'
 import "./AppController.css"
 import "./Layout.css"   
-import MyApartmentList from './my_apartment/MyApartmentList'
 
 export const Dashboard = () => {
     const [searchTerms, setTerms] = useState(null)
@@ -83,42 +83,40 @@ export const Dashboard = () => {
     }, [activeList])
     return (
         <>
-        <ApartmentProvider>
-
-        
-         <div className="dataContainer">
-                <h1>Review Apartments</h1>
-                <div>
-                    <UserProvider>
-                        <ApartmentProvider>
-                            <SearchBar setTerms={setTerms} />
-                            <SearchResults searchTerms={searchTerms} />
-                        </ApartmentProvider>
-                    </UserProvider>        
-                </div>
-                <div className="listContainer">
-                    <div className="links">
-                        <div className="fakeLink href" onClick={() => setActiveList("showHomePage")}>Home</div>
-                        <div className="fakeLink href" onClick={() => setActiveList("createApartmentForm")}>Create Apartment</div>
-                        <div className="fakeLink href" onClick={() => setActiveList("showMyApartments")}>My Apartments</div>
-                        <div className="fakeLink href" onClick={() => setActiveList("favorites")}>Favorites</div>
+            <ApartmentProvider>
+                <div className="dataContainer">
+                    <h1>Review Apartments</h1>
+                    <div>
+                        <UserProvider>
+                            <ApartmentProvider>
+                                <SearchBar setTerms={setTerms} />
+                                <SearchResults searchTerms={searchTerms} />
+                            </ApartmentProvider>
+                        </UserProvider>        
                     </div>
-                    <div className="listDisplay">
-                        {components}
+                    <div className="listContainer">
+                        <div className="links">
+                            <div className="fakeLink href" onClick={() => setActiveList("showHomePage")}>Home</div>
+                            <div className="fakeLink href" onClick={() => setActiveList("createApartmentForm")}>Create Apartment</div>
+                            <div className="fakeLink href" onClick={() => setActiveList("showMyApartments")}>My Apartments</div>
+                            <div className="fakeLink href" onClick={() => setActiveList("favorites")}>Favorites</div>
+                        </div>
+                        <div className="listDisplay">
+                            {components}
+                        </div>
                     </div>
+
                 </div>
 
-            </div>
-
-        <Modal isOpen = {modal} toggle = {toggle}>
-            <ModalHeader toggle = {toggle}>
-                New Apartment
-            </ModalHeader>
-            <ModalBody>
-                <AddApartmentForm toggler = {toggle}/>
-            </ModalBody>
-        </Modal>
-        </ApartmentProvider>
+                <Modal isOpen = {modal} toggle = {toggle}>
+                    <ModalHeader toggle = {toggle}>
+                        New Apartment
+                    </ModalHeader>
+                    <ModalBody>
+                        <AddApartmentForm toggler = {toggle}/>
+                    </ModalBody>
+                </Modal>
+            </ApartmentProvider>
         </>
     )
 }

@@ -13,8 +13,6 @@ export default ({apartment}) => {
     const {comments} = useContext(CommentContext)
     const {likes} = useContext(LikeContext)
     const {favorites, addFavorite} = useContext(FavoriteContext)
-    const [modal, setModal] = useState(false)
-    const toggle = () => setModal(!modal)
 
     const [commentModal, setCommentModal] = useState(false)
     const toggleComment = () => setCommentModal(!commentModal)
@@ -58,22 +56,7 @@ export default ({apartment}) => {
                     <div color="info" size = "sm" onClick = {toggleUserComment} >{userComments} comments</div>
                     <Button color="info" size="sm" >Like</Button>
                     <Button color="info" size="sm" onClick = {toggleComment}>Comment</Button>
-                    <Button 
-                        color="info" 
-                        size="sm" 
-                        id = {apartment.id} 
-                        onClick = {toggle}
-                        >delete</Button>   
-
-                    <Modal isOpen = {modal} toggle = {toggle}>
-                    <ModalHeader toggle = {toggle}>Delete {apartment.apartmentName}</ModalHeader>
-                        <ModalBody>
-                            <DeleteApartment 
-                                apartmentId = {apartment.id} 
-                                toggleDeleteApartment = {toggle} 
-                            />
-                        </ModalBody>
-                    </Modal>   
+                    
 
                     <Modal isOpen = {userCommentModal} toggle = {toggleUserComment}>
                         <ModalHeader toggle = {toggleUserComment}>Comments</ModalHeader>
