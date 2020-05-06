@@ -19,7 +19,7 @@ export const EditApartmentForm = ({ apartment, toggleEdit }) => {
         const newApartment = Object.assign({}, updatedApartment)
 
         // Change the property value on the copy
-        newApartment[event.target.apartmentName] = event.target.value
+        newApartment[event.target.name] = event.target.value
 
         // Set the copy as the new state
         setApartment(newApartment)
@@ -71,6 +71,7 @@ export const EditApartmentForm = ({ apartment, toggleEdit }) => {
                     <label htmlFor="apartment">apartment name </label>
                     <input type="text" name="apartment" className="form-control"
                         defaultValue={apartment.apartmentName}
+                        onChange={handleControlledInputChange}
                     />
                 </div>
             </fieldset>
@@ -79,6 +80,7 @@ export const EditApartmentForm = ({ apartment, toggleEdit }) => {
                     <label htmlFor="city">City:</label>
                     <input type="text" name="city" className="form-control"
                         defaultValue={apartment.city}
+                        onChange={handleControlledInputChange}
                     />
                 </div>
             </fieldset>
@@ -87,6 +89,7 @@ export const EditApartmentForm = ({ apartment, toggleEdit }) => {
                     <label htmlFor="state">State:</label>
                     <input type="text" name="state" className="form-control"
                         defaultValue={apartment.state}
+                        onChange={handleControlledInputChange}
                     />
                 </div>
             </fieldset>

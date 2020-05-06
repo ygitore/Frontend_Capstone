@@ -7,10 +7,10 @@ export default (props) => {
     const apartment = apartments.find(apt => apt.id === props.val)
     return(
         <>
-            <div>Are you sure you want to delete {apartment.apartmentName}?</div>
+            <div>Are you sure you want to delete {props.apartmentName}?</div>
             <Button color="danger" onClick={() => {
-                deleteApartment(props.val)
-                props.toggler()
+                deleteApartment(props.apartmentId)
+                props.toggleDeleteApartment()
             }}>Delete</Button>
         </>
     )
