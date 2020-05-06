@@ -1,9 +1,11 @@
 import React, { useContext, useState } from "react"
 import { ApartmentContext } from "./ApartmentProvider"
+import { UserContext } from "../user/UserProvider"
 
 
-export const EditAnimalForm = ({ apartment, toggleEdit }) => {
+export const EditApartmentForm = ({ apartment, toggleEdit }) => {
     const { updateApartment } = useContext(ApartmentContext)
+    const { users } = useContext(UserContext)
 
     // Separate state variable to track the apartment as it is edited
     const [ updatedApartment, setApartment ] = useState(apartment)
@@ -17,21 +19,25 @@ export const EditAnimalForm = ({ apartment, toggleEdit }) => {
         const newApartment = Object.assign({}, updatedApartment)
 
         // Change the property value on the copy
-        newApartment[event.target.name] = event.target.value
+        newApartment[event.target.apartmentName] = event.target.value
 
         // Set the copy as the new state
-        setAnimal(newApartment)
+        setApartment(newApartment)
     }
-
-    const editAnimal = () => {
-
+    
+    const userId = parseInt(localStorage.getItem("reviewApartment_user"))
+    const user = users.find(u=>u.id === userId)
+    const editApartment = () => {
         
             updateApartment({
-                id: updatedAnimal.id,
-                name: updatedAnimal.name,
-                breed: updatedAnimal.breed,
-                locationId: locationId,
-                customerId: parseInt(localStorage.getItem("kennel_customer"))
+                id: updatedApartment.id,
+                userId: userId,
+                uploadImage: updatedApartment.uploadImage,
+                apartmentName: updatedApartment.apartmentName,
+                city: updatedApartment.city,
+                state: updatedApartment.state,
+                description: updatedApartment.description
+
             })
                 .then(toggleEdit)
         
@@ -41,52 +47,54 @@ export const EditAnimalForm = ({ apartment, toggleEdit }) => {
         <form className="animalForm">
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="name">Animal name: </label>
+                    <label htmlFor="name">user name: </label>
                     <input type="text" name="name" required autoFocus className="form-control"
-                        placeholder="Animal name"
-                        defaultValue={animal.name}
+                        placeholder="apartment name"
+                        defaultValue={user}
                         onChange={handleControlledInputChange}
                     />
                 </div>
             </fieldset>
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="breed">Animal breed: </label>
-                    <input type="text" name="breed" required className="form-control"
-                        placeholder="Animal breed"
-                        defaultValue={animal.breed}
+                    <label htmlFor="image">Upload image: </label>
+                    <input type="text" className="form-control"
+                        placeholder="upload image"
+                        defaultValue={apartment.uploadImage}
                         onChange={handleControlledInputChange}
                     />
                 </div>
             </fieldset>
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="locationId">Location: </label>
-                    <select name="locationId" className="form-control"
-                        defaultValue={animal.locationId}
+                    <label htmlFor="apartment">apartment name </label>
+                    <select  className="form-control"
+                        defaultValue={apartment.apartmentName}
                         onChange={handleControlledInputChange}>
-
-                        <option value="0">Select a location</option>
-                        {locations.map(e => (
-                            <option key={e.id} value={e.id}>
-                                {e.name}
-                            </option>
-                        ))}
+                        <div>{userId}</div>
                     </select>
                 </div>
             </fieldset>
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="customer">Customer:</label>
-                    <input type="text" name="customer" disabled className="form-control"
-                        defaultValue={customer.name}
+                    <label htmlFor="city">City:</label>
+                    <input type="text" name="city" disabled className="form-control"
+                        defaultValue={apartment.city}
+                    />
+                </div>
+            </fieldset>
+            <fieldset>
+                <div className="form-group">
+                    <label htmlFor="state">State:</label>
+                    <input type="text" name="state" disabled className="form-control"
+                        defaultValue={apartment.state}
                     />
                 </div>
             </fieldset>
             <button type="submit" className="btn btn-primary"
                 onClick={evt => {
                     evt.preventDefault()
-                    editAnimal()
+                    editApartment()
                 }}>
                 Save Updates
             </button>

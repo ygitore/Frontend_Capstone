@@ -1,19 +1,24 @@
 import React, { useState, useContext, useEffect } from "react"
 import { Modal, ModalHeader, ModalBody, Button, ModalFooter } from "reactstrap"
-import { EditAnimalForm } from "../animal/EditAnimalForm"
+import { EditApartmentForm } from "../apartment/EditApartment"
 import { ApartmentContext } from "../apartment/ApartmentProvider"
+import GetApartment from "../apartment/GetApartment"
 
 
 export const SearchResults = ({ searchTerms }) => {
     const { apartments, deleteApartment } = useContext(ApartmentContext)
-    const { customers } = useContext(CustomerContext)
-    const { locations } = useContext(LocationContext)
 
+    const userId = parseInt(localStorage.getItem("reviewApartment_user"))
     const [filteredApartments, setFiltered] = useState([])
     const [selectedApartment, setApartment] = useState({
-        apartment: {},
-        location: null,
-        customer: null
+        apartment: {
+            userId: userId,
+            apartmentName: "",
+            city:"",
+            state:"",
+            uploadImage:"",
+            description:""
+        },        
     })
 
     // Toggle details modal
@@ -26,46 +31,43 @@ export const SearchResults = ({ searchTerms }) => {
 
     useEffect(() => {
         if (searchTerms !== "") {
-            const subset = animals.filter(animal => animal.name.toLowerCase().includes(searchTerms))
+            const subset = apartments.filter(apt => apt.apartmentName.toLowerCase().includes(searchTerms))
             setFiltered(subset)
         } else {
             setFiltered([])
         }
-    }, [searchTerms, animals])
+    }, [searchTerms, apartments])
 
     return (
         <div className="searchResults">
             <h3>Results</h3>
-            <div className="animals">
+            <div className="searchAnimals">
                 {
-                    filteredApartments.map(animal => <div
+                    filteredApartments.map(apartment => <div
                         className="fakeLink href"
                         onClick={() => {
-                            const location = locations.find(l => l.id === animal.locationId)
-                            const customer = customers.find(c => c.id === animal.customerId)
-
-                            setApartment({ animal, location, customer })
+                            setApartment({ apartment})
                             toggle()
                         }}
-                    >{animal.name}</div>)
+                    >{apartment.apartmentName}</div>)
                 }
             </div>
 
             <Modal isOpen={editModal} toggle={toggleEdit}>
                 <ModalHeader toggle={toggleEdit}>
-                    {selectedApartment.animal.name}
+                    {selectedApartment.apartment.apartmentName}
                 </ModalHeader>
                 <ModalBody>
-                    <EditAnimalForm key={selectedApartment.animal.id} toggleEdit={toggleEdit} {...selectedApartment} />
+                    <EditApartmentForm key={selectedApartment.apartment.id} toggleEdit={toggleEdit} {...selectedApartment} />
                 </ModalBody>
             </Modal>
 
             <Modal isOpen={modal} toggle={toggle}>
                 <ModalHeader toggle={toggle}>
-                    {selectedApartment.animal.name}
+                    {selectedApartment.apartment.apartmentName}
                 </ModalHeader>
                 <ModalBody>
-                    <Animal key={selectedApartment.animal.id} {...selectedApartment} />
+                    <GetApartment key={selectedApartment.apartment.id} {...selectedApartment} />
                 </ModalBody>
                 <ModalFooter>
                     <Button color="info" onClick={() => {
@@ -73,7 +75,7 @@ export const SearchResults = ({ searchTerms }) => {
                         toggleEdit()
                     }}>Edit</Button>
                     <Button color="danger" onClick={() => {
-                        releaseAnimal(selectedApartment.animal.id)
+                        deleteApartment(selectedApartment.apartment.id)
                         toggle()
                     }}>Delete</Button>
                 </ModalFooter>

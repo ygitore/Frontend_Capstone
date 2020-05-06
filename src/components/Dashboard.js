@@ -11,7 +11,7 @@ import FavoriteList from './favorite/FavoriteList'
 import { Modal, ModalHeader, ModalBody } from 'reactstrap'
 import CommentList from './comment/CommentList'
 import { SearchBar } from "./search/SearchBar";
-import { SearchResult } from "./search/SearchResult";
+import { SearchResults } from "./search/SearchResults";
 import "./AppController.css"
 import "./Layout.css"   
 
@@ -79,7 +79,7 @@ export const Dashboard = () => {
                     <UserProvider>
                         <ApartmentProvider>
                             <SearchBar setTerms={setTerms} />
-                            <SearchResult searchTerms={searchTerms} />
+                            <SearchResults searchTerms={searchTerms} />
                         </ApartmentProvider>
                     </UserProvider>        
                 </div>
