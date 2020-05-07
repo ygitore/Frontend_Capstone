@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { ApartmentContext } from '../apartment/ApartmentProvider'
+import { ApartmentContext } from './ApartmentProvider'
 import MyApartment from "./MyApartment";
 export default () => {
     const {apartments} = useContext(ApartmentContext)

@@ -1,13 +1,52 @@
-.listContainer {
-    padding-top: 3rem;
+.mainContainer {
+    display: flex;
+    flex-direction: column;
+}
+.links {
     display: flex;
     flex-direction: row;
+    justify-content: flex-start;
 }
-
-.links {
+.main-section{
+    display: flex;
+    flex-direction: row; 
+}
+.searchContainer{
     flex: 1;
 }
+.main-header{
+    flex:1;
+    font-size: 25px;
+    padding-top: 10px;
+}
 
-.listDisplay {
-    flex: 5;
+.search-box{
+    width: 90%;
+    height: 25px;
+    border: none; 
+    border:solid 1px #ccc;
+    border-radius: 10px;
+    margin-left: 5%;
+}
+.searchResults{
+    padding-top: 0;
+    margin-left: 5%;
+}
+.navbar{
+    flex-basis: 25%;
+}
+.listDisplay{
+    flex: 4;
+}
+textarea:focus, input:focus{
+    outline: none;
+}
+.search-box:focus{
+    width: 90%;
+    border: none; 
+    border:solid 1px #ccc;
+    border-radius: 10px;
+}
+.listDisplay, .search-box{
+    margin-top: 2rem;
 }

@@ -28,10 +28,9 @@ export const SearchResults = ({ searchTerms }) => {
     // Toggle edit modal
     const [editModal, setEditModal] = useState(false)
     const toggleEdit = () => setEditModal(!editModal)
-    const userApartments = apartments.filter(apt => apt.userId === userId)
     useEffect(() => {
         if (searchTerms !== "") {
-            const subset = userApartments.filter(apt => apt.apartmentName.toLowerCase().includes(searchTerms))
+            const subset = apartments.filter(apt => apt.apartmentName.toLowerCase().includes(searchTerms))
             setFiltered(subset)
         } else {
             setFiltered([])
@@ -40,11 +39,10 @@ export const SearchResults = ({ searchTerms }) => {
 
     return (
         <div className="searchResults">
-            <h3>Results</h3>
-            <div className="searchAnimals">
+            <div className="searchapartments">
                 {
                     filteredApartments.map(apartment => <div
-                        className="fakeLink href"
+                        className="link searchResultLink  href"
                         onClick={() => {
                             setApartment({ apartment})
                             toggle()
