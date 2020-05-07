@@ -11,17 +11,15 @@ import CommentList from "../comment/CommentList";
 export default ({apartment}) => {
     const {users} = useContext(UserContext)  
     const {comments} = useContext(CommentContext)
-    const {likes, addLike} = useContext(LikeContext)
+    const {likes, addLike, deleteLike} = useContext(LikeContext)
     const {favorites, addFavorite} = useContext(FavoriteContext)
 
     const [commentModal, setCommentModal] = useState(false)
     const toggleComment = () => setCommentModal(!commentModal)
 
-    const [likeModal, setLikeModal] = useState(false)
-    const toggleLike = () => setLikeModal(!likeModal)
+    // const [likeModal, setLikeModal] = useState(false)
+    // const toggleLike = () => setLikeModal(!likeModal)
 
-    const [userCommentModal, setUserCommentModal] = useState(false)
-    const toggleUserComment = () => setUserCommentModal(!userCommentModal)
     
     const addNewApartmentToFavorites = () => {
 
@@ -40,18 +38,18 @@ export default ({apartment}) => {
         }
     }
     //get currently logedin user 
-    const loggedInUser = localStorage.getItem("reviewApartment_user") 
+    const loggedInUser = parseInt(localStorage.getItem("reviewApartment_user")) 
     const user = users.find(u => parseInt(u.id) === parseInt(loggedInUser))||{}
     const userComment = comments.filter(comt => comt.apartmentId === apartment.id)
     let userComments = userComment.length
     const likedApartment = likes.filter(like => like.apartmentId === apartment.id)
-
     const addLikeToApi = () => {
+        
         const userLikedApartment = {
-            userId: parseInt(loggedInUser),
+            userId: loggedInUser,
             apartmentId:apartment.id
         }
-        addLike(userLikedApartment)
+        addLike(userLikedApartment)        
         
     }
     return (
@@ -64,7 +62,6 @@ export default ({apartment}) => {
                 <div>{likedApartment.length} likes</div>
                 <div color="info" size = "sm">{userComments} comments</div>
                 <Button color="info" size="sm" onClick = {() => {
-                    toggleLike()
                     addLikeToApi()
                 }}>Like</Button>
                 <Button color="info" size="sm" onClick = {toggleComment}>Comment</Button>
@@ -78,16 +75,9 @@ export default ({apartment}) => {
                 <ModalBody>
                     <AddCommentForm toggler = {toggleComment} apartmentCommentId = {apartment.id}/>
                 </ModalBody>
-            </Modal>     
-                 
-              
-            <Modal isOpen = {commentModal} toggle = {toggleComment}>
-                <ModalHeader toggle = {toggleComment}>Comment Apartment</ModalHeader>
-                <ModalBody>
-                    <AddCommentForm toggler = {toggleComment} apartmentCommentId = {apartment.id}/>
-                </ModalBody>
-            </Modal>     
-                
+            </Modal> 
+
+            
     </>
     )        
     

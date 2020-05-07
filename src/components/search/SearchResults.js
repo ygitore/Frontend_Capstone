@@ -39,11 +39,10 @@ export const SearchResults = ({ searchTerms }) => {
 
     return (
         <div className="searchResults">
-            <h3>Results</h3>
-            <div className="searchAnimals">
+            <div className="searchapartments">
                 {
                     filteredApartments.map(apartment => <div
-                        className="fakeLink href"
+                        className="link searchResultLink  href"
                         onClick={() => {
                             setApartment({ apartment})
                             toggle()

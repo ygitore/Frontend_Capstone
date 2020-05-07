@@ -29,12 +29,12 @@ export const Dashboard = () => {
         <UserProvider>
             <ApartmentProvider>
                 <CommentProvider>
-                    <LikeProvider>
-                        <FavoriteProvider>
+                    <FavoriteProvider>
+                        <LikeProvider>
                             <CommentList />
                             <ApartmentList />
-                        </FavoriteProvider>
-                    </LikeProvider>
+                        </LikeProvider>
+                    </FavoriteProvider>
                 </CommentProvider>
             </ApartmentProvider>
         </UserProvider>
@@ -84,39 +84,41 @@ export const Dashboard = () => {
     return (
         <>
             <ApartmentProvider>
-                <div className="dataContainer">
-                    <h1>Review Apartments</h1>
-                    <div>
-                        <UserProvider>
-                            <ApartmentProvider>
-                                <SearchBar setTerms={setTerms} />
-                                <SearchResults searchTerms={searchTerms} />
-                            </ApartmentProvider>
-                        </UserProvider>        
+                <div className="mainContainer">                                    
+                    <div className="links">
+                        <div className="main-header navbar">Review Apartments</div>
+                        <div className="navbar href" onClick={() => setActiveList("showHomePage")}>Home</div>
+                        <div className="navbar href" onClick={() => setActiveList("createApartmentForm")}>Create Apartment</div>
+                        <div className="navbar href" onClick={() => setActiveList("showMyApartments")}>My Apartments</div>
+                        <div className="navbar href" onClick={() => setActiveList("favorites")}>Favorites</div>
                     </div>
-                    <div className="listContainer">
-                        <div className="links">
-                            <div className="fakeLink href" onClick={() => setActiveList("showHomePage")}>Home</div>
-                            <div className="fakeLink href" onClick={() => setActiveList("createApartmentForm")}>Create Apartment</div>
-                            <div className="fakeLink href" onClick={() => setActiveList("showMyApartments")}>My Apartments</div>
-                            <div className="fakeLink href" onClick={() => setActiveList("favorites")}>Favorites</div>
+                    <div className="main-section">
+                        <div className="searchContainer">
+                            <div>
+                                <UserProvider>
+                                    <ApartmentProvider>
+                                        <SearchBar setTerms={setTerms} />
+                                        <SearchResults searchTerms={searchTerms} />
+                                    </ApartmentProvider>
+                                </UserProvider>        
+                            </div>
                         </div>
                         <div className="listDisplay">
                             {components}
                         </div>
                     </div>
-
+                    
+                    <Modal isOpen = {modal} toggle = {toggle}>
+                        <ModalHeader toggle = {toggle}>
+                            New Apartment
+                        </ModalHeader>
+                        <ModalBody>
+                            <AddApartmentForm toggler = {toggle}/>
+                        </ModalBody>
+                    </Modal>
                 </div>
-
-                <Modal isOpen = {modal} toggle = {toggle}>
-                    <ModalHeader toggle = {toggle}>
-                        New Apartment
-                    </ModalHeader>
-                    <ModalBody>
-                        <AddApartmentForm toggler = {toggle}/>
-                    </ModalBody>
-                </Modal>
             </ApartmentProvider>
+            
         </>
     )
 }

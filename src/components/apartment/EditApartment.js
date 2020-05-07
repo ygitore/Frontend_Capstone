@@ -38,10 +38,8 @@ export const EditApartmentForm = ({ apartment, toggleEdit }) => {
             state: updatedApartment.state,
             description: updatedApartment.description
         })
-        .then(toggleEdit)
-        
+        .then(toggleEdit)        
     }
-
     return (
         <form className="apartmentForm">
             <fieldset>
@@ -92,13 +90,14 @@ export const EditApartmentForm = ({ apartment, toggleEdit }) => {
                     />
                 </div>
             </fieldset>
+           
             <button type="submit" className="btn btn-primary"
                 onClick={evt => {
                     evt.preventDefault()
                     editApartment()
                 }}>
                 Save Changes
-            </button>
+            </button>            
         </form>
     )
 }

@@ -7,9 +7,9 @@
 .apartment{
     flex-basis: 30%;
     border: 1px solid rgb(20, 20, 20);
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 .apartmentImage{
     height: 350px;
-    width: 400px;
+    width: 350px;
 }
