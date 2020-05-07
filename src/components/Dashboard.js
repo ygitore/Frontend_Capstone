@@ -50,7 +50,7 @@ export const Dashboard = () => {
     const showMyApartments = () => (
         <UserProvider>
             <ApartmentProvider>
-                <MyApartmentList />
+                <MyApartmentList />                
             </ApartmentProvider>
         </UserProvider>
     )

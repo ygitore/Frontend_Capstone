@@ -4,10 +4,12 @@ export default ({apartment}) => {
     
     return (
         <div>
-            <img src = {apartment.uploadImage} alt = "apartment image" />
-            <h2>{apartment.apartmentName}</h2>
-            <div>{apartment.city}</div>
-            <div>{apartment.state}</div>
+            <img 
+                src = {apartment.uploadImage} 
+                alt = "apartment image" 
+                className = "edit_apartment_image" 
+            />
+            <div>{apartment.city}, {apartment.state}</div>
             <div>{apartment.description}</div>
         </div>
     )

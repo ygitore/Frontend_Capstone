@@ -66,7 +66,7 @@ export const EditApartmentForm = ({ apartment, toggleEdit }) => {
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="apartment">apartment name </label>
-                    <input type="text" name="apartment" className="form-control"
+                    <input type="text" name="apartment" className="form-control edit_apartment_name"
                         defaultValue={apartment.apartmentName}
                         onChange={handleControlledInputChange}
                     />
