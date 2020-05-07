@@ -5,11 +5,32 @@
     justify-content: space-between;
 }
 .apartment{
-    flex-basis: 30%;
+    flex-basis: 25%;
     border: 1px solid rgb(20, 20, 20);
     margin-bottom: 10px;
 }
+
+.userApartment{
+    margin: auto 20%;
+}
+
 .apartmentImage{
-    height: 350px;
-    width: 350px;
+    height: 300px;
+    width: 300px;
+}
+.userApartmentImage{
+    height: 20rem;
+    width: 20rem;
+}
+.userApartment__description{
+    max-width: 20rem;
+}
+.edit_apartment_image{
+    height: 300px;
+    width: 466px;
+}
+.edit_apartment_name{
+    font-size: 20px;
+    font-weight: bolder;
+    margin-left: 50%;
 }

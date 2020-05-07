@@ -43,6 +43,8 @@ export default ({apartment}) => {
     const userComment = comments.filter(comt => comt.apartmentId === apartment.id)
     let userComments = userComment.length
     const likedApartment = likes.filter(like => like.apartmentId === apartment.id)
+    
+    
     const addLikeToApi = () => {
         
         const userLikedApartment = {
@@ -77,8 +79,7 @@ export default ({apartment}) => {
                 </ModalBody>
             </Modal> 
 
-            
-    </>
-    )        
-    
-}
+                
+        </>
+        )        
+    }

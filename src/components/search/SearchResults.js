@@ -42,7 +42,7 @@ export const SearchResults = ({ searchTerms }) => {
             <div className="searchapartments">
                 {
                     filteredApartments.map(apartment => <div
-                        className="link searchResultLink  href"
+                        className="searchLink searchResultLink  href"
                         onClick={() => {
                             setApartment({ apartment})
                             toggle()

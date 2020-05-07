@@ -37,6 +37,7 @@
 }
 .listDisplay{
     flex: 4;
+    margin-right: 5%;
 }
 textarea:focus, input:focus{
     outline: none;
