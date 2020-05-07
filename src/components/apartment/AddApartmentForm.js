@@ -28,7 +28,7 @@ export default props => {
 
     return (
         <form className="apartmentForm">
-            <h2 className="Create_new_apartment">Create New Apartment</h2>
+            <h5 className="Create_new_apartment">Create New Apartment</h5>
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="apartmentImage">Upload image: </label>
@@ -50,8 +50,6 @@ export default props => {
                         type="text"
                         id="apartmentName"
                         ref={apartmentName}
-                        required
-                        autoFocus
                         className="form-control"
                         placeholder="Apartment name"
                     />
@@ -65,7 +63,6 @@ export default props => {
                         id="city"
                         ref={city}
                         required
-                        autoFocus
                         className="form-control"
                         placeholder="city"
                     />
@@ -78,8 +75,6 @@ export default props => {
                         type="text"
                         id="state"
                         ref={state}
-                        required
-                        autoFocus
                         className="form-control"
                         placeholder="State"
                     />
@@ -92,8 +87,6 @@ export default props => {
                         type="text"
                         id="description"
                         ref={description}
-                        required
-                        autoFocus
                         className="form-control"
                         placeholder="Description"
                     />
