@@ -7,14 +7,17 @@
   }
   
   .href {
-    color: #479cf7d3;
-    text-decoration: underline;
+    color: #ffffffd3;
+    font-size: 20px;
   }
   
   .href:hover {
-    color: #007bff;
+    color: rgb(89, 133, 173);
   }
-  
+  .searchLink{
+    text-decoration: underline;
+    color: rgb(13, 70, 104);
+}
   .searchLink:focus {
     outline: 0;
   }
