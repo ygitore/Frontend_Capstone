@@ -1,17 +1,16 @@
 import React, { useContext } from 'react'
-import { ApartmentContext } from "./ApartmentProvider";
 import { Button } from 'reactstrap';
+import { ApartmentContext } from './ApartmentProvider';
 
 export default (props) => {
-    const {apartments, deleteApartment} = useContext(ApartmentContext)
-    const apartment = apartments.find(apt => apt.id === props.val)
+    const {deleteApartment} = useContext(ApartmentContext)
     return(
         <>
             <div>Are you sure you want to delete {props.apartmentName}?</div>
-            <Button color="danger" onClick={() => {
+            <Button color="danger" size = "sm" onClick={() => {
                 deleteApartment(props.apartmentId)
                 props.toggleDeleteApartment()
-            }}>delete</Button>
+            }}></Button>
         </>
     )
 }

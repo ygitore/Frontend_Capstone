@@ -56,11 +56,11 @@ export const Dashboard = () => {
     )
     const showFavorites = () => (
         <UserProvider>
-            <FavoriteProvider>
-                <ApartmentProvider>
+            <ApartmentProvider>
+                <FavoriteProvider>
                     <FavoriteList />
-                </ApartmentProvider>
-            </FavoriteProvider>
+                </FavoriteProvider>
+            </ApartmentProvider>
         </UserProvider>
     )
     useEffect(() => {
