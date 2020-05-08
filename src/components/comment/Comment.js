@@ -6,19 +6,30 @@ export default (props) => {
     const {comments} = useContext(CommentContext)
     const {users} = useContext(UserContext)
     const userComments = comments.filter(com => com.apartmentId === props.apartmentCommentId)
-    const userCommented = userComments.filter(u => u.userId !== users.id)
-    console.log("C", userComments)
+    const userCommented = userComments.filter(u => u.userId === users.id)
+    const uu = users.filter(u => u.id === userCommented.userId)
+    console.log(userComments.length)
+       
     
     return (
-        <div>
-            <>
+        <>
+        <div className="user_Comments">
+            <div className="user_Comment">
+                {
+                    userComments.map(u=><div className = "userId">{
+                        u.userId
+                    }. </div>)
+                }
+            </div>
+            <div className="user_Comment">
                 {
                     userComments.map(com => {
                         return <div className = "each_user_comment">{com.comment}</div>
                     })    
-                     
+                        
                 }
-            </>
-        </div>
+            </div>
+        </div>            
+        </>
     )
 }

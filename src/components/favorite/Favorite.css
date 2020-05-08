@@ -1,6 +1,29 @@
-.favorites{
-    border:1px solid rgb(116, 108, 128)
-}
+
 .favorite{
-    border-radius: 10px;
+    text-decoration: underline;
+    color: rgb(34, 125, 209);
 }
+.favorite:hover{
+    font-size: 17px;
+    transition-delay: 0.2s;
+}
+.deleteFavorites{
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 5;
+    position: relative;
+    padding: 10px;
+    line-height: 0px;
+    margin-left: 10px;
+    height: 22px;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    border: none;
+    color: rgb(231, 227, 227);
+    box-shadow: none;
+} 
