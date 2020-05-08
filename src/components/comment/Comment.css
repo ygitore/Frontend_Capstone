@@ -1,3 +1,13 @@
+
+.user_Comments{
+    display: flex;
+    flex-direction: row;
+}
+.userId{
+    flex: 1;
+    margin-right: 20px;
+}
 .each_user_comment{
     border-bottom: 1px solid rgb(189, 185, 185);
+    flex: 1;
 }
