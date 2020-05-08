@@ -7,12 +7,21 @@ export default ({userApartment}) => {
     const toggle = () => setModal(!modal)
     return (
         <div className="userApartment">
-            <img className = "userApartmentImage" src = {userApartment.uploadImage} alt = {userApartment.uploadImage} />
-            <h3 className="userApartment__name">{userApartment.userApartmentName}</h3>
-            <h6 className="userApartment__city_state">{userApartment.city},{ userApartment.state}</h6>
+            <img 
+                className = "userApartmentImage" 
+                src = {userApartment.uploadImage} 
+                alt = {userApartment.uploadImage}
+            />
+            <h3 className="userApartment__name">
+            {
+                userApartment.userApartmentName
+            }</h3>
+            <h6 className="userApartment__city_state">
+                {userApartment.city},{ userApartment.state}
+            </h6>
             <p className="userApartment__description">{userApartment.description}</p>
             <Button
-                color="info" 
+                color="danger" 
                 size="sm" 
                 id = {userApartment.id} 
                 onClick = {toggle}

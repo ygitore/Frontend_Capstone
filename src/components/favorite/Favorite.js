@@ -9,13 +9,11 @@ export default ({favorite}) => {
     const {apartments} = useContext(ApartmentContext)
     const logedInUserId = localStorage.getItem("reviewApartment_user")
     const {users} = useContext(UserContext)
-    const deleteApartmentFromFavorite = () => {
-        deleteFavorite(favorite.id)
-    }
+   
     const user = users.find(u=>u.id === parseInt(logedInUserId))
     const apartmentInFavorite = apartments.filter(apt => apt.id === favorite.apartmentId)||{}
-    for (const i of apartmentInFavorite) {
-        console.log(i.apartmentName)
+    const deleteFromFavorites =()=>{
+        deleteFavorite(favorite.id)
     }
     if(parseInt(user.id) === parseInt(favorite.userId) && user !== null)
     {
@@ -27,11 +25,13 @@ export default ({favorite}) => {
                             apartmentInFavorite.map(apt => {
                                 return (
                                     <div>
-                                        {apt.apartmentName}
+                                        {apt.apartmentName}{
                                             <Button color = "info" size = "sm" onClick = {(evt) =>{
                                                 evt.preventDefault()
-                                                deleteApartmentFromFavorite()
+                                                deleteFromFavorites()
                                             }}>delete</Button>
+                                        }
+                                            
                                     </div>
                                 )
                             })    

@@ -21,12 +21,11 @@ export default ({apartment}) => {
     const [user_Comments, setUserComments] = useState(false)
     const toggleUserComments = () => setUserComments(!user_Comments)
 
-    // const [likeModal, setLikeModal] = useState(false)
-    // const toggleLike = () => setLikeModal(!likeModal)
-
-    
+    const thisUser = localStorage.getItem("reviewApartment_user")
+    const userLogged = parseInt(thisUser)
+    const checkUser = favorites.find(f=>f.userId === 5)
+    console.log("user favorties", thisUser)
     const addNewApartmentToFavorites = () => {
-
         const favoriteObject = {
             apartmentId:apartment.id,
             userId: parseInt(localStorage.getItem("reviewApartment_user"))
@@ -50,11 +49,6 @@ export default ({apartment}) => {
     const userLiked = likes.filter(like => like.userId === loggedInUser)
     
     const alreadyLiked = userLiked.filter(u => u.apartmentId === apartment.id)
-    console.log("i liked this apartment", alreadyLiked.length)
-    if(alreadyLiked.length >= 1) {
-        console.log("more than one", alreadyLiked)
-    }else{
-    }   
     
     let count = 0
     const addLikeToApi = () => {      
@@ -93,29 +87,34 @@ export default ({apartment}) => {
                     apartment.state.slice(1)
                 }</h6>
                 <p className="apartment__description">{apartment.description}</p>
-                <div className = "likes">{userLikedApartment.length} likes</div>
-                <div 
-                    color="info" 
-                    size = "sm" 
-                    className = "comments"
-                    onClick = {
-                        toggleUserComments
-                    }
-                >{userComments} comments</div>
-                <Button 
-                    color="info" 
-                    size="sm" 
-                    className = "likeButton" 
-                    onClick = {() => {
-                        count++
-                        addLikeToApi()
-                    }
-                }>Like</Button>
-                <Button color="info" size="sm" onClick = {toggleComment}>Comment</Button>
-                <Button color="info" size="sm" onClick = {(evt)=> {
-                    evt.preventDefault()
-                    addNewApartmentToFavorites()
-                }}>Add to favorites</Button>
+                <div className = "likesComments">
+                    <div className = "compliment likes">{userLikedApartment.length} likes</div>
+                    <div 
+                        color="info" 
+                        size = "sm" 
+                        className = "compliment comments"
+                        onClick = {
+                            toggleUserComments
+                        }
+                    >{userComments} comments</div>      
+                </div>
+                <div className = "complimentButtons">
+                    <div 
+                        color="info" 
+                        size="sm" 
+                        className = "btns likeButton" 
+                        onClick = {() => {
+                            count++
+                            addLikeToApi()
+                        }
+                    }>Like</div>
+                    <div color="info" size="sm" className = "btns commentButton" onClick = {toggleComment}>Comment</div>
+                    <div color="info" size="sm" className = "btns" onClick = {(evt)=> {
+                        evt.preventDefault()
+                        addNewApartmentToFavorites()
+                    }}>favorites</div>
+                </div>
+                
             </section>
             <Modal isOpen = {commentModal} toggle = {toggleComment}>
                 <ModalHeader toggle = {toggleComment}>Comment Apartment</ModalHeader>
