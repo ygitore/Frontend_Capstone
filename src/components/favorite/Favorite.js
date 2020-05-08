@@ -15,6 +15,7 @@ export default ({favorite}) => {
     const deleteFromFavorites =()=>{
         deleteFavorite(favorite.id)
     }
+    let count = 0
     if(parseInt(user.id) === parseInt(favorite.userId) && user !== null)
     {
         return(
@@ -24,7 +25,7 @@ export default ({favorite}) => {
                         {
                             apartmentInFavorite.map(apt => {
                                 return (
-                                    <div>
+                                    <div> 
                                         {apt.apartmentName}{
                                             <Button color = "info" size = "sm" onClick = {(evt) =>{
                                                 evt.preventDefault()
