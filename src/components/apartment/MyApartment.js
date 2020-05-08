@@ -12,10 +12,10 @@ export default ({userApartment}) => {
                 src = {userApartment.uploadImage} 
                 alt = {userApartment.uploadImage}
             />
-            <h3 className="userApartment__name">
+            <h4 className="userApartment_name">
             {
-                userApartment.userApartmentName
-            }</h3>
+                userApartment.apartmentName
+            }</h4>
             <h6 className="userApartment__city_state">
                 {userApartment.city},{ userApartment.state}
             </h6>
@@ -24,6 +24,7 @@ export default ({userApartment}) => {
                 color="danger" 
                 size="sm" 
                 id = {userApartment.id} 
+                className="delete_user_apartment"
                 onClick = {toggle}
                 >delete</Button>   
 

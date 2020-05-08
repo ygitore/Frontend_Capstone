@@ -10,7 +10,7 @@ export default (props) => {
             <Button color="danger" size = "sm" onClick={() => {
                 deleteApartment(props.apartmentId)
                 props.toggleDeleteApartment()
-            }}></Button>
+            }}>delete</Button>
         </>
     )
 }
