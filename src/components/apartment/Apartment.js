@@ -1,6 +1,5 @@
-import React, { useState, useContext, useEffect } from "react"
-import { Button, Modal, ModalHeader, ModalBody, Alert } from "reactstrap"
-import DeleteApartment from "./DeleteApartment"
+import React, { useState, useContext} from "react"
+import {Modal, ModalHeader, ModalBody} from "reactstrap"
 import {UserContext} from '../user/UserProvider'
 import AddCommentForm from '../comment/AddCommentForm'
 import { CommentContext, CommentProvider } from "../comment/CommentProvider"

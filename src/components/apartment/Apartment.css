@@ -30,29 +30,12 @@
     height: 250px;
     width: 300px;
 }
-.userApartment_name{
-    font-size: 16px;
-    text-align: center;
-}
-.userApartmentImage{
-    height: 17rem;
-    width: 100%;
-}
-.userApartment__description{
-    max-width: 20rem;
-    margin-left: 5px;
-}
-.userApartment__city_state{
-    margin-left: 5px;
-}
+
 .edit_apartment_image{
     height: 300px;
     width: 466px;
 }
-.delete_user_apartment{
-    margin-left: 81%;
-    margin-bottom: 5px;
-}
+
 .edit_apartment_name{
     font-size: 20px;
     font-weight: bolder;
@@ -66,19 +49,22 @@
 .apartment__city_state, .apartment__description{
     margin-left: 5px;
 }
-
+.apartment__description{
+    margin-bottom: auto;
+}
 .likesComments{
     display: flex;
     flex-direction: row;
+    margin-bottom: auto;
 }
 .compliment{
     flex-basis: 40%;
-    margin-top:auto;
 }
 .complimentButtons{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    margin-top: auto;
 }
 
 .btns{

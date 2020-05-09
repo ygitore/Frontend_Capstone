@@ -12,7 +12,7 @@ import { Modal, ModalHeader, ModalBody } from 'reactstrap'
 import CommentList from './comment/CommentList'
 import { SearchBar } from "./search/SearchBar";
 import { SearchResults } from "./search/SearchResults";
-import MyApartmentList from './apartment/MyApartmentList'
+import MyApartmentList from './myApartment/MyApartmentList'
 import "./AppController.css"
 import "./Layout.css"   
 

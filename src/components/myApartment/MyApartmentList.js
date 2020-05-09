@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
-import { ApartmentContext } from './ApartmentProvider'
-import MyApartment from "./MyApartment";
+import MyApartment from './MyApartment'
+import {ApartmentContext} from '../apartment/ApartmentProvider'
 export default () => {
     const {apartments} = useContext(ApartmentContext)
     const userId = parseInt(localStorage.getItem("reviewApartment_user"))
@@ -9,7 +9,7 @@ export default () => {
     return (
         <div>
             {
-                userApartments.map(apt =><MyApartment key = {apt.id} userApartment = {apt} />)
+                userApartments.map(apt =><MyApartment key = {apt.id} myApartment = {apt} />)
             }
         </div>
     )
