@@ -43,9 +43,13 @@ export const EditMyApartmentForm = ({ selectedApartment, toggleEditApartment }) 
         <form className="apartmentForm">
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="name">user name: </label>
-                    <input type="text" name="name" required autoFocus className="form-control"
-                        placeholder="apartment name"
+                    <label htmlFor="userName">user name: </label>
+                    <input 
+                        type="text" 
+                        name="userName" 
+                        required 
+                        autoFocus 
+                        className="form-control"
                         disabled
                         defaultValue={user.userName}
                         onChange={handleControlledInputChange}
@@ -54,9 +58,11 @@ export const EditMyApartmentForm = ({ selectedApartment, toggleEditApartment }) 
             </fieldset>
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="image">Upload image: </label>
-                    <input type="text" className="form-control"
-                        placeholder="upload image"
+                    <label htmlFor="apartmentImage">Upload image: </label>
+                    <input 
+                        type="text" 
+                        name = "apartmentImage"
+                        className="form-control"
                         defaultValue={selectedApartment.uploadImage}
                         onChange={handleControlledInputChange}
                     />
@@ -64,8 +70,10 @@ export const EditMyApartmentForm = ({ selectedApartment, toggleEditApartment }) 
             </fieldset>
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="apartment">apartment name </label>
-                    <input type="text" name="apartment" className="form-control"
+                    <label htmlFor="apartmentName">apartment name </label>
+                    <input type="text"
+                        name="apartmentName" 
+                        className="form-control"
                         defaultValue={selectedApartment.apartmentName}
                         onChange={handleControlledInputChange}
                     />
@@ -74,7 +82,10 @@ export const EditMyApartmentForm = ({ selectedApartment, toggleEditApartment }) 
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="city">City:</label>
-                    <input type="text" name="city" className="form-control"
+                    <input 
+                        type="text" 
+                        name="city" 
+                        className="form-control"
                         defaultValue={selectedApartment.city}
                         onChange={handleControlledInputChange}
                     />
@@ -83,18 +94,38 @@ export const EditMyApartmentForm = ({ selectedApartment, toggleEditApartment }) 
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="state">State:</label>
-                    <input type="text" name="state" className="form-control"
+                    <input 
+                        type="text" 
+                        name="state" 
+                        className="form-control"
                         defaultValue={selectedApartment.state}
                         onChange={handleControlledInputChange}
                     />
                 </div>
             </fieldset>
+
+            <fieldset>
+                <div className="form-group">
+                    <label htmlFor="description">description:</label>
+                    <input 
+                        type="text" 
+                        name="description" 
+                        className="form-control"
+                        defaultValue={selectedApartment.description}
+                        onChange={handleControlledInputChange}
+                    />
+                </div>
+            </fieldset>
            
-            <button type="submit" className="btn btn-primary"
-                onClick={evt => {
-                    evt.preventDefault()
-                    editApartment()
-                }}>
+            <button 
+                type="submit" 
+                className="btn btn-primary"
+                onClick={
+                    evt => {
+                        evt.preventDefault()
+                        editApartment()
+                    }
+                }>
                 Save Changes
             </button>            
         </form>
