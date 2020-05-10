@@ -8,6 +8,8 @@ export default props => {
     const { users } = useContext(UserContext)
     const [apartmentImage, setApartmentImage] = useState('')
     const [loading, setLoading] = useState(false)
+    let file = ""
+
     const upload_Image = async e => {
         const files = e.target.files[0]
         const formData = new FormData()
@@ -19,9 +21,11 @@ export default props => {
             body: formData
         }) 
         const response = await res.json()
-        setApartmentImage(response.secure_url)
+        file = response.secure_url
+        setApartmentImage(file)  
+        setLoading(false)
+        console.log("file", file)
         
-
     }
     const apartmentName = useRef()
     const city = useRef()
@@ -33,7 +37,7 @@ export default props => {
         if (userId) {
             addApartment({
                 userId:parseInt(userId),
-                uploadImage: setApartmentImage,
+                uploadImage: apartmentImage,
                 apartmentName: apartmentName.current.value,
                 city: city.current.value,
                 state: state.current.value,
