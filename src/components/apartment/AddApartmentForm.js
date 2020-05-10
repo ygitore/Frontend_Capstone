@@ -8,16 +8,19 @@ export default props => {
     const { users } = useContext(UserContext)
     const [apartmentImage, setApartmentImage] = useState('')
     const [loading, setLoading] = useState(false)
-    const upload_Image = e => {
+    const upload_Image = async e => {
         const files = e.target.files[0]
         const formData = new FormData()
-        formData.append("upload_preset", "bugtracker1")
+        formData.append("upload_preset", "review_apartments")
         formData.append("file", files)
         setLoading(true)
-        axios.post("https://api.cloudinary.com/v1_1/dgmlysx6a", formData)
-        .then(res => setApartmentImage(res.data.secure_url))
-        .then(setLoading(false))
-        .catch(err=>console.error("error", err))
+        const res = await fetch("https://api.cloudinary.com/v1_1/dgmlysx6a/image/upload", {
+            method:"POST",
+            body: formData
+        }) 
+        const response = await res.json()
+        setApartmentImage(response.secure_url)
+        
 
     }
     const apartmentName = useRef()
@@ -46,8 +49,7 @@ export default props => {
             <fieldset>
                 <div className="form-group">
                     <input type = "file" name = "file" onChange = {upload_Image} />
-                    {loading ? "Loading": <img className = "uploadImage" src = {apartmentImage} />}
-                    
+                    {loading ? "Loading": <img className = "uploadImage" style = {{width:"300px"}}src = {apartmentImage} />}
                 </div>
             </fieldset>
             <fieldset>
