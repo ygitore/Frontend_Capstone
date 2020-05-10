@@ -53,7 +53,7 @@ export default props => {
             <fieldset>
                 <div className="form-group">
                     <input type = "file" name = "file" onChange = {upload_Image} />
-                    {loading ? "Loading": <img className = "uploadImage" style = {{width:"300px"}}src = {apartmentImage} />}
+                    {loading ? "Loading": <img className = "uploadImage" style = {{width:"200px"}}src = {apartmentImage} />}
                 </div>
             </fieldset>
             <fieldset>
