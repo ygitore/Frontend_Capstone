@@ -1,12 +1,33 @@
-import React, { useContext, useRef } from "react"
+import React, { useContext, useRef, useState } from "react"
 import { ApartmentContext } from "./ApartmentProvider"
 import { UserContext } from "../user/UserProvider"
+import axios from 'axios'
 
 export default props => {
     const { addApartment } = useContext(ApartmentContext)    
     const { users } = useContext(UserContext)
+    const [apartmentImage, setApartmentImage] = useState('')
+    const [loading, setLoading] = useState(false)
+    let file = ""
+
+    const upload_Image = async e => {
+        const files = e.target.files[0]
+        const formData = new FormData()
+        formData.append("upload_preset", "review_apartments")
+        formData.append("file", files)
+        setLoading(true)
+        const res = await fetch("https://api.cloudinary.com/v1_1/dgmlysx6a/image/upload", {
+            method:"POST",
+            body: formData
+        }) 
+        const response = await res.json()
+        file = response.secure_url
+        setApartmentImage(file)  
+        setLoading(false)
+        console.log("file", file)
+        
+    }
     const apartmentName = useRef()
-    const uploadImage = useRef()
     const city = useRef()
     const state = useRef()
     const description = useRef()
@@ -16,7 +37,7 @@ export default props => {
         if (userId) {
             addApartment({
                 userId:parseInt(userId),
-                uploadImage: uploadImage.current.value,
+                uploadImage: apartmentImage,
                 apartmentName: apartmentName.current.value,
                 city: city.current.value,
                 state: state.current.value,
@@ -31,16 +52,8 @@ export default props => {
             <h5 className="Create_new_apartment">Create New Apartment</h5>
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="apartmentImage">Upload image: </label>
-                    <input
-                        type="text"
-                        id="uploadImage"
-                        ref={uploadImage}
-                        required
-                        autoFocus
-                        className="form-control"
-                        placeholder="Upload image"
-                    />
+                    <input type = "file" name = "file" onChange = {upload_Image} />
+                    {loading ? "Loading": <img className = "uploadImage" style = {{width:"200px"}}src = {apartmentImage} />}
                 </div>
             </fieldset>
             <fieldset>
