@@ -9,8 +9,9 @@ export default ({apartment}) => {
                 alt = "apartment image" 
                 className = "edit_apartment_image" 
             />
-            <div>{apartment.city}, {apartment.state}</div>
-            <div>{apartment.description}</div>
+        <div>{apartment.apartmentName}</div>
+        <div>{apartment.city}, {apartment.state}</div>
+        <div>{apartment.description}</div> 
         </div>
     )
 }

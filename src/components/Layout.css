@@ -1,13 +1,13 @@
+*{
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+}
 .mainContainer {
     display: flex;
     flex-direction: column;
 }
-.links {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    background-color: rgb(141, 176, 216);
-}
+
 
 .main-section{
     display: flex;
@@ -16,12 +16,14 @@
 .searchContainer{
     flex: 1;
 }
-.main-header{
-    flex:1;
-    font-size: 25px;
-    padding-top: 10px;
+.links{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    background-color: rgb(92, 94, 97);
+    color:#fff;
+    width: 100%;
 }
-
 .search-box{
     width: 90%;
     height: 25px;
@@ -34,11 +36,10 @@
     padding-top: 0;
     margin-left: 5%;
 }
-.navbar{
-    flex-basis: 25%;
-    font-size: 20px;
-    color: rgb(255, 255, 255);
+.main-header{
+    margin-top: 20px;
 }
+
 .listDisplay{
     flex: 4;
     margin-right: 5%;

@@ -42,27 +42,31 @@ export default ({apartment}) => {
     //get currently logedin user 
     const loggedInUser = parseInt(localStorage.getItem("reviewApartment_user")) 
     const user = users.find(u => parseInt(u.id) === parseInt(loggedInUser))||{}
+
     const userComment = comments.filter(comt => comt.apartmentId === apartment.id)
     let userComments = userComment.length
+
     const userLikedApartment = likes.filter(like => like.apartmentId === apartment.id)
     const userLiked = likes.filter(like => like.userId === loggedInUser)
+    const alreadyLiked = userLiked.find(u => u.apartmentId === apartment.id)||{}
     
-    const alreadyLiked = userLiked.filter(u => u.apartmentId === apartment.id)
-    
-    let count = 0
-    const addLikeToApi = () => {      
-        if(alreadyLiked.length >= 1 && count > 1) {
-
-        }else{
-            const userLikedApartment = {
-                userId: loggedInUser,
-                apartmentId:apartment.id
+    const [like, setLike] = useState(false)
+    const toggleLike = () => setLike(!like)
+    console.log("liked", alreadyLiked.id)
+    const addLikeToApi = () => { 
+        if(user.id){
+            if(!userLikedApartment.apartmentId){
+                if(like){
+                    const userLikedApartment = {
+                        userId: loggedInUser,
+                        apartmentId:apartment.id
+                    }
+                    addLike(userLikedApartment)
+                }else {
+                    deleteLike(alreadyLiked.id)
+                }
             }
-            addLike(userLikedApartment)
-            count = 1           
-        }
-
-        
+        }        
     }
     return (
         <>
@@ -103,7 +107,7 @@ export default ({apartment}) => {
                         size="sm" 
                         className = "btns likeButton" 
                         onClick = {() => {
-                            count++
+                            toggleLike()
                             addLikeToApi()
                         }
                     }>Like</div>
