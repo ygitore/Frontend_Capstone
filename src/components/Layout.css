@@ -1,3 +1,8 @@
+*{
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+}
 .mainContainer {
     display: flex;
     flex-direction: column;
@@ -11,8 +16,14 @@
 .searchContainer{
     flex: 1;
 }
-
-
+.links{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    background-color: rgb(86, 102, 122);
+    color: honeydew;
+    width: 100%;
+}
 .search-box{
     width: 90%;
     height: 25px;
@@ -28,6 +39,7 @@
 .main-header{
     margin-top: 20px;
 }
+
 .listDisplay{
     flex: 4;
     margin-right: 5%;
