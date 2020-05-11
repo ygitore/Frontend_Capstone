@@ -13,6 +13,7 @@ import CommentList from './comment/CommentList'
 import { SearchBar } from "./search/SearchBar";
 import { SearchResults } from "./search/SearchResults";
 import MyApartmentList from './myApartment/MyApartmentList'
+import Sidebar from './navbar/Sidebar'
 import "./AppController.css"
 import "./Layout.css"   
 
@@ -84,8 +85,10 @@ export const Dashboard = () => {
     return (
         <>
             <ApartmentProvider>
-                <div className="mainContainer">                                    
-                    <div className="links">
+                <div className="mainContainer">  
+                                                    
+                    <div className="links">    
+                        <Sidebar />
                         <div className="main-header navbar">Review Apartments</div>
                         <div className="navbar href" onClick={() => setActiveList("showHomePage")}>Home</div>
                         <div className="navbar href" onClick={() => setActiveList("createApartmentForm")}>Create Apartment</div>

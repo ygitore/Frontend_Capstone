@@ -2,12 +2,7 @@
     display: flex;
     flex-direction: column;
 }
-.links {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    background-color: rgb(141, 176, 216);
-}
+
 
 .main-section{
     display: flex;
@@ -16,11 +11,7 @@
 .searchContainer{
     flex: 1;
 }
-.main-header{
-    flex:1;
-    font-size: 25px;
-    padding-top: 10px;
-}
+
 
 .search-box{
     width: 90%;
@@ -34,10 +25,8 @@
     padding-top: 0;
     margin-left: 5%;
 }
-.navbar{
-    flex-basis: 25%;
-    font-size: 20px;
-    color: rgb(255, 255, 255);
+.main-header{
+    margin-top: 20px;
 }
 .listDisplay{
     flex: 4;
