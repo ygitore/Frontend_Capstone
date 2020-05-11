@@ -20,8 +20,8 @@
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
-    background-color: rgb(86, 102, 122);
-    color: honeydew;
+    background-color: rgb(92, 94, 97);
+    color:#fff;
     width: 100%;
 }
 .search-box{

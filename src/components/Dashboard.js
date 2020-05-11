@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { ApartmentProvider } from './apartment/ApartmentProvider'
 import ApartmentList from './apartment/ApartmentList'
-import { UserProvider } from './user/UserProvider'
+import { UserProvider, UserContext } from './user/UserProvider'
 import { CommentProvider } from './comment/CommentProvider'
-import AddCommentForm from './comment/AddCommentForm'
 import { LikeProvider } from './like/LikeProvider'
 import { FavoriteProvider } from './favorite/FavoriteProvider'
 import AddApartmentForm from './apartment/AddApartmentForm'
@@ -63,6 +62,10 @@ export const Dashboard = () => {
             </ApartmentProvider>
         </UserProvider>
     )
+    const showLogout = () => {
+        localStorage.setItem("reviewApartment_user","")
+    }
+
     useEffect(() => {
         if (activeList === "allApartments") {
             setComponents(showAllApartments)
@@ -79,6 +82,9 @@ export const Dashboard = () => {
         else if (activeList === "showMyApartments") {
             setComponents(showMyApartments)
         }
+        else if (activeList === "showLogout") {
+            setComponents(showLogout())
+        }
         
     }, [activeList])
    
@@ -92,6 +98,7 @@ export const Dashboard = () => {
                         <div className="navbar href" onClick={() => setActiveList("createApartmentForm")}>Create Apartment</div>
                         <div className="navbar href" onClick={() => setActiveList("showMyApartments")}>My Apartments</div>
                         <div className="navbar href" onClick={() => setActiveList("favorites")}>Favorites</div>
+                        <div className="navbar href" onClick={() => setActiveList("showLogout")}>Logout</div>
                     </div>
                     <div className="main-section">
                         <div className="searchContainer">
