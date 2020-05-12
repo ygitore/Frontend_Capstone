@@ -5,8 +5,10 @@ import AddCommentForm from '../comment/AddCommentForm'
 import { CommentContext, CommentProvider } from "../comment/CommentProvider"
 import { LikeContext } from "../like/LikeProvider"
 import { FavoriteContext } from "../favorite/FavoriteProvider"
+import AddApartmentForm from './AddApartmentForm'
 import Comment from "../comment/Comment";
 import './Apartment.css'
+import { StarRating } from "../rating/StarRating"
 
 export default ({apartment}) => {
     const {users} = useContext(UserContext)  
@@ -23,7 +25,6 @@ export default ({apartment}) => {
     const thisUser = localStorage.getItem("reviewApartment_user")
     const userLogged = parseInt(thisUser)
     const checkUser = favorites.find(f=>f.userId === 5)
-    console.log("user favorties", thisUser)
     const addNewApartmentToFavorites = () => {
         const favoriteObject = {
             apartmentId:apartment.id,
@@ -32,7 +33,6 @@ export default ({apartment}) => {
         const apartmentExists = favorites.find(favorite => favorite.apartmentId === apartment.id)
         /* check if apartment to be added to favorites already 
         exists in the favorites section*/
-        console.log('apartment exists',apartmentExists)
         if(apartmentExists){
             alert(apartment.apartmentName+" apartment already added to favorites")
         }else{
@@ -52,7 +52,10 @@ export default ({apartment}) => {
     
     const [like, setLike] = useState(false)
     const toggleLike = () => setLike(!like)
-    console.log("liked", alreadyLiked.id)
+
+    const [newApartmentModal, setNewApartmentModal] = useState(false)
+    const toggleNewApartmentForm = () => setNewApartmentModal(!newApartmentModal)
+
     const addLikeToApi = () => { 
         if(user.id){
             if(!userLikedApartment.apartmentId){
@@ -68,6 +71,9 @@ export default ({apartment}) => {
             }
         }        
     }
+
+    
+
     return (
         <>
             <section className="apartment">
@@ -112,6 +118,7 @@ export default ({apartment}) => {
                         }
                     }>Like</div>
                     <div color="info" size="sm" className = "btns commentButton" onClick = {toggleComment}>Comment</div>
+                    <StarRating />
                     <div color="info" size="sm" className = "btns" onClick = {(evt)=> {
                         evt.preventDefault()
                         addNewApartmentToFavorites()
@@ -119,6 +126,14 @@ export default ({apartment}) => {
                 </div>
                 
             </section>
+
+            <Modal isOpen = {newApartmentModal} toggle = {toggleNewApartmentForm}>
+                <ModalHeader toggle = {toggleNewApartmentForm}>Create New Apartment</ModalHeader>
+                <ModalBody>
+                    <AddApartmentForm toggler = {toggleNewApartmentForm} />
+                </ModalBody>
+            </Modal> 
+
             <Modal isOpen = {commentModal} toggle = {toggleComment}>
                 <ModalHeader toggle = {toggleComment}>Comment Apartment</ModalHeader>
                 <ModalBody>

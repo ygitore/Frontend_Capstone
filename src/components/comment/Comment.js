@@ -5,12 +5,10 @@ import './Comment.css'
 export default (props) => {
     const {comments} = useContext(CommentContext)
     const {users} = useContext(UserContext)
-    const userComments = comments.filter(com => com.apartmentId === props.apartmentCommentId)
-    const userCommented = userComments.filter(u => u.userId === users.id)
+    const userComments = comments.filter(com => com.apartmentId === props.apartmentCommentId)||{}
+    const userCommented = userComments.filter(u => u.userId === users.id)||{}
     const uu = users.filter(u => u.id === userCommented.userId)
-    console.log(userComments.length)
-       
-    
+
     return (
         <>
         <div className="user_Comments">
