@@ -8,27 +8,13 @@
     flex-basis: 45%;
     border: 1px solid rgb(20, 20, 20);
     margin-bottom: 40px;
-}
-
-.userApartment{
-    margin-bottom: 15px;
-    border: 1px solid rgb(73, 58, 21);
-    margin-left: 30%;
-    max-width: 28%;
-}
-
-.userApartment:hover{
-    box-shadow: 1px 1px 20px 2px rgb(147, 180, 230);
-    transition-duration: 0.2s;
-    transition-timing-function:ease-out;
-    transition-delay: 0.2s;
-    transform: scale(0.9);
-    -webkit-transition-delay: 0.2s;
+    max-height: 30rem;
+    max-width: 27rem;
 }
 
 .apartmentImage{
-    height: 250px;
-    width: 300px;
+    height: 40%;
+    width: 100%;
 }
 
 .edit_apartment_image{

@@ -17,7 +17,6 @@ export default ({apartment}) => {
     const {comments} = useContext(CommentContext)
     const {likes, addLike, deleteLike} = useContext(LikeContext)
     const {favorites, addFavorite} = useContext(FavoriteContext)
-    const {rating} = useContext(RatingContext)
 
     const [commentModal, setCommentModal] = useState(false)
     const toggleComment = () => setCommentModal(!commentModal)
@@ -25,33 +24,33 @@ export default ({apartment}) => {
     const [user_Comments, setUserComments] = useState(false)
     const toggleUserComments = () => setUserComments(!user_Comments)
 
-    const thisUser = localStorage.getItem("reviewApartment_user")
-    const userLogged = parseInt(thisUser)
-    const checkUser = favorites.find(f=>f.userId === 5)
+    const loggedInUserId = parseInt(localStorage.getItem("reviewApartment_user"))
+    const activeUser = users.find(u=>u.id === loggedInUserId)
     const addNewApartmentToFavorites = () => {
-        const favoriteObject = {
-            apartmentId:apartment.id,
-            userId: parseInt(localStorage.getItem("reviewApartment_user"))
-        }
-        const isA = favorites.find(favorite => favorite.apartmentId === apartment.id)
-        /* check if apartment to be added to favorites already 
-        exists in the favorites section*/
-        if(isA){
-            alert(apartment.apartmentName+" apartment already added to favorites")
+        if(activeUser){
+            const favoriteObject = {
+                apartmentId:apartment.id,
+                userId: parseInt(localStorage.getItem("reviewApartment_user"))
+            }
+            /* check if apartment to be added to favorites doesn't 
+            exist in the favorites section*/
+            const apartmentExists = favorites.find(favorite => favorite.apartmentId === apartment.id)
+            if(!apartmentExists){
+                addFavorite(favoriteObject)                
+            }
         }else{
-            addFavorite(favoriteObject)
+            console.log("favorites is not working")
         }
     }
     let starDisplay = true
-    //get currently logedin user 
-    const loggedInUser = parseInt(localStorage.getItem("reviewApartment_user")) 
-    const user = users.find(u => parseInt(u.id) === parseInt(loggedInUser))||{}
+    //get currently loggedin user 
+    const user = users.find(u => parseInt(u.id) === loggedInUserId)||{}
 
     const userComment = comments.filter(comt => comt.apartmentId === apartment.id)
     let userComments = userComment.length
 
     const userLikedApartment = likes.filter(like => like.apartmentId === apartment.id)
-    const userLiked = likes.filter(like => like.userId === loggedInUser)
+    const userLiked = likes.filter(like => like.userId === loggedInUserId)
     const alreadyLiked = userLiked.find(u => u.apartmentId === apartment.id)||{}
     
     const [like, setLike] = useState(false)
@@ -65,7 +64,7 @@ export default ({apartment}) => {
             if(!userLikedApartment.apartmentId){
                 if(like){
                     const userLikedApartment = {
-                        userId: loggedInUser,
+                        userId: loggedInUserId,
                         apartmentId:apartment.id
                     }
                     addLike(userLikedApartment)
@@ -76,8 +75,6 @@ export default ({apartment}) => {
         }        
     }
 
-    const apartId = rating.find(apt => apt.apartmentId === apartment.id)
-   
     return (
         <>
             <section className="apartment">
@@ -129,7 +126,7 @@ export default ({apartment}) => {
                     <div color="info" size="sm" className = "btns" onClick = {(evt)=> {
                         evt.preventDefault()
                         addNewApartmentToFavorites()
-                    }}>favorites</div>
+                    }}>Add to favorites</div>
                 </div>
                 
             </section>
