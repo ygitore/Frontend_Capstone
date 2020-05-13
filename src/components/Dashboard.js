@@ -12,10 +12,11 @@ import CommentList from './comment/CommentList'
 import { SearchBar } from "./search/SearchBar";
 import { SearchResults } from "./search/SearchResults";
 import MyApartmentList from './myApartment/MyApartmentList'
+import { RatingProvider } from './rating/RatingProvider'
 import "./AppController.css"
 import "./Layout.css"   
 
-export const Dashboard = () => {
+export const Dashboard = (props) => {
     const [searchTerms, setTerms] = useState(null)
     const [activeList, setActiveList] = useState("allApartments")
     const [components, setComponents] = useState()
@@ -27,14 +28,16 @@ export const Dashboard = () => {
     const showAllApartments = () => (
         <UserProvider>
             <ApartmentProvider>
-                <CommentProvider>
-                    <FavoriteProvider>
-                        <LikeProvider>
-                            <CommentList />
-                            <ApartmentList />
-                        </LikeProvider>
-                    </FavoriteProvider>
-                </CommentProvider>
+                <LikeProvider>
+                    <CommentProvider>
+                        <RatingProvider>
+                            <FavoriteProvider>
+                                <CommentList />
+                                <ApartmentList />
+                            </FavoriteProvider>
+                        </RatingProvider>
+                    </CommentProvider>
+                </LikeProvider>
             </ApartmentProvider>
         </UserProvider>
     )
@@ -62,9 +65,7 @@ export const Dashboard = () => {
             </ApartmentProvider>
         </UserProvider>
     )
-    const showLogout = () => {
-        localStorage.setItem("reviewApartment_user","")
-    }
+    
 
     useEffect(() => {
         if (activeList === "allApartments") {
@@ -82,9 +83,6 @@ export const Dashboard = () => {
         else if (activeList === "showMyApartments") {
             setComponents(showMyApartments)
         }
-        else if (activeList === "showLogout") {
-            setComponents(showLogout())
-        }
         
     }, [activeList])
    
@@ -98,7 +96,12 @@ export const Dashboard = () => {
                         <div className="navbar href" onClick={() => setActiveList("createApartmentForm")}>Create Apartment</div>
                         <div className="navbar href" onClick={() => setActiveList("showMyApartments")}>My Apartments</div>
                         <div className="navbar href" onClick={() => setActiveList("favorites")}>Favorites</div>
-                        <div className="navbar href" onClick={() => setActiveList("showLogout")}>Logout</div>
+                        <div className="navbar href" onClick={
+                            () => {
+                                localStorage.setItem("reviewApartment_user","") 
+                                props.toggle()
+                            }
+                        }>Logout</div>
                     </div>
                     <div className="main-section">
                         <div className="searchContainer">

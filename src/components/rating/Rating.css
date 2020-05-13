@@ -9,12 +9,14 @@ align-items: center;
 flex-direction: column;
 }
 .star-rating-filled {
-    fill: gold;
-  }
-  .star-rating-blank {
-    fill: #d8d8d8;
-  }
-  .flex-container {
-    display: flex;
-  }
-  
+  fill: gold;
+}
+.star-rating-blank {
+  fill: #d8d8d8;
+}
+.flex-container {
+  display: flex;
+}
+.hideStar{
+  display: none;
+}

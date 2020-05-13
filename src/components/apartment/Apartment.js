@@ -7,14 +7,17 @@ import { LikeContext } from "../like/LikeProvider"
 import { FavoriteContext } from "../favorite/FavoriteProvider"
 import AddApartmentForm from './AddApartmentForm'
 import Comment from "../comment/Comment";
+import { RatingList } from "../rating/RatingList"
 import './Apartment.css'
-import { StarRating } from "../rating/StarRating"
+import { RatingContext } from "../rating/RatingProvider"
+import UserRating from "../rating/UserRating"
 
 export default ({apartment}) => {
     const {users} = useContext(UserContext)  
     const {comments} = useContext(CommentContext)
     const {likes, addLike, deleteLike} = useContext(LikeContext)
     const {favorites, addFavorite} = useContext(FavoriteContext)
+    const {rating} = useContext(RatingContext)
 
     const [commentModal, setCommentModal] = useState(false)
     const toggleComment = () => setCommentModal(!commentModal)
@@ -30,15 +33,16 @@ export default ({apartment}) => {
             apartmentId:apartment.id,
             userId: parseInt(localStorage.getItem("reviewApartment_user"))
         }
-        const apartmentExists = favorites.find(favorite => favorite.apartmentId === apartment.id)
+        const isA = favorites.find(favorite => favorite.apartmentId === apartment.id)
         /* check if apartment to be added to favorites already 
         exists in the favorites section*/
-        if(apartmentExists){
+        if(isA){
             alert(apartment.apartmentName+" apartment already added to favorites")
         }else{
             addFavorite(favoriteObject)
         }
     }
+    let starDisplay = true
     //get currently logedin user 
     const loggedInUser = parseInt(localStorage.getItem("reviewApartment_user")) 
     const user = users.find(u => parseInt(u.id) === parseInt(loggedInUser))||{}
@@ -72,8 +76,8 @@ export default ({apartment}) => {
         }        
     }
 
-    
-
+    const apartId = rating.find(apt => apt.apartmentId === apartment.id)
+   
     return (
         <>
             <section className="apartment">
@@ -105,7 +109,10 @@ export default ({apartment}) => {
                         onClick = {
                             toggleUserComments
                         }
-                    >{userComments} comments</div>      
+                    >{userComments} comments</div>
+                    {
+                        <UserRating apt = {apartment} />  
+                    }
                 </div>
                 <div className = "complimentButtons">
                     <div 
@@ -117,8 +124,8 @@ export default ({apartment}) => {
                             addLikeToApi()
                         }
                     }>Like</div>
-                    <div color="info" size="sm" className = "btns commentButton" onClick = {toggleComment}>Comment</div>
-                    <StarRating />
+                    <div color="info" size="sm" className = "btns commentButton" onClick = {toggleComment}>Comment</div>            
+                    <RatingList apt = {apartment} />
                     <div color="info" size="sm" className = "btns" onClick = {(evt)=> {
                         evt.preventDefault()
                         addNewApartmentToFavorites()
