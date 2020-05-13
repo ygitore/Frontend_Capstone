@@ -14,20 +14,21 @@ export default (props) => {
         <div className="user_Comments">
             <div className="user_Comment">
                 {
-                    userComments.map(u=><div className = "userId">{
-                        u.userId
-                    }. </div>)
+                    userComments.map(u=> {
+                        const usr = users.find(ur => ur.id === u.userId)
+                    return <div className = "userId">{
+                        <div>
+                            <strong>
+                            {
+                                usr.userName.charAt(0).toUpperCase()+ 
+                                usr.userName.slice(1)} 
+                            </strong>&nbsp;&nbsp;
+                        {u.comment}</div>
+                    }</div>
+                })
                 }
             </div>
-            <div className="user_Comment">
-                {
-                    userComments.map(com => {
-                        return <div className = "each_user_comment">{com.comment}</div>
-                    })    
-                        
-                }
-            </div>
-        </div>            
+            </div>            
         </>
     )
 }

@@ -9,7 +9,6 @@ import AddApartmentForm from './AddApartmentForm'
 import Comment from "../comment/Comment";
 import { RatingList } from "../rating/RatingList"
 import './Apartment.css'
-import { RatingContext } from "../rating/RatingProvider"
 import UserRating from "../rating/UserRating"
 
 export default ({apartment}) => {
@@ -27,20 +26,17 @@ export default ({apartment}) => {
     const loggedInUserId = parseInt(localStorage.getItem("reviewApartment_user"))
     const activeUser = users.find(u=>u.id === loggedInUserId)
     const addNewApartmentToFavorites = () => {
-        if(activeUser){
-            const favoriteObject = {
-                apartmentId:apartment.id,
-                userId: parseInt(localStorage.getItem("reviewApartment_user"))
-            }
-            /* check if apartment to be added to favorites doesn't 
-            exist in the favorites section*/
-            const apartmentExists = favorites.find(favorite => favorite.apartmentId === apartment.id)
-            if(!apartmentExists){
-                addFavorite(favoriteObject)                
-            }
-        }else{
-            console.log("favorites is not working")
+        const favoriteObject = {
+            apartmentId:apartment.id,
+            userId: loggedInUserId
         }
+        
+        const apts = favorites.find(favorite => favorite.apartmentId === apartment.id && favorite.userId === loggedInUserId)||{}
+        console.log("apartment", apts)
+        if("id" in apts){
+            window.alert("you already favorited this")
+        }
+        addFavorite(favoriteObject)                        
     }
     let starDisplay = true
     //get currently loggedin user 
