@@ -24,7 +24,6 @@ export default ({apartment}) => {
     const toggleUserComments = () => setUserComments(!user_Comments)
 
     const loggedInUserId = parseInt(localStorage.getItem("reviewApartment_user"))
-    const activeUser = users.find(u=>u.id === loggedInUserId)
     const addNewApartmentToFavorites = () => {
         const favoriteObject = {
             apartmentId:apartment.id,
@@ -35,8 +34,9 @@ export default ({apartment}) => {
         console.log("apartment", apts)
         if("id" in apts){
             window.alert("you already favorited this")
+        }else{
+            addFavorite(favoriteObject)                        
         }
-        addFavorite(favoriteObject)                        
     }
     let starDisplay = true
     //get currently loggedin user 
@@ -102,6 +102,7 @@ export default ({apartment}) => {
                         onClick = {
                             toggleUserComments
                         }
+                        
                     >{userComments} comments</div>
                     {
                         <UserRating apt = {apartment} />  
