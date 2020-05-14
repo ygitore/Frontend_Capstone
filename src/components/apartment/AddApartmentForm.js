@@ -50,27 +50,18 @@ export default props => {
     return (
         <form className="apartmentForm">
             <h5 className="Create_new_apartment">Create New Apartment</h5>
-            <fieldset>
-                <div className="form-group">
+                <div>
                     <input type = "file" name = "file" onChange = {upload_Image} />
                     {loading ? "Loading": <img className = "uploadImage" style = {{width:"200px"}}src = {apartmentImage} />}
                 </div>
-            </fieldset>
-            <fieldset>
-                <div className="form-group">
-                    <label htmlFor="apartmentName">Apartment name: </label>
-                    <input
-                        type="text"
-                        id="apartmentName"
-                        ref={apartmentName}
-                        className="form-control"
-                        placeholder="Apartment name"
-                    />
-                </div>
-            </fieldset>
-            <fieldset>
-                <div className="form-group">
-                    <label htmlFor="city">City: </label>
+                <input
+                    type="text"
+                    id="apartmentName"
+                    ref={apartmentName}
+                    className="form-control"
+                    placeholder="Apartment name"
+                />
+                <div>
                     <input
                         type="text"
                         id="city"
@@ -80,10 +71,7 @@ export default props => {
                         placeholder="city"
                     />
                 </div>
-            </fieldset>
-            <fieldset>
-                <div className="form-group">
-                    <label htmlFor="state">State: </label>
+                <div>
                     <input
                         type="text"
                         id="state"
@@ -92,10 +80,7 @@ export default props => {
                         placeholder="State"
                     />
                 </div>
-            </fieldset>
-            <fieldset>
-                <div className="form-group">
-                    <label htmlFor="description">Description: </label>
+                <div>
                     <input
                         type="text"
                         id="description"
@@ -104,24 +89,9 @@ export default props => {
                         placeholder="Description"
                     />
                 </div>
-            </fieldset>
-            <fieldset>
-                <div className="form-group">
-                    <label htmlFor="userName">By: </label>
-                    <select
-                        defaultValue=""
-                        name="userId"
-                        id="userId"
-                        className="form-control">
-                        <option value="0">
-                        {
-                            user.userName
-                        }
-                        </option>
-                        
-                    </select>
-                </div>
-            </fieldset>
+                <div>
+                <div>By: { user.userName.charAt(0) + user.userName.slice(1)}</div>
+            </div>
             <button type="submit"
                 onClick={
                     evt => {

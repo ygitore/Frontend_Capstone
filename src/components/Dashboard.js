@@ -85,7 +85,9 @@ export const Dashboard = (props) => {
         }
         
     }, [activeList])
-   
+    const [profile, setProfile] = useState(false)
+    const toggleProfile = () => setProfile(!profile)
+  
     return (
         <>
             <ApartmentProvider>

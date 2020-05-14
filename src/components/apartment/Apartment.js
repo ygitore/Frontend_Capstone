@@ -139,7 +139,10 @@ export default ({apartment}) => {
                 </ModalBody>
             </Modal> 
 
-            <Modal className = "user_Comments" isOpen = {user_Comments} toggle = {toggleUserComments}>
+            <Modal size="md"            
+                centered
+                isOpen = {user_Comments} 
+                toggle = {toggleUserComments}>
                 <ModalBody className = "user_Comments">
                     <Comment toggler = {toggleUserComments} apartmentCommentId = {apartment.id}/>
                 </ModalBody>
