@@ -5,7 +5,10 @@ import AddCommentForm from '../comment/AddCommentForm'
 import { CommentContext, CommentProvider } from "../comment/CommentProvider"
 import { LikeContext } from "../like/LikeProvider"
 import { FavoriteContext } from "../favorite/FavoriteProvider"
+import AddApartmentForm from './AddApartmentForm'
+import UserRating from "../rating/UserRating"
 import Comment from "../comment/Comment";
+import { RatingList } from "../rating/RatingList"
 import './Apartment.css'
 
 export default ({apartment}) => {
@@ -20,45 +23,43 @@ export default ({apartment}) => {
     const [user_Comments, setUserComments] = useState(false)
     const toggleUserComments = () => setUserComments(!user_Comments)
 
-    const thisUser = localStorage.getItem("reviewApartment_user")
-    const userLogged = parseInt(thisUser)
-    const checkUser = favorites.find(f=>f.userId === 5)
-    console.log("user favorties", thisUser)
+    const loggedInUserId = parseInt(localStorage.getItem("reviewApartment_user"))
     const addNewApartmentToFavorites = () => {
         const favoriteObject = {
             apartmentId:apartment.id,
-            userId: parseInt(localStorage.getItem("reviewApartment_user"))
+            userId: loggedInUserId
         }
-        const apartmentExists = favorites.find(favorite => favorite.apartmentId === apartment.id)
-        /* check if apartment to be added to favorites already 
-        exists in the favorites section*/
-        console.log('apartment exists',apartmentExists)
-        if(apartmentExists){
-            alert(apartment.apartmentName+" apartment already added to favorites")
+        
+        const apts = favorites.find(favorite => favorite.apartmentId === apartment.id && favorite.userId === loggedInUserId)||{}
+        console.log("apartment", apts)
+        if("id" in apts){
+            window.alert("you already favorited this")
         }else{
-            addFavorite(favoriteObject)
+            addFavorite(favoriteObject)                        
         }
     }
-    //get currently logedin user 
-    const loggedInUser = parseInt(localStorage.getItem("reviewApartment_user")) 
-    const user = users.find(u => parseInt(u.id) === parseInt(loggedInUser))||{}
+    //get currently loggedin user 
+    const user = users.find(u => parseInt(u.id) === loggedInUserId)||{}
 
     const userComment = comments.filter(comt => comt.apartmentId === apartment.id)
     let userComments = userComment.length
 
     const userLikedApartment = likes.filter(like => like.apartmentId === apartment.id)
-    const userLiked = likes.filter(like => like.userId === loggedInUser)
+    const userLiked = likes.filter(like => like.userId === loggedInUserId)
     const alreadyLiked = userLiked.find(u => u.apartmentId === apartment.id)||{}
     
     const [like, setLike] = useState(false)
     const toggleLike = () => setLike(!like)
-    console.log("liked", alreadyLiked.id)
+
+    const [newApartmentModal, setNewApartmentModal] = useState(false)
+    const toggleNewApartmentForm = () => setNewApartmentModal(!newApartmentModal)
+
     const addLikeToApi = () => { 
         if(user.id){
             if(!userLikedApartment.apartmentId){
                 if(like){
                     const userLikedApartment = {
-                        userId: loggedInUser,
+                        userId: loggedInUserId,
                         apartmentId:apartment.id
                     }
                     addLike(userLikedApartment)
@@ -68,6 +69,7 @@ export default ({apartment}) => {
             }
         }        
     }
+
     return (
         <>
             <section className="apartment">
@@ -99,7 +101,9 @@ export default ({apartment}) => {
                         onClick = {
                             toggleUserComments
                         }
-                    >{userComments} comments</div>      
+                        
+                    >{userComments} comments</div>    
+                    <UserRating apt = {apartment} />                      
                 </div>
                 <div className = "complimentButtons">
                     <div 
@@ -111,14 +115,23 @@ export default ({apartment}) => {
                             addLikeToApi()
                         }
                     }>Like</div>
-                    <div color="info" size="sm" className = "btns commentButton" onClick = {toggleComment}>Comment</div>
+                    <div color="info" size="sm" className = "btns commentButton" onClick = {toggleComment}>Comment</div>            
+                    <RatingList apt = {apartment} />
                     <div color="info" size="sm" className = "btns" onClick = {(evt)=> {
                         evt.preventDefault()
                         addNewApartmentToFavorites()
-                    }}>favorites</div>
+                    }}>Add to favorites</div>
                 </div>
                 
             </section>
+
+            <Modal isOpen = {newApartmentModal} toggle = {toggleNewApartmentForm}>
+                <ModalHeader toggle = {toggleNewApartmentForm}>Create New Apartment</ModalHeader>
+                <ModalBody>
+                    <AddApartmentForm toggler = {toggleNewApartmentForm} />
+                </ModalBody>
+            </Modal> 
+
             <Modal isOpen = {commentModal} toggle = {toggleComment}>
                 <ModalHeader toggle = {toggleComment}>Comment Apartment</ModalHeader>
                 <ModalBody>
@@ -126,9 +139,8 @@ export default ({apartment}) => {
                 </ModalBody>
             </Modal> 
 
-            <Modal isOpen = {user_Comments} toggle = {toggleUserComments}>
-                <ModalHeader toggle = {toggleUserComments}>Comments</ModalHeader>
-                <ModalBody>
+            <Modal className = "user_Comments" isOpen = {user_Comments} toggle = {toggleUserComments}>
+                <ModalBody className = "user_Comments">
                     <Comment toggler = {toggleUserComments} apartmentCommentId = {apartment.id}/>
                 </ModalBody>
             </Modal> 

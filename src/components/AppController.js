@@ -7,6 +7,6 @@ export default () => {
     const toggle = () => update(!check)
 
     return (
-        localStorage.getItem("reviewApartment_user") ? <Dashboard /> : <Auth toggle={toggle} />
+        localStorage.getItem("reviewApartment_user") ? <Dashboard toggle={toggle} /> : <Auth toggle={toggle} />
     )
 }
