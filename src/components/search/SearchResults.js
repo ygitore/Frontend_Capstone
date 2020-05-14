@@ -67,16 +67,7 @@ export const SearchResults = ({ searchTerms }) => {
                 <ModalBody>
                     <GetApartment key={selectedApartment.apartment.id} {...selectedApartment} />
                 </ModalBody>
-                <ModalFooter>
-                    <Button color="info" onClick={() => {
-                        toggle()
-                        toggleEdit()
-                    }}>Edit</Button>
-                    <Button color="danger" onClick={() => {
-                        deleteApartment(selectedApartment.apartment.id)
-                        toggle()
-                    }}>Delete</Button>
-                </ModalFooter>
+                
             </Modal>
         </div>
     )
