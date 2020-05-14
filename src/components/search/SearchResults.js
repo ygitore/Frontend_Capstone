@@ -46,13 +46,9 @@ export const SearchResults = ({ searchTerms }) => {
                 }
             </div>
             <Modal isOpen={modal} toggle={toggle}>
-                <ModalHeader toggle={toggle}>
-                    {selectedApartment.apartment.apartmentName}
-                </ModalHeader>
                 <ModalBody>
                     <GetApartment key={selectedApartment.apartment.id} {...selectedApartment} />
-                </ModalBody>
-                
+                </ModalBody>                
             </Modal>
         </div>
     )
