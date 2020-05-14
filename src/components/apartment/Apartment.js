@@ -6,10 +6,10 @@ import { CommentContext, CommentProvider } from "../comment/CommentProvider"
 import { LikeContext } from "../like/LikeProvider"
 import { FavoriteContext } from "../favorite/FavoriteProvider"
 import AddApartmentForm from './AddApartmentForm'
+import UserRating from "../rating/UserRating"
 import Comment from "../comment/Comment";
 import { RatingList } from "../rating/RatingList"
 import './Apartment.css'
-import UserRating from "../rating/UserRating"
 
 export default ({apartment}) => {
     const {users} = useContext(UserContext)  
@@ -103,10 +103,8 @@ export default ({apartment}) => {
                             toggleUserComments
                         }
                         
-                    >{userComments} comments</div>
-                    {
-                        <UserRating apt = {apartment} />  
-                    }
+                    >{userComments} comments</div>    
+                    <UserRating apt = {apartment} />                      
                 </div>
                 <div className = "complimentButtons">
                     <div 
@@ -142,9 +140,8 @@ export default ({apartment}) => {
                 </ModalBody>
             </Modal> 
 
-            <Modal isOpen = {user_Comments} toggle = {toggleUserComments}>
-                <ModalHeader toggle = {toggleUserComments}>Comments</ModalHeader>
-                <ModalBody>
+            <Modal className = "user_Comments" isOpen = {user_Comments} toggle = {toggleUserComments}>
+                <ModalBody className = "user_Comments">
                     <Comment toggler = {toggleUserComments} apartmentCommentId = {apartment.id}/>
                 </ModalBody>
             </Modal> 

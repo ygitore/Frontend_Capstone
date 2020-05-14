@@ -79,3 +79,12 @@
 .comments{
     margin-left: -28px;
 }
+.user_Comments{
+    background-color: rgb(117, 187, 214);
+    vertical-align: middle;
+}
+.modal-dialog {
+    display: flex;
+  flex-direction: column;
+  justify-content: center;
+  }
