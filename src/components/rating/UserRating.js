@@ -9,20 +9,27 @@ const UserRating = ({apt}) => {
             rate.rating >= 1 && rate.rating <= 5
         })||{}
     const numberOfRating = userRating.length
-    console.log("num rat", numberOfRating+" "+apt.id)
     const calculateUserRating = () => {
         let calculatedRate = 5
         let total = 0
         for(let i of userRating) {
             total += i.rating
         }
-        if(total/numberOfRating < numberOfRating*0.6){
-            calculatedRate = calculatedRate - 0.1          
-        }else if(calculatedRate >= 4.99){
-            calculatedRate = 5
+        if(numberOfRating > 0){
+            if(total/5 < numberOfRating*0.99){
+                calculatedRate = calculatedRate - 1          
+            }                       
+            else{
+                calculatedRate += 1
+                if(calculatedRate >= 5){
+                    calculatedRate = 5
+                } 
+            }
         }else{
-            calculatedRate += 0.1
+            calculatedRate = 5
         }
+        
+        console.log("number of rating",numberOfRating,"calculated rate", calculatedRate, "apt", apt.id, "total", total)
         return calculatedRate
     }
     return (

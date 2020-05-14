@@ -105,14 +105,12 @@ export const Dashboard = (props) => {
                     </div>
                     <div className="main-section">
                         <div className="searchContainer">
-                            <div>
-                                <UserProvider>
-                                    <ApartmentProvider>
-                                        <SearchBar setTerms={setTerms} />
-                                        <SearchResults searchTerms={searchTerms} />
-                                    </ApartmentProvider>
-                                </UserProvider>        
-                            </div>
+                            <UserProvider>
+                                <ApartmentProvider>
+                                    <SearchBar setTerms={setTerms} />
+                                    <SearchResults searchTerms={searchTerms} />
+                                </ApartmentProvider>
+                            </UserProvider>        
                         </div>
                         <div className="listDisplay">
                             {components}

@@ -3,7 +3,7 @@ import { Modal, ModalHeader, ModalBody, Button, ModalFooter } from "reactstrap"
 import { EditApartmentForm } from "../apartment/EditApartment"
 import { ApartmentContext } from "../apartment/ApartmentProvider"
 import GetApartment from "../apartment/GetApartment"
-
+import '../Layout.css'
 
 export const SearchResults = ({ searchTerms }) => {
     const { apartments, deleteApartment } = useContext(ApartmentContext)

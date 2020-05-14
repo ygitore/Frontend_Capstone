@@ -38,7 +38,6 @@ export default ({apartment}) => {
             addFavorite(favoriteObject)                        
         }
     }
-    let starDisplay = true
     //get currently loggedin user 
     const user = users.find(u => parseInt(u.id) === loggedInUserId)||{}
 
