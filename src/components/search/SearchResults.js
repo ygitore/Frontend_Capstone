@@ -1,12 +1,11 @@
 import React, { useState, useContext, useEffect } from "react"
 import { Modal, ModalHeader, ModalBody, Button, ModalFooter } from "reactstrap"
-import { EditApartmentForm } from "../apartment/EditApartment"
 import { ApartmentContext } from "../apartment/ApartmentProvider"
 import GetApartment from "../apartment/GetApartment"
 import '../Layout.css'
 
 export const SearchResults = ({ searchTerms }) => {
-    const { apartments, deleteApartment } = useContext(ApartmentContext)
+    const { apartments } = useContext(ApartmentContext)
 
     const userId = parseInt(localStorage.getItem("reviewApartment_user"))
     const [filteredApartments, setFiltered] = useState([])
@@ -21,13 +20,9 @@ export const SearchResults = ({ searchTerms }) => {
         },        
     })
 
-    // Toggle details modal
     const [modal, setModal] = useState(false)
     const toggle = () => setModal(!modal)
 
-    // Toggle edit modal
-    const [editModal, setEditModal] = useState(false)
-    const toggleEdit = () => setEditModal(!editModal)
     useEffect(() => {
         if (searchTerms !== "") {
             const subset = apartments.filter(apt => apt.apartmentName.toLowerCase().includes(searchTerms))
@@ -50,16 +45,6 @@ export const SearchResults = ({ searchTerms }) => {
                     >{apartment.apartmentName}</div>)
                 }
             </div>
-
-            <Modal isOpen={editModal} toggle={toggleEdit}>
-                <ModalHeader toggle={toggleEdit}>
-                    {selectedApartment.apartment.apartmentName}
-                </ModalHeader>
-                <ModalBody>
-                    <EditApartmentForm key={selectedApartment.apartment.id} toggleEdit={toggleEdit} {...selectedApartment} />
-                </ModalBody>
-            </Modal>
-
             <Modal isOpen={modal} toggle={toggle}>
                 <ModalHeader toggle={toggle}>
                     {selectedApartment.apartment.apartmentName}
