@@ -85,6 +85,18 @@
     background-color: rgb(117, 187, 214);
     vertical-align: middle;
 }
-.apartmentForm{
-    width: 400px;
+
+._cApartment_name, 
+._cApartment_city, 
+._cApartment_state,
+._cApartment_description,
+.btn-create_apartment
+.created_by{
+    margin-top: 20px;
+}
+._cApartment_name, 
+._cApartment_city, 
+._cApartment_state,
+._cApartment_description{
+    width: 20rem;
 }

@@ -35,21 +35,27 @@ export default props => {
     const user = users.find(u => u.id === parseInt(userId))
     const addNewApartment = () => {
         if (userId) {
-            addApartment({
-                userId:parseInt(userId),
-                uploadImage: apartmentImage,
-                apartmentName: apartmentName.current.value,
-                city: city.current.value,
-                state: state.current.value,
-                description: description.current.value,
-            })
-            .then(props.showAllApartments)
+            if(apartmentImage !== "" && apartmentName !== ""&& city !== ""&& state !== "" && description !== ""){
+                addApartment({
+                    userId:parseInt(userId),
+                    uploadImage: apartmentImage,
+                    apartmentName: apartmentName.current.value,
+                    city: city.current.value,
+                    state: state.current.value,
+                    description: description.current.value,
+                })
+                .then(props.showAllApartments)
+        }else{
+            window.alert("All fields are required")
+        }
         }
     }
 
     return (
+        
         <form className="apartmentForm">
-            <h5 className="Create_new_apartment">Create New Apartment</h5>
+            <fieldset>
+                <h6>Create New Apartment</h6>
                 <div>
                     <input type = "file" name = "file" onChange = {upload_Image} />
                     {loading ? "Loading": <img className = "uploadImage" style = {{width:"200px"}}src = {apartmentImage} />}
@@ -58,8 +64,9 @@ export default props => {
                     type="text"
                     id="apartmentName"
                     ref={apartmentName}
-                    className="form-control"
+                    className="_cApartment_name"
                     placeholder="Apartment name"
+                    autoFocus
                 />
                 <div>
                     <input
@@ -67,8 +74,8 @@ export default props => {
                         id="city"
                         ref={city}
                         required
-                        className="form-control"
-                        placeholder="city"
+                        className="_cApartment_city"
+                        placeholder="City"
                     />
                 </div>
                 <div>
@@ -76,7 +83,7 @@ export default props => {
                         type="text"
                         id="state"
                         ref={state}
-                        className="form-control"
+                        className="_cApartment_state"
                         placeholder="State"
                     />
                 </div>
@@ -85,23 +92,22 @@ export default props => {
                         type="text"
                         id="description"
                         ref={description}
-                        className="form-control"
+                        className="_cApartment_description"
                         placeholder="Description"
                     />
                 </div>
-                <div>
-                <div>By: { user.userName.charAt(0) + user.userName.slice(1)}</div>
-            </div>
-            <button type="submit"
-                onClick={
-                    evt => {
-                        evt.preventDefault() // Prevent browser from submitting the form
-                        addNewApartment()
+                <div className = "created_by">By: { user.userName.charAt(0) + user.userName.slice(1)}</div>
+                <button type="submit"
+                    onClick={
+                        evt => {
+                            evt.preventDefault() // Prevent browser from submitting the form
+                            addNewApartment()
+                        }
                     }
-                }
-                className="btn btn-primary">
-                Create 
-            </button>
+                    className="btn btn-info btn-create_apartment" size = "sm">
+                    Create 
+                </button>
+            </fieldset>
         </form>
     )
 }
