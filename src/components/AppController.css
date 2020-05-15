@@ -7,13 +7,20 @@
   }
   
   .href {
+    color: #ffffffd3;
     font-size: 20px;
   }
   
   .href:hover {
     color: rgb(89, 133, 173);
   }
-
+  .searchLink{
+    text-decoration: underline;
+    color: rgb(13, 70, 104);
+}
+  .searchLink:focus {
+    outline: 0;
+  }
   
   .icon--delete {
     padding-left: 0.5rem;

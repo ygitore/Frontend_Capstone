@@ -9,6 +9,8 @@ import AddApartmentForm from './AddApartmentForm'
 import UserRating from "../rating/UserRating"
 import Comment from "../comment/Comment";
 import { RatingList } from "../rating/RatingList"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faThumbsUp } from '@fortawesome/free-solid-svg-icons'
 import './Apartment.css'
 
 export default ({apartment}) => {
@@ -103,24 +105,32 @@ export default ({apartment}) => {
                         }
                         
                     >{userComments} comments</div>    
-                    <UserRating apt = {apartment} />                      
                 </div>
-                <div className = "complimentButtons">
+                <div className = "likeCommentFavBtns">
                     <div 
-                        color="info" 
-                        size="sm" 
                         className = "btns likeButton" 
-                        onClick = {() => {
-                            toggleLike()
-                            addLikeToApi()
+                        onClick = {
+                            () =>{
+                                toggleLike()
+                                addLikeToApi()
+                            }
                         }
-                    }>Like</div>
-                    <div color="info" size="sm" className = "btns commentButton" onClick = {toggleComment}>Comment</div>            
+                    ><FontAwesomeIcon icon={faThumbsUp} className="fas fa-camera fa-xs fa-like-icon" /></div>
+                    <div 
+                        className = "btns commentButton" 
+                        onClick = {toggleComment}
+                    >Comment</div>            
+                    <UserRating apt = {apartment} />                      
                     <RatingList apt = {apartment} />
-                    <div color="info" size="sm" className = "btns" onClick = {(evt)=> {
-                        evt.preventDefault()
-                        addNewApartmentToFavorites()
-                    }}>Add to favorites</div>
+                    <div 
+                        className = "btns" 
+                        onClick = {
+                            (evt)=> {
+                                evt.preventDefault()
+                                addNewApartmentToFavorites()
+                            }   
+                        }
+                    >Add to favorites</div>
                 </div>
                 
             </section>

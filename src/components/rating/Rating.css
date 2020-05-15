@@ -2,11 +2,11 @@ polygon {
     fill-rule: nonzero;
   }
 .starRating {
-text-align: center;
-display: flex;
-justify-content: center;
-align-items: center;
-flex-direction: column;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 .star-rating-filled {
   fill: gold;

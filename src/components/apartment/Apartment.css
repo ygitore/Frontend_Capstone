@@ -23,13 +23,10 @@
 }
 
 ._search_Apartment_name{
-    font-size: 20px;
     text-align: center;
-    font-size: 20px;
 }
 .apartment__name{
     text-align: center;
-    font-size: 20px;
 }
 .apartment__city_state, .apartment__description{
     margin-left: 5px;
@@ -40,6 +37,12 @@
 .apartment__description{
     margin-bottom: auto;
 }
+.likeCommentFavBtns{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: auto;
+}
 .likesComments{
     display: flex;
     flex-direction: row;
@@ -48,18 +51,10 @@
 .compliment{
     flex-basis: 40%;
 }
-.complimentButtons{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-top: auto;
-}
 
 .btns{
     flex-basis: 10%;
-    font-size: 12px;
     text-transform: uppercase;
-    font-weight: bold;
     color: rgb(54, 114, 148);
     cursor: pointer;
     z-index: 5;
@@ -73,7 +68,6 @@
     -o-transition: all 0.2s ease-in-out;
     -ms-transition: all 0.2s ease-in-out;
     transition: all 0.2s ease-in-out;
-    background-color: rgb(58, 104, 134);
     border: none;
     color: #fff;
     box-shadow: none;
@@ -98,5 +92,10 @@
 ._cApartment_city, 
 ._cApartment_state,
 ._cApartment_description{
-    width: 20rem;
+    width: 18rem;
+}
+.fa-like-icon{
+    margin-top: 0;
+    padding-top: 0;
+    color: rgb(20, 54, 245);
 }

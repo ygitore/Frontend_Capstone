@@ -45,9 +45,9 @@ export default props => {
                     description: description.current.value,
                 })
                 .then(props.showAllApartments)
-        }else{
-            window.alert("All fields are required")
-        }
+            }else{
+                window.alert("All fields are required")
+            }
         }
     }
 
@@ -66,6 +66,7 @@ export default props => {
                     ref={apartmentName}
                     className="_cApartment_name"
                     placeholder="Apartment name"
+                    maxLength = "30"
                     autoFocus
                 />
                 <div>
@@ -76,6 +77,7 @@ export default props => {
                         required
                         className="_cApartment_city"
                         placeholder="City"
+                        maxLength = "30"
                     />
                 </div>
                 <div>
@@ -85,6 +87,7 @@ export default props => {
                         ref={state}
                         className="_cApartment_state"
                         placeholder="State"
+                        maxLength = "30"
                     />
                 </div>
                 <div>
@@ -94,6 +97,7 @@ export default props => {
                         ref={description}
                         className="_cApartment_description"
                         placeholder="Description"
+                        maxLength = "300"
                     />
                 </div>
                 <div className = "created_by">By: { user.userName.charAt(0) + user.userName.slice(1)}</div>

@@ -1,10 +1,11 @@
 import React, { useContext } from 'react'
 import { ApartmentContext } from "./ApartmentProvider";
 import { Button } from 'reactstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import "./Apartment.css"
+
 export default (props) => {
-    const {apartments, deleteApartment} = useContext(ApartmentContext)
-    const apartment = apartments.find(apt => apt.id === props.val)
+    const {deleteApartment} = useContext(ApartmentContext)
     return(
         <>
             <div>Are you sure you want to delete {props.apartmentName}?</div>
@@ -16,7 +17,7 @@ export default (props) => {
                     deleteApartment(props.apartmentId)
                     props.toggleDeleteApartment()
                 }
-            }>Deleteee</Button>
+            }>Delete</Button>
         </>
     )
 }

@@ -1,8 +1,4 @@
-*{
-    margin: 0;
-    padding:0;
-    box-sizing: border-box;
-}
+@import url('https://fonts.googleapis.com/css2?family=Alice&display=swap');
 .mainContainer {
     display: flex;
     flex-direction: column;
@@ -14,11 +10,12 @@
 .searchContainer{
     flex: 1;
 }
-.links{
+.links{    
+    font-family: 'Alice', serif;
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
-    background-color: rgb(92, 94, 97);
+    background-color: rgb(64, 85, 102);
     color:#fff;
     width: 100%;
 }

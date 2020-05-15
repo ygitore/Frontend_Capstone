@@ -13,6 +13,7 @@ import { SearchBar } from "./search/SearchBar";
 import { SearchResults } from "./search/SearchResults";
 import MyApartmentList from './myApartment/MyApartmentList'
 import { RatingProvider } from './rating/RatingProvider'
+
 import "./AppController.css"
 import "./Layout.css"   
 
@@ -85,8 +86,6 @@ export const Dashboard = (props) => {
         }
         
     }, [activeList])
-    const [profile, setProfile] = useState(false)
-    const toggleProfile = () => setProfile(!profile)
   
     return (
         <>
