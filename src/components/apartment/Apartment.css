@@ -68,7 +68,14 @@
     margin-bottom: 40px;
     align-self: stretch;
 }
-
+.apartment:hover{
+    box-shadow: 1px 1px 20px 2px rgb(147, 180, 230);
+    transition-duration: 0.2s;
+    transition-timing-function:ease-out;
+    transition-delay: 0.2s;
+    transform: scale(0.9);
+    -webkit-transition-delay: 0.2s;
+}
 .apartmentImage{
     height: 45%;
     width: 100%;

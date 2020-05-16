@@ -38,7 +38,7 @@ export default ({myApartment}) => {
                         id = {myApartment.id} 
                         className="edit_my_apartment"
                         onClick = {toggleEdit}
-                    >edit</Button>
+                    >Edit</Button>
 
                     <div
                         id = {myApartment.id} 
@@ -48,14 +48,15 @@ export default ({myApartment}) => {
                     </div>
                 </div>
             </div>
-            <Modal isOpen = {modal} toggle = {toggle}>
-            <ModalHeader toggle = {toggle}>Delete {myApartment.apartmentName}</ModalHeader>
-                <ModalBody>
-                    <DeleteMyApartment 
-                        apartmentId = {myApartment.id} 
-                        toggleDeleteApartment = {toggle} 
-                    />
-                </ModalBody>
+            <Modal isOpen = {modal} toggle = {toggle} size = "sm">
+            <ModalHeader toggle = {toggle}>{myApartment.apartmentName}
+            </ModalHeader>
+            <ModalBody>
+                <DeleteMyApartment 
+                    apartmentId = {myApartment.id} 
+                    toggleDeleteApartment = {toggle} 
+                />
+            </ModalBody>
             </Modal>   
 
             <Modal isOpen = {editModal} toggle = {toggleEdit}>

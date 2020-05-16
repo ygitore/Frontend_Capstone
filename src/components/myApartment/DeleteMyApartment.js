@@ -9,7 +9,11 @@ export default (props) => {
     const {deleteApartment} = useContext(ApartmentContext)
     return(
         <>
-            <div className = "delete-warning">Are you sure you want to delete {props.apartmentName}?</div>
+            <div className = "delete-warning">
+                <span 
+                    className = "warning-sign">&#9888;
+                </span>&nbsp;Delete {props.apartmentName}?
+            </div>
             <div 
                 className = "deleting_my_apartment" 
                 onClick={

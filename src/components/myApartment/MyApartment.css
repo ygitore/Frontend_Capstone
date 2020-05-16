@@ -38,18 +38,22 @@
 .my_apartment__description{
     margin: 10px;
 }
+.edit_delete_btn{
+    display: flex;
+    flex-direction: row;
+}
+.edit_my_apartment, .delete_my_apartment{
+    margin-bottom: 2%;
+    margin-bottom: 10px;
+}
 .edit_my_apartment{
     margin-left: 2%;
-    margin-bottom: 4%;
+    height: 26px;
+    margin-top: 10px;
 }
 .delete_my_apartment{
     margin-left: 78%;
     margin-top: auto;
-    margin-bottom: 10px;
-}
-.edit_delete_btn{
-    display: flex;
-    flex-direction: row;
 }
 
 /*style for DeleteMyApartment.js component*/
@@ -59,8 +63,12 @@
 }
 .delete-warning{
     display: inline-block;
-    margin-right: 10px;
+    margin-right: 54%;
 }
 .deleting_my_apartment{
     display: inline-block;
+}
+.warning-sign{
+    color: rgb(240, 168, 110);
+    font-size: 34px;
 }
