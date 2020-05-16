@@ -1,90 +1,136 @@
-.apartments{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-.apartment{
-    flex-basis: 45%;
-    border: 1px solid rgb(20, 20, 20);
-    margin-bottom: 40px;
-    max-height: 40rem;
-    max-width: 30rem;
-}
-
-.apartmentImage{
-    height: 15rem;
-    width: 30rem;
-}
-
+/*style for Search.js and SearchResult.js component*/
 .edit_apartment_image{
     height: 300px;
     width: 466px;
 }
 
-.edit_apartment_name{
-    font-size: 20px;
-    font-weight: bolder;
+._search_Apartment_name{
     text-align: center;
-    font-size: 20px;
 }
 .apartment__name{
     text-align: center;
-    font-size: 20px;
+    margin: 10px;
+}
+.apartment__city_state{
+    text-align: center;
 }
 .apartment__city_state, .apartment__description{
-    margin-left: 5px;
+    margin-left: 10px;
+}
+._search_city-and-state{
+    text-align: center;
 }
 .apartment__description{
     margin-bottom: auto;
 }
-.likesComments{
+/*addApartmentForm.js component*/
+.apartmentForm{
+    margin-left: 5%;
+}
+._cApartment_name, 
+._cApartment_city, 
+._cApartment_state,
+._cApartment_description,
+.btn-create_apartment
+.created_by{
+    margin-top: 20px;
+}
+._cApartment_name, 
+._cApartment_city, 
+._cApartment_state,
+._cApartment_description{
+    width: 30%;
+}
+._cApartment_name{
+    font-size: 20px;
+}
+.createNewApartment{
+    margin-bottom: 20px;
+}
+
+/*...styling for Apartment.js component ..*/
+.apartments{
     display: flex;
     flex-direction: row;
-    margin-bottom: auto;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    flex-grow: 1;
 }
-.compliment{
+.apartment{
     flex-basis: 40%;
+    height: 550px;
+    border: 1px solid rgb(130, 156, 172);
+    border-radius: 10px;
+    margin-bottom: 80px;
+    align-self: stretch;
 }
-.complimentButtons{
+.apartment:hover{
+    box-shadow: 1px 1px 20px 2px rgb(147, 180, 230);
+    transition-duration: 0.2s;
+    transition-timing-function:ease-out;
+    transition-delay: 0.2s;
+    transform: scale(0.9);
+    -webkit-transition-delay: 0.2s;
+}
+.apartmentImage{
+    height: 45%;
+    width: 100%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+.likeBtn_NumOflikes, 
+.comment_num_of_comments, 
+.user_rating_stars{
+    display: flex;
+    flex-direction: column;
+}
+
+.likeCommentFavRating{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    margin-top: auto;
+    justify-content: space-around;
+    align-self: stretch;
+    margin-top: 10px;
 }
 
 .btns{
-    flex-basis: 10%;
-    font-size: 12px;
-    text-transform: uppercase;
-    font-weight: bold;
-    color: rgb(54, 114, 148);
-    cursor: pointer;
-    z-index: 5;
-    position: relative;
-    padding: 10px;
-    line-height: 0px;
-    margin: 0;
-    height: 22px;
-    -webkit-transition: all 0.2s ease-in-out;
-    -moz-transition: all 0.2s ease-in-out;
-    -o-transition: all 0.2s ease-in-out;
-    -ms-transition: all 0.2s ease-in-out;
-    transition: all 0.2s ease-in-out;
-    background-color: rgb(58, 104, 134);
-    border: none;
-    color: #fff;
-    box-shadow: none;
+    flex-grow: 1;
+    flex-basis: 0;
 } 
-.comments{
-    margin-left: -28px;
+
+.fa-like-icon{
+    display: inline-block;
+    color: rgb(177, 174, 174);
 }
-.user_Comments{
-    background-color: rgb(117, 187, 214);
-    vertical-align: middle;
+.comment_num_of_comments{
+    white-space: nowrap;
 }
-.modal-dialog {
+.fa-add-comment{
+    color: rgb(212, 211, 205);
+}
+.likeBtn_NumOflikes{
+    margin-left: 10px;
+}
+.commentButton{
+    height: 30px;
+}
+.user_rating_stars{
     display: flex;
-  flex-direction: column;
-  justify-content: center;
-  }
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;   
+    margin-top: auto; 
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.star{
+    color: rgb(233, 203, 35);
+    font-weight: bolder;
+}
+.add_to_favorite{
+    text-align: center;
+    height: 30px;
+    white-space:nowrap;
+    margin-top: auto;
+    margin-right: 10px;
+}

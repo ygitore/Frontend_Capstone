@@ -2,6 +2,7 @@ import React, { useContext, useRef, useState } from "react"
 import { ApartmentContext } from "./ApartmentProvider"
 import { UserContext } from "../user/UserProvider"
 import axios from 'axios'
+import './Apartment.css'
 
 export default props => {
     const { addApartment } = useContext(ApartmentContext)    
@@ -35,103 +36,90 @@ export default props => {
     const user = users.find(u => u.id === parseInt(userId))
     const addNewApartment = () => {
         if (userId) {
-            addApartment({
-                userId:parseInt(userId),
-                uploadImage: apartmentImage,
-                apartmentName: apartmentName.current.value,
-                city: city.current.value,
-                state: state.current.value,
-                description: description.current.value,
-            })
-            .then(props.showAllApartments)
+            if(apartmentImage !== "" && apartmentName !== ""&& city !== ""&& state !== "" && description !== ""){
+                addApartment({
+                    userId:parseInt(userId),
+                    uploadImage: apartmentImage,
+                    apartmentName: (apartmentName.current.value).toLowerCase(),
+                    city: city.current.value,
+                    state: state.current.value,
+                    description: description.current.value,
+                    date_time: Date.now()
+                })
+                .then(props.showAllApartments)
+            }else{
+                window.alert("All fields are required")
+            }
         }
     }
-
+   
     return (
+        
         <form className="apartmentForm">
-            <h5 className="Create_new_apartment">Create New Apartment</h5>
             <fieldset>
-                <div className="form-group">
+                <div className = "createNewApartment">Create New Apartment</div>
+                <div>
                     <input type = "file" name = "file" onChange = {upload_Image} />
-                    {loading ? "Loading": <img className = "uploadImage" style = {{width:"200px"}}src = {apartmentImage} />}
+                    {loading ? "Loading": <img className = "uploadImage" style = {{width:"150px"}}src = {apartmentImage} />}
                 </div>
-            </fieldset>
-            <fieldset>
-                <div className="form-group">
-                    <label htmlFor="apartmentName">Apartment name: </label>
-                    <input
-                        type="text"
-                        id="apartmentName"
-                        ref={apartmentName}
-                        className="form-control"
-                        placeholder="Apartment name"
-                    />
-                </div>
-            </fieldset>
-            <fieldset>
-                <div className="form-group">
-                    <label htmlFor="city">City: </label>
+                <input
+                    type="text"
+                    id="apartmentName"
+                    ref={apartmentName}
+                    className="_cApartment_name"
+                    placeholder="apartment name"
+                    maxLength = "30"
+                    autoFocus
+                />
+                <div>
                     <input
                         type="text"
                         id="city"
                         ref={city}
                         required
-                        className="form-control"
+                        className="_cApartment_city"
                         placeholder="city"
+                        maxLength = "30"
                     />
                 </div>
-            </fieldset>
-            <fieldset>
-                <div className="form-group">
-                    <label htmlFor="state">State: </label>
+                <div>
                     <input
                         type="text"
                         id="state"
                         ref={state}
-                        className="form-control"
-                        placeholder="State"
+                        className="_cApartment_state"
+                        placeholder="state"
+                        maxLength = "30"
                     />
                 </div>
-            </fieldset>
-            <fieldset>
-                <div className="form-group">
-                    <label htmlFor="description">Description: </label>
+                <div>
                     <input
                         type="text"
                         id="description"
                         ref={description}
-                        className="form-control"
-                        placeholder="Description"
+                        className="_cApartment_description"
+                        placeholder="description"
+                        maxLength = "175"
                     />
                 </div>
-            </fieldset>
-            <fieldset>
-                <div className="form-group">
-                    <label htmlFor="userName">By: </label>
-                    <select
-                        defaultValue=""
-                        name="userId"
-                        id="userId"
-                        className="form-control">
-                        <option value="0">
-                        {
-                            user.userName
-                        }
-                        </option>
-                        
-                    </select>
-                </div>
-            </fieldset>
-            <button type="submit"
-                onClick={
-                    evt => {
-                        evt.preventDefault() // Prevent browser from submitting the form
-                        addNewApartment()
+                <div 
+                    className = "created_by">by:-  
+                    { 
+                        user.userName.charAt(0).toUpperCase() + 
+                        user.userName.slice(1)
                     }
-                }
-                className="btn btn-primary">
-                Create 
-            </button>
+                </div>
+                <button type="submit"
+                    onClick={
+                        evt => {
+                            evt.preventDefault() // Prevent browser from submitting the form
+                            addNewApartment()
+                        }
+                    }
+                    className="btn btn-info btn-create_apartment" size = "sm">
+                    Create 
+                </button>
+            </fieldset>
         </form>
     )
 }

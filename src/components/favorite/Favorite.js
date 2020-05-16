@@ -3,6 +3,8 @@ import { FavoriteContext } from './FavoriteProvider'
 import { Button } from 'reactstrap'
 import { ApartmentContext } from '../apartment/ApartmentProvider'
 import { UserContext } from '../user/UserProvider'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 import "./Favorite.css"
 
 export default ({favorite}) => {
@@ -16,7 +18,7 @@ export default ({favorite}) => {
     const deleteFromFavorites =()=>{
         deleteFavorite(favorite.id)
     }
-    let count = 0
+    
     if(parseInt(user.id) === parseInt(favorite.userId) && user !== null)
     {
         return(
@@ -28,10 +30,12 @@ export default ({favorite}) => {
                                 return (
                                     <div> 
                                         {apt.apartmentName}{
-                                            <Button className = "deleteFavorites"color = "danger" size = "sm" onClick = {(evt) =>{
-                                                evt.preventDefault()
-                                                deleteFromFavorites()
-                                            }}>delete</Button>
+                                            <div 
+                                                className = "deleteFavorites" 
+                                                onClick = {(evt) =>{
+                                                    evt.preventDefault()
+                                                    deleteFromFavorites()
+                                            }}><span><FontAwesomeIcon icon={faTrashAlt} /></span></div>
                                         }
                                             
                                     </div>

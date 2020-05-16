@@ -1,23 +1,27 @@
 import React, { useContext } from 'react'
 import { Button } from 'reactstrap';
 import { ApartmentContext } from '../apartment/ApartmentProvider';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 import "./MyApartment.css"
 
 export default (props) => {
     const {deleteApartment} = useContext(ApartmentContext)
     return(
         <>
-            <div>Are you sure you want to delete {props.apartmentName}?</div>
-            <Button 
-                color="danger" 
-                size = "sm" 
-                className = "delete_my_apartment" 
+            <div className = "delete-warning">
+                <span 
+                    className = "warning-sign">&#9888;
+                </span>&nbsp;Delete {props.apartmentName}?
+            </div>
+            <div 
+                className = "deleting_my_apartment" 
                 onClick={
                     () => {
                     deleteApartment(props.apartmentId)
                     props.toggleDeleteApartment()
                 }
-            }>delete</Button>
+            }><FontAwesomeIcon icon = {faTrashAlt} className = "fa-delete-my-apartment"/></div>
         </>
     )
 }

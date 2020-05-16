@@ -16,8 +16,8 @@ export const Star = ({ starId, rating, onMouseEnter, onMouseLeave, onClick, apar
       apartment = {apartment}
     >
       <svg
-        height="25px"
-        width="28px"
+        height="20px"
+        width="25px"
         class={styleClass}
         viewBox="0 0 25 23"
         data-rating="1"

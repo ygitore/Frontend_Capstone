@@ -9,10 +9,6 @@ export const EditMyApartmentForm = ({ selectedApartment, toggleEditApartment }) 
     // Separate state variable to track the apartment as it is edited
     const [ updatedApartment, setApartment ] = useState(selectedApartment)
 
-    /*
-        When changing a state object or array, always create a new one
-        and change state instead of modifying current one
-    */
     const handleControlledInputChange = (event) => {
         // Create a new copy of the apartment being edited
         const newApartment = Object.assign({}, updatedApartment)
@@ -24,23 +20,31 @@ export const EditMyApartmentForm = ({ selectedApartment, toggleEditApartment }) 
         setApartment(newApartment)
     }
     
+
     const userId = parseInt(localStorage.getItem("reviewApartment_user"))
     const user = users.find(u=>u.id === userId)
     const editApartment = () => {
-        
-        updateApartment({
-            id: updatedApartment.id,
-            userId: userId,
-            uploadImage: updatedApartment.uploadImage,
-            apartmentName: updatedApartment.apartmentName,
-            city: updatedApartment.city,
-            state: updatedApartment.state,
-            description: updatedApartment.description
-        })
-        .then(toggleEditApartment)        
+        if(updatedApartment.uploadImage !== "" && 
+            updatedApartment.apartmentName !== "" && 
+            updatedApartment.city !== "" && updatedApartment.state !== "" &&
+            updatedApartment.description !== "")
+        {
+                updateApartment({
+                    id: updatedApartment.id,
+                    userId: userId,
+                    uploadImage: updatedApartment.uploadImage,
+                    apartmentName: updatedApartment.apartmentName,
+                    city: updatedApartment.city,
+                    state: updatedApartment.state,
+                    description: updatedApartment.description
+                })
+                .then(toggleEditApartment)
+        }else{
+            window.alert("All fields are required!")
+        }        
     }
     return (
-        <form className="apartmentForm">
+        <form className="editApartmentForm">
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="userName">user name: </label>
@@ -58,7 +62,7 @@ export const EditMyApartmentForm = ({ selectedApartment, toggleEditApartment }) 
             </fieldset>
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="apartmentImage">Upload image: </label>
+                    <label htmlFor="apartmentImage">image url: </label>
                     <input 
                         type="text" 
                         name = "apartmentImage"
@@ -66,6 +70,8 @@ export const EditMyApartmentForm = ({ selectedApartment, toggleEditApartment }) 
                         defaultValue={selectedApartment.uploadImage}
                         onChange={handleControlledInputChange}
                     />
+                    <div>
+                </div>
                 </div>
             </fieldset>
             <fieldset>
@@ -74,6 +80,7 @@ export const EditMyApartmentForm = ({ selectedApartment, toggleEditApartment }) 
                     <input type="text"
                         name="apartmentName" 
                         className="form-control"
+                        maxLength = "30"
                         defaultValue={selectedApartment.apartmentName}
                         onChange={handleControlledInputChange}
                     />
@@ -85,6 +92,7 @@ export const EditMyApartmentForm = ({ selectedApartment, toggleEditApartment }) 
                     <input 
                         type="text" 
                         name="city" 
+                        maxLength = "30"
                         className="form-control"
                         defaultValue={selectedApartment.city}
                         onChange={handleControlledInputChange}
@@ -97,6 +105,7 @@ export const EditMyApartmentForm = ({ selectedApartment, toggleEditApartment }) 
                     <input 
                         type="text" 
                         name="state" 
+                        maxLength = "30"
                         className="form-control"
                         defaultValue={selectedApartment.state}
                         onChange={handleControlledInputChange}
@@ -110,6 +119,7 @@ export const EditMyApartmentForm = ({ selectedApartment, toggleEditApartment }) 
                     <input 
                         type="text" 
                         name="description" 
+                        maxLength = "175"
                         className="form-control"
                         defaultValue={selectedApartment.description}
                         onChange={handleControlledInputChange}

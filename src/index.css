@@ -1,16 +1,12 @@
-@import url('https://fonts.googleapis.com/css?family=Fanwood+Text&display=swap');
-body {
-  margin: 0;
-  font-family: 'Fanwood Text', serif,sans-serif, 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
+@import url('https://fonts.googleapis.com/css2?family=Baskervville&display=swap');
 *{
   padding:0;
   margin: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Baskervville', serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 20px;
 }
