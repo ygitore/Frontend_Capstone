@@ -44,6 +44,7 @@ export default props => {
                     city: city.current.value,
                     state: state.current.value,
                     description: description.current.value,
+                    date_time: Date.now()
                 })
                 .then(props.showAllApartments)
             }else{
@@ -51,7 +52,7 @@ export default props => {
             }
         }
     }
-
+   
     return (
         
         <form className="apartmentForm">
