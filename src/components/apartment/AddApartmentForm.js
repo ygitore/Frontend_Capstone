@@ -2,6 +2,7 @@ import React, { useContext, useRef, useState } from "react"
 import { ApartmentContext } from "./ApartmentProvider"
 import { UserContext } from "../user/UserProvider"
 import axios from 'axios'
+import './Apartment.css'
 
 export default props => {
     const { addApartment } = useContext(ApartmentContext)    
@@ -39,7 +40,7 @@ export default props => {
                 addApartment({
                     userId:parseInt(userId),
                     uploadImage: apartmentImage,
-                    apartmentName: apartmentName.current.value,
+                    apartmentName: (apartmentName.current.value).toLowerCase(),
                     city: city.current.value,
                     state: state.current.value,
                     description: description.current.value,
@@ -55,17 +56,17 @@ export default props => {
         
         <form className="apartmentForm">
             <fieldset>
-                <h6>Create New Apartment</h6>
+                <div className = "createNewApartment">Create New Apartment</div>
                 <div>
                     <input type = "file" name = "file" onChange = {upload_Image} />
-                    {loading ? "Loading": <img className = "uploadImage" style = {{width:"200px"}}src = {apartmentImage} />}
+                    {loading ? "Loading": <img className = "uploadImage" style = {{width:"150px"}}src = {apartmentImage} />}
                 </div>
                 <input
                     type="text"
                     id="apartmentName"
                     ref={apartmentName}
                     className="_cApartment_name"
-                    placeholder="Apartment name"
+                    placeholder="apartment name"
                     maxLength = "30"
                     autoFocus
                 />
@@ -76,7 +77,7 @@ export default props => {
                         ref={city}
                         required
                         className="_cApartment_city"
-                        placeholder="City"
+                        placeholder="city"
                         maxLength = "30"
                     />
                 </div>
@@ -86,7 +87,7 @@ export default props => {
                         id="state"
                         ref={state}
                         className="_cApartment_state"
-                        placeholder="State"
+                        placeholder="state"
                         maxLength = "30"
                     />
                 </div>
@@ -96,11 +97,17 @@ export default props => {
                         id="description"
                         ref={description}
                         className="_cApartment_description"
-                        placeholder="Description"
-                        maxLength = "300"
+                        placeholder="description"
+                        maxLength = "175"
                     />
                 </div>
-                <div className = "created_by">By: { user.userName.charAt(0) + user.userName.slice(1)}</div>
+                <div 
+                    className = "created_by">by:-  
+                    { 
+                        user.userName.charAt(0).toUpperCase() + 
+                        user.userName.slice(1)
+                    }
+                </div>
                 <button type="submit"
                     onClick={
                         evt => {

@@ -1,33 +1,21 @@
-.delete_Apartment{
-    margin-right: -100%;
+
+/*style for myAprtment.js component*/
+.my_apartments{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    flex-grow: 1;
+    width: 40%;
 }
-.delete_my_apartment{
-    margin-left: 81%;
-    margin-bottom: 5px;
-}
-.userApartment_name{
-    text-align: center;
-}
-.userApartmentImage{
-    height: 17rem;
-    width: 100%;
-}
-.userApartment__description{
-    max-width: 20rem;
-    margin-left: 5px;
-}
-.userApartment__city_state{
-    margin-left: 5px;
+.my_apartment{
+    height: 450px;
+    border: 1px solid rgb(130, 156, 172);
+    border-radius: 10px;
+    margin-bottom: 40px;
 }
 
-.userApartment{
-    margin-bottom: 15px;
-    border: 1px solid rgb(73, 58, 21);
-    margin-left: 30%;
-    max-width: 28%;
-}
-
-.userApartment:hover{
+.my_apartment:hover{
     box-shadow: 1px 1px 20px 2px rgb(147, 180, 230);
     transition-duration: 0.2s;
     transition-timing-function:ease-out;
@@ -35,4 +23,44 @@
     transform: scale(0.9);
     -webkit-transition-delay: 0.2s;
 }
+.my_apartment_image{
+    height: 200px;
+    width: 100%;
+    border-radius: 10px;
+}
+.my_apartment_name{
+    text-align: center;
+    font-size: 20px;
+}
+.my_apartment__city_state{
+    text-align: center;
+}
+.my_apartment__description{
+    margin: 10px;
+}
+.edit_my_apartment{
+    margin-left: 2%;
+    margin-bottom: 4%;
+}
+.delete_my_apartment{
+    margin-left: 78%;
+    margin-top: auto;
+    margin-bottom: 10px;
+}
+.edit_delete_btn{
+    display: flex;
+    flex-direction: row;
+}
 
+/*style for DeleteMyApartment.js component*/
+.fa-delete-my-apartment{
+    font-size: 18px;
+    color: rgb(73, 45, 55);
+}
+.delete-warning{
+    display: inline-block;
+    margin-right: 10px;
+}
+.deleting_my_apartment{
+    display: inline-block;
+}
