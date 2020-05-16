@@ -9,10 +9,6 @@ export const EditMyApartmentForm = ({ selectedApartment, toggleEditApartment }) 
     // Separate state variable to track the apartment as it is edited
     const [ updatedApartment, setApartment ] = useState(selectedApartment)
 
-    /*
-        When changing a state object or array, always create a new one
-        and change state instead of modifying current one
-    */
     const handleControlledInputChange = (event) => {
         // Create a new copy of the apartment being edited
         const newApartment = Object.assign({}, updatedApartment)
@@ -40,7 +36,7 @@ export const EditMyApartmentForm = ({ selectedApartment, toggleEditApartment }) 
         .then(toggleEditApartment)        
     }
     return (
-        <form className="apartmentForm">
+        <form className="editApartmentForm">
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="userName">user name: </label>

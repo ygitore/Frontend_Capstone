@@ -10,7 +10,7 @@ import UserRating from "../rating/UserRating"
 import Comment from "../comment/Comment";
 import { RatingList } from "../rating/RatingList"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faThumbsUp, faCommentAlt } from '@fortawesome/free-solid-svg-icons'
+import { faThumbsUp, faUser } from '@fortawesome/free-solid-svg-icons'
 import './Apartment.css'
 
 export default ({apartment}) => {
@@ -156,7 +156,8 @@ export default ({apartment}) => {
                 </ModalBody>
             </Modal> 
 
-            <Modal size="md"            
+            <Modal 
+                size="md"            
                 centered
                 isOpen = {user_Comments} 
                 toggle = {toggleUserComments}>

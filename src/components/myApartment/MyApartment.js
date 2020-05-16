@@ -23,7 +23,7 @@ export default ({myApartment}) => {
                 />
                 <div className="my_apartment_name">
                 {
-                    myApartment.apartmentName.charAt(0)+
+                    myApartment.apartmentName.charAt(0).toUpperCase()+
                     myApartment.apartmentName.slice(1)
                 }</div>
                 <div className="my_apartment__city_state">
@@ -59,13 +59,13 @@ export default ({myApartment}) => {
             </ModalBody>
             </Modal>   
 
-            <Modal isOpen = {editModal} toggle = {toggleEdit}>
-            <ModalHeader toggle = {toggleEdit}>Edit {myApartment.apartmentName}</ModalHeader>
-                <ModalBody>
-                    <EditMyApartmentForm 
-                        selectedApartment = {myApartment} 
-                        toggleEditApartment = {toggleEdit} 
-                    />
+            <Modal isOpen = {editModal} toggle = {toggleEdit} className = "modal-sm">
+                <ModalHeader toggle = {toggleEdit}>Edit {myApartment.apartmentName}</ModalHeader>
+                    <ModalBody>
+                        <EditMyApartmentForm 
+                            selectedApartment = {myApartment} 
+                            toggleEditApartment = {toggleEdit} 
+                        />
                 </ModalBody>
             </Modal>  
         </>

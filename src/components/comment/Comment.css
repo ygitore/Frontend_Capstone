@@ -11,3 +11,27 @@
     border-bottom: 1px solid rgb(189, 185, 185);
     flex: 1;
 }
+/*style for Comment.js component*/
+.user_and_comments{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    place-items: start;
+}
+.person-commented-image{
+    color: 	#ffe0bd;
+    flex: 1;
+}
+.usr_com{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    flex: 4;
+}
+.person-commented{
+    color: rgb(108, 189, 216);
+}
+.users_comments{
+    font-size: 18px;
+}

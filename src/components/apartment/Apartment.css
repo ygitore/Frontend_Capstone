@@ -22,11 +22,6 @@
 .apartment__description{
     margin-bottom: auto;
 }
-
-.user_Comments{
-    background-color: rgb(117, 187, 214);
-    vertical-align: middle;
-}
 /*addApartmentForm.js component*/
 .apartmentForm{
     margin-left: 5%;
@@ -116,7 +111,7 @@
     margin-left: 10px;
 }
 .commentButton{
-    height: 30px important;
+    height: 30px;
 }
 .user_rating_stars{
     display: flex;
