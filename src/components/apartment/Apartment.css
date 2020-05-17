@@ -92,7 +92,9 @@
     align-self: stretch;
     margin-top: 10px;
 }
-
+.likeButton{
+    margin-top: auto;
+}
 .btns{
     flex-grow: 1;
     flex-basis: 0;
@@ -112,7 +114,9 @@
     margin-left: 10px;
 }
 .commentButton{
-    height: 30px;
+    max-height: 27px;
+    width: 100%;
+    margin-top: auto;
 }
 .user_rating_stars{
     display: flex;

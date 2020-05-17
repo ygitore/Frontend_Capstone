@@ -98,7 +98,7 @@ export default ({apartment}) => {
                 
                 <div className = "likeCommentFavRating">
                     <div className = "btns likeBtn_NumOflikes">
-                        <div className = "likes">{userLikedApartment.length} likes</div>
+                        <div className = "likes">{userLikedApartment.length > 1 ? userLikedApartment.length +" likes" : userLikedApartment.length === 1 ? userLikedApartment.length+" like" : ""}</div>
                         <div className = "likeButton " 
                             onClick = {
                                 () =>{
@@ -115,7 +115,7 @@ export default ({apartment}) => {
                             className = "comments"
                             onClick = {
                                 toggleUserComments
-                            }>{userComments} comments
+                            }>{userComments > 1 ? userComments+" comments" : userComments === 1 ? userComments+" comment": ""}
                         </div>    
                         <Button
                             size = "sm"

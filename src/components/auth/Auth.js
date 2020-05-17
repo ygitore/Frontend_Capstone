@@ -5,7 +5,7 @@ import Register from "./Register"
 export default ({toggle}) => {
     return (
         <>
-            <h1 className="welcome">Welcome to Nashville Kennels</h1>
+            <h1 className="business-name">Review Apartments</h1>
             <div className="authContainer">
                 <Login toggle={toggle} />
                 <Register toggle={toggle} />
