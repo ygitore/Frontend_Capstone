@@ -1,22 +1,25 @@
 /*style for Auth.js component*/
 .big-wrapper{
-    margin-top: 2%;
-    margin-bottom: 2%;
-    background-color: rgb(242, 245, 247);
+    background-image: url("./cover.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
 }
 .propmpt-signin{
     margin-top: 5%;
 }
 .authContainer{
     color: rgb(238, 232, 222);
-    border: 1px solid #a19468;
-    margin-left: 41%;
-    margin-right: 41%;
+    border: 1px solid #d6e4f1;
     background-color: rgb(98, 81, 105);
-    border-radius: 10px;
+    width: 50%;
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 10px;
+    margin-left: 20px;
 }
 /*style for Login.js component*/
-.business-name {
+.welcome {
     text-align: center;
 }
 .container-login{

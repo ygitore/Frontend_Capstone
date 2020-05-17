@@ -97,6 +97,7 @@ export const Dashboard = (props) => {
                         <div className="navbar href" onClick={() => setActiveList("createApartmentForm")}>Create Apartment</div>
                         <div className="navbar href" onClick={() => setActiveList("showMyApartments")}>My Apartments</div>
                         <div className="navbar href" onClick={() => setActiveList("favorites")}>Favorites</div>
+                        
                         <div className="navbar href" onClick={
                             () => {
                                 localStorage.setItem("reviewApartment_user","") 

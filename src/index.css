@@ -4,9 +4,12 @@
   margin: 0;
   box-sizing: border-box;
 }
+
+html { height: 100% } 
 body {
   font-family: 'Baskervville', serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 20px;
+  height: 100% ;
 }
