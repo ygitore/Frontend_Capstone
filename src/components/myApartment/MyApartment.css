@@ -26,7 +26,8 @@
 .my_apartment_image{
     height: 200px;
     width: 100%;
-    border-radius: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 }
 .my_apartment_name{
     text-align: center;
@@ -52,7 +53,7 @@
     margin-top: 10px;
 }
 .delete_my_apartment{
-    margin-left: 78%;
+    margin-left: 70%;
     margin-top: auto;
 }
 
