@@ -26,11 +26,11 @@ export default ({toggle}) => {
         <div className = "big-wrapper">
             <h2 className="welcome">Welcome to Review Apartments</h2>
             <div className="authContainer">
-            <div className="navbar href" onClick={() => setActiveList("login")}>Login</div>
-            <div className="navbar href" onClick={() => setActiveList("register")}>Register</div>
+                <Button color = "info" size = "sm" className="login-page-button" onClick={() => setActiveList("login")}>Login</Button>
+                <Button color = "info" size = "sm" className="register-page-button" onClick={() => setActiveList("register")}>Register</Button>
+            </div>
             <div>
                 {component}
-            </div>
             </div>
         </div>
     )

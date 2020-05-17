@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { ApartmentProvider } from './apartment/ApartmentProvider'
 import ApartmentList from './apartment/ApartmentList'
-import { UserProvider, UserContext } from './user/UserProvider'
+import { UserProvider } from './user/UserProvider'
 import { CommentProvider } from './comment/CommentProvider'
 import { LikeProvider } from './like/LikeProvider'
 import { FavoriteProvider } from './favorite/FavoriteProvider'
@@ -13,7 +13,6 @@ import { SearchBar } from "./search/SearchBar";
 import { SearchResults } from "./search/SearchResults";
 import MyApartmentList from './myApartment/MyApartmentList'
 import { RatingProvider } from './rating/RatingProvider'
-
 import "./AppController.css"
 import "./Layout.css"   
 
@@ -24,7 +23,6 @@ export const Dashboard = (props) => {
     
     const [modal, setModal] = useState(false)
     const toggle = () => setModal(!modal)
-    
     // Components needed to display all apartments
     const showAllApartments = () => (
         <UserProvider>
@@ -86,7 +84,7 @@ export const Dashboard = (props) => {
         }
         
     }, [activeList])
-  
+    
     return (
         <>
             <ApartmentProvider>
@@ -96,8 +94,7 @@ export const Dashboard = (props) => {
                         <div className="navbar href" onClick={() => setActiveList("showHomePage")}>Home</div>
                         <div className="navbar href" onClick={() => setActiveList("createApartmentForm")}>Create Apartment</div>
                         <div className="navbar href" onClick={() => setActiveList("showMyApartments")}>My Apartments</div>
-                        <div className="navbar href" onClick={() => setActiveList("favorites")}>Favorites</div>
-                        
+                        <div className="navbar href" onClick={() => setActiveList("favorites")}>Favorites</div>                      
                         <div className="navbar href" onClick={
                             () => {
                                 localStorage.setItem("reviewApartment_user","") 

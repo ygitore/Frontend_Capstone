@@ -37,7 +37,7 @@ const Login = props => {
     return (
         <main className = "container-login">
             <form onSubmit={handleLogin}>
-                <h3 className = "propmpt-signin">Please sign in</h3>
+                <div className = "propmpt-signin">Please sign in</div>
                 <fieldset>
                     <input 
                         className = "login-email-field"
@@ -64,7 +64,7 @@ const Login = props => {
                         color = "info"
                         size = "sm"
                     >
-                        Login
+                        SiginIn
                     </Button>
                 </fieldset>
             </form>

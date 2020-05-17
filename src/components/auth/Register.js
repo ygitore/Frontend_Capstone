@@ -53,14 +53,14 @@ const Register = props => {
     return (
         <main className = "container-register">
             <form onSubmit={handleRegister}>
-                <h5>Create account</h5>
+                <div className = "create-account">Create account</div>
                 <fieldset>
                     <input 
                         className = "register-firstname-field"
                         ref={firstName} 
                         type="text"
                         name="firstName"
-                        placeholder="First name"
+                        placeholder="first name"
                         required  
                     />
                 </fieldset>
@@ -70,7 +70,7 @@ const Register = props => {
                         ref={lastName} 
                         type="text"
                         name="lastName"
-                        placeholder="Last name"
+                        placeholder="last name"
                         required />
                 </fieldset>
                 <fieldset>
@@ -79,7 +79,7 @@ const Register = props => {
                         ref={email} 
                         type="email"
                         name="email"
-                        placeholder="Email address"
+                        placeholder="email address"
                         required 
                     />
                 </fieldset>
@@ -89,7 +89,7 @@ const Register = props => {
                         ref={password} 
                         type="password"
                         name="password"
-                        placeholder="Password"
+                        placeholder="password"
                         required />
                 </fieldset>
                 <fieldset>
@@ -98,7 +98,7 @@ const Register = props => {
                         ref={verifyPassword} 
                         type="password"
                         name="verify-Password"
-                        placeholder="Verify password"
+                        placeholder="verify password"
                         required />
                 </fieldset>
                 <fieldset>

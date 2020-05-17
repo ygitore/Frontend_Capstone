@@ -1,59 +1,55 @@
 /*style for Auth.js component*/
 .big-wrapper{
-    background-image: url("./cover.png");
+    margin-top: 4%;
+    background-image: url("./logo.png");
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
+    max-height: 100%;
 }
-.propmpt-signin{
-    margin-top: 5%;
-}
+
 .authContainer{
-    color: rgb(238, 232, 222);
-    border: 1px solid #d6e4f1;
-    background-color: rgb(98, 81, 105);
-    width: 50%;
-    padding: 10px;
-    text-align: center;
-    margin-bottom: 10px;
-    margin-left: 20px;
+    margin-top: 3%;
+    display: flex;
+    align-items: center;
+    margin-left: 45%;
+}
+.login-page-button, .register-page-button{
+    display: flex;
+    flex-direction: column;
+}
+.login-page-button{
+    margin-right: 10%;
 }
 /*style for Login.js component*/
 .welcome {
     text-align: center;
 }
-.container-login{
-    text-align: center;
+.propmpt-signin{
+    margin-left: 42%;
+    margin-top: 1%;
 }
-
-.login-password-field, .login-email-field{
-    width: 70%;
+.login-password-field, .login-email-field, .login-submit{
+   margin-left: 42%;
+   margin-top: 1%;
 }
 .login-email-field, .login-password-field{
-    margin-bottom: 10%;
+    width: 20%;
 }
-.login-submit{
-    margin-left: 15%;
-    float: left;
-    clear: both;
-    margin-bottom: 10%;
-    height: 30px;
-}
+
 /*style for Register.js component*/
 .container-register{
-    text-align: center;
+    margin-left: 42%;
 }
+.create-account{
+    margin-top: 4%;
+}
+.create-account,
 .register-firstname-field,
 .register-lastname-field,
 .register-email-field,
 .register-password-field,
 .register-verify-password{
-    margin:10px;
-    margin-right: 1%;
-    width: 70%;
-}
-.register-signin-btn{
-    margin-top: 5%;
-    margin-left: 49%;
-    margin-bottom: 5%;
+    width: 40%;
+    margin-bottom: 2%;
 }
