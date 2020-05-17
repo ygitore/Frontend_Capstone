@@ -1,5 +1,6 @@
 import React, { useRef } from "react"
 import "./Login.css"
+import { Button } from "reactstrap"
 
 const Register = props => {
     const firstName = useRef()
@@ -50,53 +51,65 @@ const Register = props => {
     }
 
     return (
-        <main className="container--login">
-            <form className="form--register" onSubmit={handleRegister}>
-                <h4 className="darkgray">If you are not a customer yet, please register a new account</h4>
+        <main className = "container-register">
+            <form onSubmit={handleRegister}>
+                <h5>Create account</h5>
                 <fieldset>
-                    <label htmlFor="firstName"> First Name </label>
-                    <input ref={firstName} type="text"
+                    <input 
+                        className = "register-firstname-field"
+                        ref={firstName} 
+                        type="text"
                         name="firstName"
-                        className="form-control"
                         placeholder="First name"
-                        required  />
+                        required  
+                    />
                 </fieldset>
                 <fieldset>
-                    <label htmlFor="lastName"> Last Name </label>
-                    <input ref={lastName} type="text"
+                    <input 
+                        className = "register-lastname-field"
+                        ref={lastName} 
+                        type="text"
                         name="lastName"
-                        className="form-control"
                         placeholder="Last name"
                         required />
                 </fieldset>
                 <fieldset>
-                    <label htmlFor="inputEmail"> Email address </label>
-                    <input ref={email} type="email"
+                    <input 
+                        className = "register-email-field"
+                        ref={email} 
+                        type="email"
                         name="email"
-                        className="form-control"
                         placeholder="Email address"
-                        required />
+                        required 
+                    />
                 </fieldset>
                 <fieldset>
-                    <label htmlFor="inputPassword"> Password </label>
-                    <input ref={password} type="password"
+                    <input 
+                        className = "register-password-field"
+                        ref={password} 
+                        type="password"
                         name="password"
-                        className="form-control"
                         placeholder="Password"
                         required />
                 </fieldset>
                 <fieldset>
-                    <label htmlFor="verifyPassword"> Verify Password </label>
-                    <input ref={verifyPassword} type="password"
-                        name="verifyPassword"
-                        className="form-control"
+                    <input 
+                        className = "register-verify-password"
+                        ref={verifyPassword} 
+                        type="password"
+                        name="verify-Password"
                         placeholder="Verify password"
                         required />
                 </fieldset>
                 <fieldset>
-                    <button type="submit">
+                    <Button 
+                        color = "info" 
+                        size = "sm" 
+                        type="submit" 
+                        className = "register-signin-btn"
+                    >
                         Sign in
-                    </button>
+                    </Button>
                 </fieldset>
             </form>
         </main>

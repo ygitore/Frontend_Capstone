@@ -1,88 +1,56 @@
-.darkgray {
-    color: #747678;
+/*style for Auth.js component*/
+.big-wrapper{
+    margin-top: 2%;
+    margin-bottom: 2%;
+    background-color: rgb(242, 245, 247);
 }
-
-.authContainer {
-    display: flex;
-    padding: 0 10rem;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
+.propmpt-signin{
+    margin-top: 5%;
 }
-
-.h1, h1 {
-    font-size: 2.5rem;
+.authContainer{
+    color: rgb(238, 232, 222);
+    border: 1px solid #a19468;
+    margin-left: 41%;
+    margin-right: 41%;
+    background-color: rgb(98, 81, 105);
+    border-radius: 10px;
 }
-
+/*style for Login.js component*/
 .business-name {
     text-align: center;
 }
-
-fieldset {
-    min-width: 0;
-    padding: 1rem 0;
-    margin: 0;
-    border: 0;
-}
-
-input[type="email"],
-input[type="password"] {
-    width: 25em;
-}
-
-.label--login {
-    width: 8rem;
-    display: inline-block;
-}
-
-.form-control {
-    display: block;
-    width: 94%;
-    height: calc(1.5em + .75rem + 2px);
-    padding: .375rem .75rem;
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.5;
-    color: #495057;
-    background-color: #fff;
-    background-clip: padding-box;
-    border: 1px solid #ced4da;
-    border-radius: .25rem;
-    -webkit-transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-}
-
-.container--login {
+.container-login{
     text-align: center;
-    flex: 1;
-    flex-basis: 33%;
 }
 
-.form--login {
-    font-size: 1.25rem;
-    background-position-x: right;
-    z-index: 1;
-    min-height: 25rem;
-    min-width: 35rem;
-    background-color: hsla(0,0%,100%,0.40);
-    background-blend-mode: overlay;
-    background-repeat: no-repeat;
-    display: inline-block;
-    margin: 0 auto;
-    text-align: left;
-
+.login-password-field, .login-email-field{
+    width: 70%;
 }
-
-.form--register {
-    background-position-x: right;
-    z-index: 1;
-    min-height: 25rem;
-    width: 45rem;
-    background-color: hsla(0,0%,100%,0.40);
-    background-blend-mode: overlay;
-    background-repeat: no-repeat;
-    display: inline-block;
-    margin: 0 auto;
-    text-align: left;
-
+.login-email-field, .login-password-field{
+    margin-bottom: 10%;
+}
+.login-submit{
+    margin-left: 15%;
+    float: left;
+    clear: both;
+    margin-bottom: 10%;
+    height: 30px;
+}
+/*style for Register.js component*/
+.container-register{
+    text-align: center;
+}
+.register-firstname-field,
+.register-lastname-field,
+.register-email-field,
+.register-password-field,
+.register-verify-password{
+    margin:10px;
+    margin-right: 1%;
+    width: 70%;
+}
+.register-signin-btn{
+    margin-top: 5%;
+    margin-left: 49%;
+    margin-bottom: 5%;
 }

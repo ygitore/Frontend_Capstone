@@ -1,5 +1,6 @@
 import React, { useRef } from "react"
 import "./Login.css"
+import { Button } from "reactstrap"
 
 
 const Login = props => {
@@ -34,29 +35,37 @@ const Login = props => {
     }
 
     return (
-        <main className="container--login">
-            <form className="form--login" onSubmit={handleLogin}>
-                <h2>Please sign in</h2>
+        <main className = "container-login">
+            <form onSubmit={handleLogin}>
+                <h3 className = "propmpt-signin">Please sign in</h3>
                 <fieldset>
-                    <label htmlFor="inputEmail"> Email address </label>
-                    <input ref={email} type="email"
+                    <input 
+                        className = "login-email-field"
+                        ref={email} 
+                        type="email"
                         id="email"
-                        className="form-control"
+                        autoFocus
                         placeholder="Email address"
                         required autoFocus />
                 </fieldset>
                 <fieldset>
-                    <label htmlFor="inputPassword"> Password </label>
-                    <input ref={password} type="password"
+                    <input 
+                        className = "login-password-field"
+                        ref={password} 
+                        type="password"
                         id="password"
-                        className="form-control"
                         placeholder="Password"
                         required />
                 </fieldset>
                 <fieldset>
-                    <button type="submit">
-                        Sign in
-                    </button>
+                    <Button 
+                        className = "login-submit" 
+                        type="submit"
+                        color = "info"
+                        size = "sm"
+                    >
+                        Login
+                    </Button>
                 </fieldset>
             </form>
         </main>
