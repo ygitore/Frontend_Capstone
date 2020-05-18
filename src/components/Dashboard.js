@@ -15,6 +15,7 @@ import MyApartmentList from './myApartment/MyApartmentList'
 import { RatingProvider } from './rating/RatingProvider'
 import "./AppController.css"
 import "./Layout.css"   
+import { User } from './user/User'
 
 export const Dashboard = (props) => {
     const [searchTerms, setTerms] = useState(null)
@@ -65,7 +66,11 @@ export const Dashboard = (props) => {
         </UserProvider>
     )
     
-
+    const showActiveUser = () => (
+        <UserProvider>
+            <User />
+        </UserProvider>
+    )
     useEffect(() => {
         if (activeList === "allApartments") {
             setComponents(showAllApartments)
@@ -84,7 +89,7 @@ export const Dashboard = (props) => {
         }
         
     }, [activeList])
-    
+
     return (
         <>
             <ApartmentProvider>
@@ -95,6 +100,7 @@ export const Dashboard = (props) => {
                         <div className="navbar href" onClick={() => setActiveList("createApartmentForm")}>Create Apartment</div>
                         <div className="navbar href" onClick={() => setActiveList("showMyApartments")}>My Apartments</div>
                         <div className="navbar href" onClick={() => setActiveList("favorites")}>Favorites</div>                      
+                        <div className="navbar href">{showActiveUser()}</div>
                         <div className="navbar href" onClick={
                             () => {
                                 localStorage.setItem("reviewApartment_user","") 

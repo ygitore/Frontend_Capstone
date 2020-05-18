@@ -15,12 +15,9 @@
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;    
-    background-image: url("./navbar.png");
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-size: cover;
-    color:#fff;
+    background-image: linear-gradient(to right top, #939eb9, #8aa0c0, #7fa3c6, #71a6cb, #5fa9ce);
     width: 100%;
+    font-weight: bolder;
 }
 .search-box{
     width: 90%;
@@ -45,8 +42,9 @@
     margin-top: 2rem;
 }
 .main-header{
-    font-size: 25px;
+    font-size: 30px;
     font-weight: bold;
+    margin-bottom: 15px;
 }
 .main-header{
     margin-top: 20px;

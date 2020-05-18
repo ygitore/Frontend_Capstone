@@ -4,12 +4,15 @@ import { UserContext } from './UserProvider'
 
 export const User = () => {
     const {users} = useContext(UserContext)
-    const userId = localStorage.getItem("reviewApartment_user")
-    const activeUser = users.find(user => <div>{user.id === userId}</div>)
+
+    const userId = parseInt(localStorage.getItem("reviewApartment_user"))
+    const activeUser = users.find(user => user.id === userId)||{}
+
+    console.log("user", activeUser.userName)
     return (
         <div>
             {
-               activeUser.userName 
+                activeUser.userName
             }
         </div>
     )
