@@ -1,13 +1,13 @@
 /*style for Auth.js component*/
 .big-wrapper{
-    margin-top: 4%;
+    margin-top: 5%;
 }
 
 .authContainer{
     margin-top: 3%;
     display: flex;
     align-items: center;
-    margin-left: 46%;
+    margin-left: 42%;
     margin-bottom: 3%;
 }
 .login-page-button, .register-page-button{
@@ -26,7 +26,7 @@
     margin-top: 1%;
 }
 .login-password-field, .login-email-field, .login-submit{
-   margin-left: 42%;
+   margin-left: 37%;
    margin-top: 1%;
 }
 .login-email-field, .login-password-field{
@@ -35,7 +35,7 @@
 
 /*style for Register.js component*/
 .container-register{
-    margin-left: 42%;
+    margin-left: 37%;
 }
 .create-account{
     margin-top: 3%;

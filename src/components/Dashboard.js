@@ -95,18 +95,25 @@ export const Dashboard = (props) => {
             <ApartmentProvider>
                 <div className="mainContainer">  
                     <div className="links">    
-                        <div className="main-header navbar">Review Apartments</div>
-                        <div className="navbar href" onClick={() => setActiveList("showHomePage")}>Home</div>
-                        <div className="navbar href" onClick={() => setActiveList("createApartmentForm")}>Create Apartment</div>
-                        <div className="navbar href" onClick={() => setActiveList("showMyApartments")}>My Apartments</div>
-                        <div className="navbar href" onClick={() => setActiveList("favorites")}>Favorites</div>                      
-                        <div className="navbar href">{showActiveUser()}</div>
-                        <div className="navbar href" onClick={
-                            () => {
-                                localStorage.setItem("reviewApartment_user","") 
-                                props.toggle()
-                            }
-                        }>Logout</div>
+                        <div className = "review-apartments">
+                            <div className="main-header navbar">Review Apartments</div>
+                        </div>
+                        <div className = "main-navbar">
+                            <div className="navbar href" onClick={() => setActiveList("showHomePage")}>Home</div>
+                            <div className="navbar href" onClick={() => setActiveList("createApartmentForm")}>Create Apartment</div>
+                            <div className="navbar href" onClick={() => setActiveList("showMyApartments")}>My Apartments</div>
+                            <div className="navbar href" onClick={() => setActiveList("favorites")}>Favorites</div>                 
+                        </div>
+                        <div className = "userName_logout">
+                            <div className="navbar href">{showActiveUser()}</div>
+                            <div className="navbar href" onClick={
+                                () => {
+                                    localStorage.setItem("reviewApartment_user","") 
+                                    props.toggle()
+                                }
+                            }>Logout</div>
+                        </div>
+                        
                     </div>
                     <div className="main-section">
                         <div className="searchContainer">

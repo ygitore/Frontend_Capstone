@@ -5,7 +5,7 @@ import { Button } from "reactstrap"
 
 export default ({toggle}) => {
 
-    const [activeList, setActiveList] = useState("login")
+    const [activeList, setActiveList] = useState("")
     const [component, setComponent] = useState()
 
     const showLogin = () => (
@@ -26,8 +26,8 @@ export default ({toggle}) => {
         <div className = "big-wrapper">
             <h2 className="welcome">Welcome to Review Apartments</h2>
             <div className="authContainer">
-                <Button color = "info" size = "sm" className="login-page-button" onClick={() => setActiveList("login")}>Login</Button>
-                <Button color = "info" size = "sm" className="register-page-button" onClick={() => setActiveList("register")}>Register</Button>
+                <Button color = "info" size = "md" className="login-page-button" onClick={() => setActiveList("login")}>Login</Button>
+                <Button color = "info" size = "md" className="register-page-button" onClick={() => setActiveList("register")}>Register</Button>
             </div>
             <div>
                 {component}

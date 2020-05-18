@@ -45,11 +45,22 @@
     font-size: 30px;
     font-weight: bold;
     margin-bottom: 15px;
+    margin-top: 20px;    
 }
-.main-header{
-    margin-top: 20px;
+.review-apartments{
+    display: flex;
+    flex: 1;
 }
-
+.main-navbar{
+    display: flex;
+    flex: 3;
+    justify-content: center;
+}
+.userName_logout{
+    display: flex;
+    flex: 1;
+    justify-content: end;
+}
 .listDisplay{
     flex: 4;
     margin-right: 5%;
