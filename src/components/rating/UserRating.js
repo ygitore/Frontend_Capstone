@@ -3,35 +3,33 @@ import { RatingContext } from './RatingProvider'
 
 const UserRating = ({apt}) => {
     const {rating} = useContext(RatingContext)
-    const userRating = rating.filter(
+
+    const fiveStar = rating.filter(
         rate => {
-            return rate.apartmentId === apt.id && 
-            rate.rating >= 1 && rate.rating <= 5
-        })||{}
-    const numberOfRating = userRating.length
+            return rate.apartmentId === apt.id && rate.rating <= 5 && rate.rating >= 4
+        })
+    const belowThreeStar = rating.filter(
+        rate => {
+            return rate.apartmentId === apt.id && rate.rating <= 3
+        })
+        
     const calculateUserRating = () => {
+        let total5Stars = fiveStar.length * 0.1
+        let total3Stars = belowThreeStar.length * 0.1
         let calculatedRate = 5
-        let total = 0
-        for(let i of userRating) {
-            total += i.rating
-        }
-        if(numberOfRating > 0){
-            if(total/5 < numberOfRating*0.99){
-                calculatedRate = calculatedRate - 1          
-            }                       
-            else{
-                calculatedRate += 1
-                if(calculatedRate >= 5){
-                    calculatedRate = 5
-                } 
+        
+        
+        if(fiveStar.length < belowThreeStar.length){
+            calculatedRate = 5-total3Stars
+        }else if(fiveStar.length > belowThreeStar.length){
+            calculatedRate = calculatedRate + total5Stars
+            if(calculatedRate > 5){
+                calculatedRate = 5
             }
-        }else{
-            calculatedRate = 5
         }
         
-        console.log("number of rating",numberOfRating,"calculated rate", calculatedRate, "apt", apt.id, "total", total)
         return calculatedRate
-    }
+      }
     return (
         <div>
             <div>{calculateUserRating()}</div>

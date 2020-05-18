@@ -14,10 +14,10 @@
     font-family: 'Alice', serif;
     display: flex;
     flex-flow: row nowrap;
-    justify-content: space-between;
-    background-color: rgb(64, 85, 102);
-    color:#fff;
+    justify-content: space-between;    
+    background-image: linear-gradient(to right top, #939eb9, #8aa0c0, #7fa3c6, #71a6cb, #5fa9ce);
     width: 100%;
+    font-weight: bolder;
 }
 .search-box{
     width: 90%;
@@ -42,13 +42,25 @@
     margin-top: 2rem;
 }
 .main-header{
-    font-size: 25px;
+    font-size: 30px;
     font-weight: bold;
+    margin-bottom: 15px;
+    margin-top: 20px;    
 }
-.main-header{
-    margin-top: 20px;
+.review-apartments{
+    display: flex;
+    flex: 1;
 }
-
+.main-navbar{
+    display: flex;
+    flex: 3;
+    justify-content: center;
+}
+.userName_logout{
+    display: flex;
+    flex: 1;
+    justify-content: end;
+}
 .listDisplay{
     flex: 4;
     margin-right: 5%;

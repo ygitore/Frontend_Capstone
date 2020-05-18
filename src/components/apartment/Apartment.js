@@ -10,7 +10,7 @@ import UserRating from "../rating/UserRating"
 import Comment from "../comment/Comment";
 import { RatingList } from "../rating/RatingList"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faThumbsUp, faUser } from '@fortawesome/free-solid-svg-icons'
+import { faThumbsUp } from '@fortawesome/free-solid-svg-icons'
 import './Apartment.css'
 
 export default ({apartment}) => {
@@ -24,8 +24,7 @@ export default ({apartment}) => {
 
     const [user_Comments, setUserComments] = useState(false)
     const toggleUserComments = () => setUserComments(!user_Comments)
-  
-  
+     
     const loggedInUserId = parseInt(localStorage.getItem("reviewApartment_user"))
     const addNewApartmentToFavorites = () => {
         const favoriteObject = {
@@ -98,7 +97,7 @@ export default ({apartment}) => {
                 
                 <div className = "likeCommentFavRating">
                     <div className = "btns likeBtn_NumOflikes">
-                        <div className = "likes">{userLikedApartment.length} likes</div>
+                        <div className = "likes">{userLikedApartment.length > 1 ? userLikedApartment.length +" likes" : userLikedApartment.length === 1 ? userLikedApartment.length+" like" : ""}</div>
                         <div className = "likeButton " 
                             onClick = {
                                 () =>{
@@ -107,7 +106,7 @@ export default ({apartment}) => {
                                 }
                             }><FontAwesomeIcon 
                                 icon={faThumbsUp} 
-                                className="fas fa-camera fa-xs fa-like-icon" />Like
+                                className="fas fa-camera fa-xs fa-like-icon " />Like
                         </div>
                     </div>
                     <div className = "btns comment_num_of_comments">
@@ -115,7 +114,7 @@ export default ({apartment}) => {
                             className = "comments"
                             onClick = {
                                 toggleUserComments
-                            }>{userComments} comments
+                            }>{userComments > 1 ? userComments+" comments" : userComments === 1 ? userComments+" comment": ""}
                         </div>    
                         <Button
                             size = "sm"

@@ -1,7 +1,7 @@
 /*style for Search.js and SearchResult.js component*/
 .edit_apartment_image{
     height: 300px;
-    width: 466px;
+    width: 100%;
 }
 
 ._search_Apartment_name{
@@ -61,8 +61,7 @@
     height: 550px;
     border: 1px solid rgb(130, 156, 172);
     border-radius: 10px;
-    margin-bottom: 80px;
-    align-self: stretch;
+    margin-bottom: 8%;
 }
 .apartment:hover{
     box-shadow: 1px 1px 20px 2px rgb(147, 180, 230);
@@ -90,9 +89,11 @@
     flex-direction: row;
     justify-content: space-around;
     align-self: stretch;
-    margin-top: 10px;
+    margin-top: 2%;
 }
-
+.likeButton{
+    margin-top: auto;
+}
 .btns{
     flex-grow: 1;
     flex-basis: 0;
@@ -109,10 +110,12 @@
     color: rgb(212, 211, 205);
 }
 .likeBtn_NumOflikes{
-    margin-left: 10px;
+    margin-left: 2%;
 }
 .commentButton{
-    height: 30px;
+    max-height: 27px;
+    width: 100%;
+    margin-top: auto;
 }
 .user_rating_stars{
     display: flex;
@@ -133,4 +136,80 @@
     white-space:nowrap;
     margin-top: auto;
     margin-right: 10px;
+}
+@media screen and (max-width: 1249px){
+    .apartments{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        flex: 1;
+    }
+    .apartment{
+        flex-basis: 40%;
+        height: 40%;
+        border: 1px solid rgb(130, 156, 172);
+        border-radius: 10px;
+        margin-bottom: 8%;
+        font-size: 14px;
+    }
+    .likeBtn_NumOflikes{
+        margin-left: 1%;
+    }
+    .commentButton{
+        max-height: 25px;
+        margin-bottom: 5%;
+        width: 100%;
+    }
+    .comments{
+        margin-bottom: 0;
+        margin-bottom: auto;
+
+    }
+    .add_to_favorite{
+        text-align: center;
+        height: 25px;
+        white-space:nowrap;
+        margin-right: 1%;
+        margin-top: auto;
+        margin-bottom: 1%;
+    }
+    
+    .user_rating_stars{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center; 
+        margin-left: 2%;
+        margin-right: 2%;
+    }
+}
+@media screen and (max-width: 320px){
+    .apartment{
+        flex-basis: 40%;
+        height: 40%;
+        border: 1px solid rgb(130, 156, 172);
+        border-radius: 10px;
+        margin-bottom: 8%;
+        font-size: 14px;
+    }
+    .apartmentImage{
+        height: 150px;
+        width: 100%;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+    }
+    .likeCommentFavRating{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-self: stretch;
+        margin-top: 10px;
+    }
+    .commentButton{
+        max-height: 27px;
+        width: 100%;
+        margin-top: auto;
+        margin-bottom: 2%;
+    }
 }

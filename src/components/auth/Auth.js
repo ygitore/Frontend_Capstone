@@ -1,15 +1,37 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import Login from "./Login"
 import Register from "./Register"
+import { Button } from "reactstrap"
 
 export default ({toggle}) => {
+
+    const [activeList, setActiveList] = useState("")
+    const [component, setComponent] = useState()
+
+    const showLogin = () => (
+        <Login toggle={toggle} setActiveList={setActiveList}/>
+    )
+    const showRegister = () => (
+        <Register toggle={toggle} setActiveList={setActiveList}/>
+    )
+    useEffect(() => {
+        if(activeList === "login"){
+            setComponent(showLogin)
+        }
+        if(activeList === "register"){
+            setComponent(showRegister)
+        }
+    }, [activeList])
     return (
-        <>
-            <h1 className="welcome">Welcome to Nashville Kennels</h1>
+        <div className = "big-wrapper">
+            <h2 className="welcome">Welcome to Review Apartments</h2>
             <div className="authContainer">
-                <Login toggle={toggle} />
-                <Register toggle={toggle} />
+                <Button color = "info" size = "md" className="login-page-button" onClick={() => setActiveList("login")}>Login</Button>
+                <Button color = "info" size = "md" className="register-page-button" onClick={() => setActiveList("register")}>Register</Button>
             </div>
-        </>
+            <div>
+                {component}
+            </div>
+        </div>
     )
 }

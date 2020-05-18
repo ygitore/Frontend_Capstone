@@ -10,7 +10,6 @@ export const RatingList = ({apt}) =>{
     const [hoverRating, setHoverRating] = useState(0);
     const stars = [1, 2, 3, 4, 5];
     const userId = parseInt(localStorage.getItem("reviewApartment_user"))
-    console.log("user raig",userRating)
     const addRatingToApi = () => {
       if(userRating !== 0){
         const ratingObject = {
@@ -26,7 +25,7 @@ export const RatingList = ({apt}) =>{
     if(!("userId" in ratingExists)){
       return (
         <div className="starRating">
-          <div class="flex-container" onClick = {addRatingToApi }>            
+          <div className="flex-container" onClick = {addRatingToApi }>            
             {stars.map((star, i) => (
               <Star
                 key={i}

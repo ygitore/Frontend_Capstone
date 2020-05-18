@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { ApartmentProvider } from './apartment/ApartmentProvider'
 import ApartmentList from './apartment/ApartmentList'
-import { UserProvider, UserContext } from './user/UserProvider'
+import { UserProvider } from './user/UserProvider'
 import { CommentProvider } from './comment/CommentProvider'
 import { LikeProvider } from './like/LikeProvider'
 import { FavoriteProvider } from './favorite/FavoriteProvider'
@@ -13,9 +13,9 @@ import { SearchBar } from "./search/SearchBar";
 import { SearchResults } from "./search/SearchResults";
 import MyApartmentList from './myApartment/MyApartmentList'
 import { RatingProvider } from './rating/RatingProvider'
-
 import "./AppController.css"
 import "./Layout.css"   
+import { User } from './user/User'
 
 export const Dashboard = (props) => {
     const [searchTerms, setTerms] = useState(null)
@@ -24,7 +24,6 @@ export const Dashboard = (props) => {
     
     const [modal, setModal] = useState(false)
     const toggle = () => setModal(!modal)
-    
     // Components needed to display all apartments
     const showAllApartments = () => (
         <UserProvider>
@@ -67,7 +66,11 @@ export const Dashboard = (props) => {
         </UserProvider>
     )
     
-
+    const showActiveUser = () => (
+        <UserProvider>
+            <User />
+        </UserProvider>
+    )
     useEffect(() => {
         if (activeList === "allApartments") {
             setComponents(showAllApartments)
@@ -86,23 +89,31 @@ export const Dashboard = (props) => {
         }
         
     }, [activeList])
-  
+
     return (
         <>
             <ApartmentProvider>
                 <div className="mainContainer">  
                     <div className="links">    
-                        <div className="main-header navbar">Review Apartments</div>
-                        <div className="navbar href" onClick={() => setActiveList("showHomePage")}>Home</div>
-                        <div className="navbar href" onClick={() => setActiveList("createApartmentForm")}>Create Apartment</div>
-                        <div className="navbar href" onClick={() => setActiveList("showMyApartments")}>My Apartments</div>
-                        <div className="navbar href" onClick={() => setActiveList("favorites")}>Favorites</div>
-                        <div className="navbar href" onClick={
-                            () => {
-                                localStorage.setItem("reviewApartment_user","") 
-                                props.toggle()
-                            }
-                        }>Logout</div>
+                        <div className = "review-apartments">
+                            <div className="main-header navbar">Review Apartments</div>
+                        </div>
+                        <div className = "main-navbar">
+                            <div className="navbar href" onClick={() => setActiveList("showHomePage")}>Home</div>
+                            <div className="navbar href" onClick={() => setActiveList("createApartmentForm")}>Create Apartment</div>
+                            <div className="navbar href" onClick={() => setActiveList("showMyApartments")}>My Apartments</div>
+                            <div className="navbar href" onClick={() => setActiveList("favorites")}>Favorites</div>                 
+                        </div>
+                        <div className = "userName_logout">
+                            <div className="navbar href">{showActiveUser()}</div>
+                            <div className="navbar href" onClick={
+                                () => {
+                                    localStorage.setItem("reviewApartment_user","") 
+                                    props.toggle()
+                                }
+                            }>Logout</div>
+                        </div>
+                        
                     </div>
                     <div className="main-section">
                         <div className="searchContainer">
