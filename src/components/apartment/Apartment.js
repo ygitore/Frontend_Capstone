@@ -10,7 +10,7 @@ import UserRating from "../rating/UserRating"
 import Comment from "../comment/Comment";
 import { RatingList } from "../rating/RatingList"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faThumbsUp, faUser } from '@fortawesome/free-solid-svg-icons'
+import { faThumbsUp } from '@fortawesome/free-solid-svg-icons'
 import './Apartment.css'
 
 export default ({apartment}) => {
@@ -24,8 +24,7 @@ export default ({apartment}) => {
 
     const [user_Comments, setUserComments] = useState(false)
     const toggleUserComments = () => setUserComments(!user_Comments)
-  
-  
+     
     const loggedInUserId = parseInt(localStorage.getItem("reviewApartment_user"))
     const addNewApartmentToFavorites = () => {
         const favoriteObject = {
@@ -107,7 +106,7 @@ export default ({apartment}) => {
                                 }
                             }><FontAwesomeIcon 
                                 icon={faThumbsUp} 
-                                className="fas fa-camera fa-xs fa-like-icon" />Like
+                                className="fas fa-camera fa-xs fa-like-icon " />Like
                         </div>
                     </div>
                     <div className = "btns comment_num_of_comments">
