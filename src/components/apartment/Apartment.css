@@ -77,6 +77,12 @@
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 }
+.apartment__name{
+    font-size: 23px;
+}
+.apartment__city_state{
+    font-size: 20px;
+}
 .likeBtn_NumOflikes, 
 .comment_num_of_comments, 
 .user_rating_stars{

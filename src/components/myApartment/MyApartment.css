@@ -5,7 +5,6 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
-    width: 100%;
 }
 .my_apartment{
     flex-basis: 30%;
@@ -13,6 +12,7 @@
     border: 1px solid rgb(130, 156, 172);
     border-radius: 10px;
     margin-bottom: 7%;
+    align-self: stretch;
 }
 
 .my_apartment:hover{
@@ -57,7 +57,7 @@
     margin-top: auto;
 }
 
-/*style for DeleteMyApartment.js component*/
+/*styling for DeleteMyApartment.js component*/
 .fa-delete-my-apartment{
     font-size: 18px;
     color: rgb(73, 45, 55);
