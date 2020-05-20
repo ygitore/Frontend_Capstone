@@ -17,7 +17,7 @@ export default props => {
         formData.append("upload_preset", "review_apartments")
         formData.append("file", files)
         setLoading(true)
-        const res = await fetch("https://api.cloudinary.com/v1_1/dgmlysx6a/image/upload", {
+        const res = await fetch("https://api.cloudinary.com/v1_1/dgmlysx6a/image/upload/", {
             method:"POST",
             body: formData
         }) 
@@ -25,7 +25,6 @@ export default props => {
         file = response.secure_url
         setApartmentImage(file)  
         setLoading(false)
-        console.log("file", file)
         
     }
     const apartmentName = useRef()

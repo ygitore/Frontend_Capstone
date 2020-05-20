@@ -13,7 +13,8 @@
   }
   
   .href:hover {
-    color: rgb(179, 115, 13);
+    color: rgb(91, 103, 129);
+    text-decoration: underline;
   }
   .searchLink{
     text-decoration: underline;

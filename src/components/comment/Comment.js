@@ -18,21 +18,21 @@ export default (props) => {
                 {
                     userComments.map(u=> {
                         const usr = users.find(ur => ur.id === u.userId)
-                    return <div className = "userId">{
-                            <div className = "user_and_comments">
-                                <FontAwesomeIcon icon = {faUser} className = "person-commented-image" />
-                                <div className = "usr_com">
-                                    <div className = "person-commented">
-                                    {
-                                        usr.userName.charAt(0).toUpperCase()+ 
-                                        usr.userName.slice(1)
-                                    } 
-                                    </div>
-                                    <div className = "users_comments">{u.comment}</div>
-                                </div>                            
-                            </div>
-                        }</div>
-                    })}
+                        return <div className = "userId">{
+                                <div className = "user_and_comments">
+                                    <FontAwesomeIcon icon = {faUser} className = "person-commented-image" />
+                                    <div className = "usr_com">
+                                        <div className = "person-commented">
+                                        {
+                                            usr.userName.charAt(0).toUpperCase()+ 
+                                            usr.userName.slice(1)
+                                        } 
+                                        </div>
+                                        <div className = "users_comments">{u.comment}</div>
+                                    </div>                            
+                                </div>
+                            }</div>
+                        })}
                 </div>
             </div>            
         </>

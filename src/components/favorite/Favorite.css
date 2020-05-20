@@ -12,12 +12,13 @@
     text-transform: uppercase;
     z-index: 5;
     margin-left: 10px;
+    font-size: 18px;
     -webkit-transition: all 0.2s ease-in-out;
     -moz-transition: all 0.2s ease-in-out;
     -o-transition: all 0.2s ease-in-out;
     -ms-transition: all 0.2s ease-in-out;
     transition: all 0.2s ease-in-out;
     border: none;
-    color: rgb(39, 37, 38);
+    color: rgb(105, 102, 103);
     box-shadow: none;
 } 

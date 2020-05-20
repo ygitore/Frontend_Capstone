@@ -17,9 +17,6 @@ export default () => {
 
     return (
         <>
-            <div>
-                    
-            </div>
             <Modal isOpen = {userCommentModal} toggle = {toggleUserComment}>
                 <ModalHeader toggle = {toggleUserComment}>Comment Apartment</ModalHeader>
                 <ModalBody>
