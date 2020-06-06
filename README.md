@@ -1,5 +1,5 @@
 # NSS Capstone - "Review Apartments"
-Single page application with full CRUD functionality that allows users to create a profile for apartments they have visited or lived in. Once the user is logged-in they can view profile for all apartments. Uses can also edit and delete aparments they created. They can give rating, like, add comment, add apartments to their favorites.
+Single page application with full CRUD functionality that allows users to create a profile for apartments they have visited or lived in. Once user is logged-in they can view profile for all apartments, edit and delete apartments they have created. They can also give rating, like, add and view comment(s), add any apartments to their favorites
 ### Technologies used
 * HTML5
 * CSS3
@@ -9,3 +9,40 @@ Single page application with full CRUD functionality that allows users to create
 * Jason Server to store data
 * Cloudinary to store image
 * React-FontAwesome for icons
+### Application features
+* User can SIGN-IN using valid user name and password
+* User can `CREATE` profile for apartments, and upload apartments image
+* User can rate, like, add comments to apartments
+* User can `READ` all comments
+* User can add apartments to their favorites
+* User can view all existing apartments and their reviews
+* User can `UPDATE` apartments they have created
+* User can `DELETE` apartments they have created
+* User can search for specific apartment
+## Screenshots
+### Login
+![Main View](https://raw.githubusercontent.com/yitbarekgitore/Frontend_Capstone/master/src/screenshots/Login.PNG)
+### Register
+![Main View](https://raw.githubusercontent.com/yitbarekgitore/Frontend_Capstone/master/src/screenshots/register.PNG)
+### Home Page
+![Main View](https://raw.githubusercontent.com/yitbarekgitore/Frontend_Capstone/master/src/screenshots/_mainView.PNG)
+### Create Apartment
+![Main View](https://raw.githubusercontent.com/yitbarekgitore/Frontend_Capstone/master/src/screenshots/uploadImage.PNG)
+### Newly Created Apartment in Home Page
+![Main View](https://raw.githubusercontent.com/yitbarekgitore/Frontend_Capstone/master/src/screenshots/newApartment.PNG)
+### Apartments I created
+![Main View](https://raw.githubusercontent.com/yitbarekgitore/Frontend_Capstone/master/src/screenshots/AptICreated.png)
+### Add Comment
+![Main View](https://raw.githubusercontent.com/yitbarekgitore/Frontend_Capstone/master/src/screenshots/AddingComment.PNG)
+### View Comments
+![Main View](https://raw.githubusercontent.com/yitbarekgitore/Frontend_Capstone/master/src/screenshots/viewComments.PNG)
+### Give Rating
+![Main View](https://raw.githubusercontent.com/yitbarekgitore/Frontend_Capstone/master/src/screenshots/rating.png)
+## Favorited Apartments
+![Main View](https://raw.githubusercontent.com/yitbarekgitore/Frontend_Capstone/master/src/screenshots/favoritedApartments.png)
+### Edit My Apartment
+![Main View](https://raw.githubusercontent.com/yitbarekgitore/Frontend_Capstone/master/src/screenshots/EditApartment.PNG)
+### Search for Apartment
+![Main View](https://raw.githubusercontent.com/yitbarekgitore/Frontend_Capstone/master/src/screenshots/searchForApt.PNG)
+### Search Result
+![Main View](https://raw.githubusercontent.com/yitbarekgitore/Frontend_Capstone/master/src/screenshots/searchResult.png)
