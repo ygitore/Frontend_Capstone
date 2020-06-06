@@ -51,8 +51,8 @@ Single page application with full CRUD functionality that allows users to create
 ### How to run
 * Clone down this project and frontendCapstone_api from GitHub to your workspace
 * Install http-server from npm in terminal window
-* Navigate to your the root of this project
+* Navigate to root of this project
 * Type npm start and hit enter
 * In your browser, navigate to https://localhost:3000
-* Open new terminal window and navigate to the root of your frontendCapstone_api 
-type json-server -p 8088 -w database.json
+* Open new terminal window and navigate to the root of frontendCapstone_api 
+* Type json-server -p 8088 -w database.json
