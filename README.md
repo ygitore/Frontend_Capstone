@@ -30,8 +30,8 @@ Single page application with full CRUD functionality that allows users to create
 ![Main View](https://raw.githubusercontent.com/yitbarekgitore/Frontend_Capstone/master/src/screenshots/uploadImage.PNG)
 ### Newly Created Apartment in Home Page
 ![Main View](https://raw.githubusercontent.com/yitbarekgitore/Frontend_Capstone/master/src/screenshots/newApartment.PNG)
-### Apartments I created
-![Main View](https://raw.githubusercontent.com/yitbarekgitore/Frontend_Capstone/master/src/screenshots/AptICreated.png)
+### Likes
+![Main View](https://raw.githubusercontent.com/yitbarekgitore/Frontend_Capstone/master/src/screenshots/Likes.PNG)
 ### Add Comment
 ![Main View](https://raw.githubusercontent.com/yitbarekgitore/Frontend_Capstone/master/src/screenshots/AddingComment.PNG)
 ### View Comments
@@ -40,6 +40,8 @@ Single page application with full CRUD functionality that allows users to create
 ![Main View](https://raw.githubusercontent.com/yitbarekgitore/Frontend_Capstone/master/src/screenshots/rating.png)
 ## Favorited Apartments
 ![Main View](https://raw.githubusercontent.com/yitbarekgitore/Frontend_Capstone/master/src/screenshots/favoritedApartments.png)
+### Apartments I created
+![Main View](https://raw.githubusercontent.com/yitbarekgitore/Frontend_Capstone/master/src/screenshots/AptICreated.png)
 ### Edit My Apartment
 ![Main View](https://raw.githubusercontent.com/yitbarekgitore/Frontend_Capstone/master/src/screenshots/EditApartment.PNG)
 ### Search for Apartment
