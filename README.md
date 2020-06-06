@@ -10,7 +10,7 @@ Single page application with full CRUD functionality that allows users to create
 * Cloudinary to store image
 * React-FontAwesome for icons
 ### Application features
-* User can SIGN-IN using valid user name and password
+* User can Sign-in using valid user name and password
 * User can `CREATE` profile for apartments, and upload apartments image
 * User can rate, like, add comments to apartments
 * User can `READ` all comments
