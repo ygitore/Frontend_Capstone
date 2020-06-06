@@ -1,6 +1,5 @@
-## NSS Capstone - "Review Apartments"
+# NSS Capstone - "Review Apartments"
 Single page application with full CRUD functionality that allows users to create a profile for apartments they have visited or lived in to share their experiences to others.
-### Specs
 ### Technologies used
 * HTML5
 * CSS3
