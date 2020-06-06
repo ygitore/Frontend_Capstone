@@ -24,8 +24,7 @@ export default props => {
         const response = await res.json()
         file = response.secure_url
         setApartmentImage(file)  
-        setLoading(false)
-        
+        setLoading(false)        
     }
     const apartmentName = useRef()
     const city = useRef()
