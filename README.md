@@ -2,9 +2,8 @@
 Single page application with full CRUD functionality that allows users to create a profile for apartments they have visited or lived in. Once user is logged-in they can view profile for all apartments, edit and delete apartments they have created. They can also give rating, like, add and view comment(s), add any apartments to their favorites
 ### Technologies used
 * CSS3
-* Reactstrap
 * ReactJS for core app functionality
-* Reactstrap for buttons and modal
+* Reactstrap for buttons, form, and modal
 * Jason Server to store data
 * Cloudinary to store image
 * React-FontAwesome for icons
