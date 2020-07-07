@@ -47,7 +47,7 @@ Single page application with full CRUD functionality that allows users to create
 ### Search Result
 ![Main View](https://raw.githubusercontent.com/yitbarekgitore/Frontend_Capstone/master/src/screenshots/searchResult.png)
 ### How to run
-* Clone down this project and frontendCapstone_api from GitHub to your workspace
+* Clone down this project and go to repositories section and clone down frontendCapstone_api to your workspace
 * Install http-server from npm in terminal window
 * Navigate to root of this project
 * Type npm start and hit enter
